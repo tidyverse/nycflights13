@@ -25,9 +25,10 @@ Useful metadata about airports.
 }
 \examples{
 if (require("dplyr")) {
-
 airports
+
 airports \%>\% mutate(dest = faa) \%>\% semi_join(flights)
+flights \%>\% anti_join(airports \%>\% mutate(dest = faa))
 airports \%>\% mutate(origin = faa) \%>\% semi_join(flights)
 
 }

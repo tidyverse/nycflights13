@@ -36,7 +36,7 @@ get_nyc <- function(path) {
       origin = Origin, dest = Dest, air_time = AirTime, distance = Distance
     ) %>%
     mutate(hour = dep_time %/% 100, minute = dep_time %% 100) %>%
-    filter(dest %in% c("JFK", "LGA", "EWR")) %>%
+    filter(origin %in% c("JFK", "LGA", "EWR")) %>%
     arrange(year, month, day, dep_time)
 }
 
