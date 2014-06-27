@@ -21,7 +21,7 @@
 airports
 }
 \description{
-This dataset contains useful metadata about airports.
+Useful metadata about airports.
 }
 \keyword{datasets}
 
