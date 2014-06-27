@@ -23,5 +23,14 @@ airports
 \description{
 Useful metadata about airports.
 }
+\examples{
+if (require("dplyr")) {
+
+airports
+airports \%>\% mutate(dest = faa) \%>\% semi_join(flights)
+airports \%>\% mutate(origin = faa) \%>\% semi_join(flights)
+
+}
+}
 \keyword{datasets}
 

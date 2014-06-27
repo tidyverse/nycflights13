@@ -12,10 +12,12 @@
 #' \item{dep_delay,arr_delay}{Departure and arrival delays, in minutes.
 #'   Negative times represent early departures/arrivals.}
 #' \item{hour,minute}{Time of departure broken in to hour and minutes}
-#' \item{carrier}{Two letter carrier abbreviation}
+#' \item{carrier}{Two letter carrier abbreviation. See \code{\link{airlines}}
+#'   to get name}
 #' \item{tailnum}{Plane tail number}
 #' \item{flight}{Flight number}
-#' \item{origin,dest}{Origin and destination}
+#' \item{origin,dest}{Origin and destination. See \code{\link{airports}} for
+#'   additional metadata.}
 #' \item{air_time}{Amount of time spent in the air}
 #' \item{distance}{Distance flown}
 #' }
