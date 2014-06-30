@@ -1,3 +1,5 @@
+library(dplyr)
+
 flight_url <- function(year = 2013, month) {
   base_url <- "http://www.transtats.bts.gov/Download/"
   sprintf(paste0(base_url, "On_Time_On_Time_Performance_%d_%d.zip"), year, month)
@@ -43,4 +45,4 @@ get_nyc <- function(path) {
 all <- lapply(dir("data-raw/flights", full.names = TRUE), get_nyc)
 flights <- rbind_all(all) %>% tbl_df()
 
-save(flights, file = "data/flights.rda")
+save(flights, file = "data/flights.rda", compress = "bzip2")
