@@ -10,7 +10,7 @@
 \item{year,month,day,hour}{Time of recording}
 \item{temp,dewp}{Temperature and dewpoint in F}
 \item{humid}{Relative humidity}
-\item{wind_dir,wind_speed,wind_guest}{Wind direction (in degrees), speed
+\item{wind_dir,wind_speed,wind_gust}{Wind direction (in degrees), speed
   and gust speed (in mph)}
 \item{precip}{Preciptation, in inches}
 \item{pressure}{Sea level pressure in millibars}

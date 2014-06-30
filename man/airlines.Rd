@@ -3,9 +3,10 @@
 \name{airlines}
 \alias{airlines}
 \title{Airline names.}
-\format{\preformatted{Classes ‘tbl_df’, ‘tbl’ and 'data.frame':	16 obs. of  2 variables:
- $ carrier: Factor w/ 1570 levels "02Q","04Q","05Q",..: 127 143 265 305 485 551 564 584 668 903 ...
- $ name   : Factor w/ 1571 levels "40-Mile Air",..: 604 268 236 837 554 635 678 229 751 606 ...
+\format{Data frame with columns
+\describe{
+\item{carrier}{Two letter abbreviation}
+\item{name}{Full name}
 }}
 \source{
 http://www.transtats.bts.gov/DL_SelectFields.asp?Table_ID=236
