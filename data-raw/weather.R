@@ -51,6 +51,10 @@ weather <- raw %>%
   group_by(station, month, day, hour) %>%
   filter(row_number() == 1) %>%
   select(origin = station, year:hour, temp:visib) %>%
-  ungroup()
+  ungroup() %>%
+  filter(!is.na(month)) %>%
+  mutate(
+    date = ISOdatetime(year, month, day, hour, 0, 0)
+  )
 
 save(weather, file = "data/weather.rda")
