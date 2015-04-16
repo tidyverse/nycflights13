@@ -1,5 +1,5 @@
 Package: nycflights13
-Title: Data about flights departing NYC in 2013.
+Title: Data About flights Departing NYC in 2013.
 Version: 0.1.0.9000
 Authors@R: 'Hadley Wickham <h.wickham@gmail.com> [aut,cre]'
 Description: Airline on-time data for all flights departing NYC in 2013.
