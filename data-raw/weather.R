@@ -3,6 +3,7 @@
 library(httr)
 library(dplyr)
 library(lubridate)
+library(readr)
 
 # Download ---------------------------------------------------------------------
 
@@ -26,8 +27,6 @@ lapply(missing, get_asos)
 
 # Load ------------------------------------------------------------------------
 
-read.csv("data-raw/weather/EWR.csv", ) %>% tbl_df()
-
 paths <- dir("data-raw/weather/", full.names = TRUE)
 all <- lapply(paths, read.csv, skip = 4, row.names = NULL, check.names = FALSE,
   header = FALSE, stringsAsFactors = FALSE, na.strings = "M")
@@ -38,7 +37,6 @@ names(raw) <- c("station", "time", "tmpf", "dwpf", "relh", "drct", "sknt",
   "skyl1", "skyl2", "skyl3", "skyl4", "metar")
 
 weather <- raw %>%
-  tbl_df() %>%
   select(
     station, time, temp = tmpf, dewp = dwpf, humid = relh,
     wind_dir = drct, wind_speed = sknt, wind_gust = gust,
@@ -50,8 +48,9 @@ weather <- raw %>%
     wind_gust = as.numeric(wind_speed) * 1.15078
   ) %>%
   mutate(year = 2013, month = month(time), day = mday(time), hour = hour(time)) %>%
-  group_by(month, day, hour) %>%
+  group_by(station, month, day, hour) %>%
   filter(row_number() == 1) %>%
-  select(origin = station, year:hour, temp:visib)
+  select(origin = station, year:hour, temp:visib) %>%
+  ungroup()
 
 save(weather, file = "data/weather.rda")
