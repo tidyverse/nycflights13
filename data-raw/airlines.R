@@ -13,7 +13,8 @@ raw <- read.csv(lcl)
 airlines <- raw %>%
   tbl_df() %>%
   select(carrier = Code, name = Description) %>%
-  semi_join(flights) %>%
+#  semi_join(flights) %>%
+  filter(!is.na(carrier)) %>%
   arrange(carrier)
 
 save(airlines, file = "data/airlines.rda")

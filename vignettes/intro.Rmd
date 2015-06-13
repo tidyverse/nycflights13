@@ -1,0 +1,59 @@
+---
+title: "Vignette Title"
+author: "Vignette Author"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Vignette Title}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, message=FALSE}
+library(dplyr)
+library(airlines)
+```
+
+## Create the airlines database
+
+```{r}
+library(RPostgreSQL)
+#' # must have pre-existing database "airlines"
+db <- src_postgres(host = "localhost", user="postgres", password="postgres", dbname = "airlines")
+```
+
+Download the `flights` data
+
+```{r, eval=FALSE}
+pushFlightsYear(db, year = 2013, temp.dir = "~/dumps")
+```
+
+```{r, eval=FALSE}
+dbWriteTable(db$con, "carriers", as.data.frame(airlines), overwrite=TRUE, row.names = FALSE)
+dbWriteTable(db$con, "airports", as.data.frame(airports), overwrite=TRUE, row.names = FALSE)
+dbWriteTable(db$con, "planes", as.data.frame(planes), overwrite=TRUE, row.names = FALSE)
+dbWriteTable(db$con, "weather", as.data.frame(weather), overwrite=TRUE, row.names = FALSE)
+buildIndices(db)
+```
+
+
+```{r}
+# let's see what has been created
+dbListTables(db$con)
+dbListFields(db$con, "airports")
+```
+
+```{r}
+# and now we can access these within dplyr
+airports <- tbl(db, "airports")
+planes <- tbl(db, "planes")
+carriers <- tbl(db, "carriers")
+flights <- tbl(db, "flights")
+```
+
+```{r, eval=FALSE}
+flights %>%
+   group_by(year, origin) %>%
+   summarise(N = n(), numDests = count(distinct(dest)), numCarriers = count(distinct(carrier)), numPlanes = count(distinct(tailnum))) %>%
+   arrange(desc(N))
+```

@@ -15,6 +15,7 @@ names(raw) <- c("id", "name", "city", "country", "faa", "icao", "lat", "lon", "a
 airports <- raw %>% 
   tbl_df() %>%
   filter(country == "United States", faa != "") %>%
+  filter(name != "Beaufort") %>%
   select(faa, name, lat, lon, alt, tz, dst) %>%
   mutate(lat = as.numeric(lat), lon = as.numeric(lon)) %>%
   arrange(faa)
