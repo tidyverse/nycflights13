@@ -27,7 +27,7 @@
 
 getMonth <- function(year = 2013, month = 1, temp.dir = tempdir()) {
 
-  needed <- paste0("2013-", month, ".csv")
+  needed <- paste0(year, "-", month, ".csv")
   
   if (!needed %in% dir(temp.dir)) {
     message("Downloading flight data...")
