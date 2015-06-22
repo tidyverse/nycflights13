@@ -1,9 +1,7 @@
-# nycflights13
+# airlines
 
-[![Build Status](https://travis-ci.org/hadley/nycflights13.png?branch=master)](https://travis-ci.org/hadley/nycflights13)
-
-This package contains information about all flights that departed from NYC
-(e.g. EWR, JFK and LGA) in 2013: 336,776 flights in total. To help understand 
+This package contains information about flights, and provides functionality for
+uploading multiple years worth of data to a database server. To help understand 
 what causes delays, it also includes a number of other useful datasets:
 
 * `weather`: hourly meterological data for each airport

@@ -1,6 +1,6 @@
 ---
-title: "Vignette Title"
-author: "Vignette Author"
+title: "Airlines"
+author: "Ben Baumer"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
@@ -16,40 +16,61 @@ library(airlines)
 
 ## Create the airlines database
 
+First, we create a connection to the database server. We can work with database connections used by either `dplyr` or `DBI`. 
+
 ```{r}
 library(RPostgreSQL)
 #' # must have pre-existing database "airlines"
 db <- src_postgres(host = "localhost", user="postgres", password="postgres", dbname = "airlines")
 ```
 
-Download the `flights` data
+Next, download `flights` for a single year, and push it to the database server. 
 
 ```{r, eval=FALSE}
 pushFlightsYear(db, year = 2013, temp.dir = "~/dumps")
 ```
+
+Given more time, we might loop through many years. 
+
+```{r, eval=FALSE}
+years <- 2014:2015
+lapply(years, pushFlightsYear, db = db, temp.dir = "~/dumps")
+```
+
+There are several ancillary tables that we can also push to the database server. 
 
 ```{r, eval=FALSE}
 dbWriteTable(db$con, "carriers", as.data.frame(airlines), overwrite=TRUE, row.names = FALSE)
 dbWriteTable(db$con, "airports", as.data.frame(airports), overwrite=TRUE, row.names = FALSE)
 dbWriteTable(db$con, "planes", as.data.frame(planes), overwrite=TRUE, row.names = FALSE)
 dbWriteTable(db$con, "weather", as.data.frame(weather), overwrite=TRUE, row.names = FALSE)
+```
+
+To complete the setup, we should build primary keys and indexes on these tables. 
+
+```{r, eval=FALSE}
 buildIndices(db)
 ```
 
+## Accessing the airlines database
+
+let's see what has been created:
 
 ```{r}
-# let's see what has been created
 dbListTables(db$con)
 dbListFields(db$con, "airports")
 ```
 
+Now we can connect to these tables using `dplyr`:
+
 ```{r}
-# and now we can access these within dplyr
 airports <- tbl(db, "airports")
 planes <- tbl(db, "planes")
 carriers <- tbl(db, "carriers")
 flights <- tbl(db, "flights")
 ```
+
+We can retrieve some basic information about what results are present in the database. 
 
 ```{r, eval=FALSE}
 flights %>%

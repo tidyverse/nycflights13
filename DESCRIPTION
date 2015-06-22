@@ -1,15 +1,25 @@
 Package: airlines
-Title: Data About flights Departing NYC in 2013.
+Title: Data About flights
 Version: 0.1.0.9000
-Authors@R: 'Hadley Wickham <h.wickham@gmail.com> [aut,cre]'
-Description: Airline on-time data for all flights departing NYC in 2013.
+Authors@R: as.person(c(
+    "Ben Baumer <ben.baumer@gmail.com> [aut, cre]", 
+    "Hadley Wickham <h.wickham@gmail.com> [aut]"
+  ))
+Description: Airline on-time data for all flights.
     Also includes useful metadata on airlines, airports, weather, and planes.
+    This packages provides the functionality to upload multiple years worth of
+    airline data to a database server. 
 License: CC0
 LazyData: true
 Imports: 
-  dplyr
+  dplyr,
+  DBI
 Depends: 
   R (>= 2.10)
-URL: http://github.com/hadley/nycflights13
+Suggests:
+  RPostgreSQL,
+  RMySQL,
+  RSQLite
+URL: http://github.com/beanumber/airlines
 Suggests: knitr
 VignetteBuilder: knitr

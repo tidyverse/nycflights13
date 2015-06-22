@@ -8,9 +8,12 @@
 #' 
 #' @examples
 #' 
-#' library(RPostgreSQL)
-#' # must have pre-existing database "airlines"
-#' db <- src_postgres(host = "localhost", user="postgres", password="postgres", dbname = "airlines")
+#' library(dplyr)
+#' 
+#' if (require(RPostgreSQL)) {
+#'  # must have pre-existing database "airlines"
+#'  db <- src_postgres(host = "localhost", user="postgres", password="postgres", dbname = "airlines")
+#' }
 #' 
 #' #' # save files in a specific location
 #' \dontrun{

@@ -15,12 +15,15 @@
 #'     U = unknown. N = no dst.}
 #' }
 #' @examples
-#' if (require("dplyr")) {
+#' 
+#' 
 #' airports
 #'
+#' \dontrun{
+#' db <- src_postgres(host = "localhost", user="postgres", password="postgres", dbname = "airlines")
+#' flights <- tbl(db, "flights")
 #' airports %>% mutate(dest = faa) %>% semi_join(flights)
 #' flights %>% anti_join(airports %>% mutate(dest = faa))
 #' airports %>% mutate(origin = faa) %>% semi_join(flights)
-#'
 #' }
 "airports"

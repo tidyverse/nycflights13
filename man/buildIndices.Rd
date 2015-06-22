@@ -13,11 +13,12 @@ buildIndices(db)
 Build indices in the airlines database
 }
 \examples{
-library(RPostgreSQL)
-# must have pre-existing database "airlines"
-db <- src_postgres(host = "localhost", user="postgres", password="postgres", dbname = "airlines")
-
 library(dplyr)
+if (require(RPostgreSQL)) {
+ # must have pre-existing database "airlines"
+ db <- src_postgres(host = "localhost", user="postgres", password="postgres", dbname = "airlines")
+}
+
 start <- Sys.time()
 flights <- tbl(db, "flights")
 flights \%>\%

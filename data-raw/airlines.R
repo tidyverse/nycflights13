@@ -17,4 +17,4 @@ airlines <- raw %>%
   filter(!is.na(carrier)) %>%
   arrange(carrier)
 
-save(airlines, file = "data/airlines.rda")
+save(airlines, file = "data/airlines.rda", compress = "xz")

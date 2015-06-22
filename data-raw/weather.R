@@ -57,4 +57,4 @@ weather <- raw %>%
     date = ISOdatetime(year, month, day, hour, 0, 0)
   )
 
-save(weather, file = "data/weather.rda")
+save(weather, file = "data/weather.rda", compress = "xz")

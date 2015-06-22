@@ -21,4 +21,4 @@ airports <- raw %>%
   arrange(faa)
 
 write.csv(airports, "data-raw/airports.csv", row.names = FALSE)
-save(airports, file = "data/airports.rda")
+save(airports, file = "data/airports.rda", compress = "xz")

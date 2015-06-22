@@ -68,14 +68,14 @@ download_month <- function(year = 2013, month, temp.dir) {
 get_flights <- function(path) {
   read.csv(path, stringsAsFactors = FALSE) %>%
     tbl_df() %>%
-    select(
-      year = Year, month = Month, day = DayofMonth, dep_time = DepTime,
-      dep_delay = DepDelay, arr_time = ArrTime, arr_delay = ArrDelay,
-      carrier = Carrier,  tailnum = TailNum, flight = FlightNum,
-      origin = Origin, dest = Dest, air_time = AirTime, distance = Distance
+    select_(
+      year = ~Year, month = ~Month, day = ~DayofMonth, dep_time = ~DepTime,
+      dep_delay = ~DepDelay, arr_time = ~ArrTime, arr_delay = ~ArrDelay,
+      carrier = ~Carrier,  tailnum = ~TailNum, flight = ~FlightNum,
+      origin = ~Origin, dest = ~Dest, air_time = ~AirTime, distance = ~Distance
     ) %>%
-    mutate(hour = dep_time %/% 100, minute = dep_time %% 100) %>%
+    mutate_(hour = ~dep_time %/% 100, minute = ~dep_time %% 100) %>%
 #    filter(origin %in% c("JFK", "LGA", "EWR")) %>%
-    arrange(year, month, day, dep_time)
+    arrange_(~year, ~month, ~day, ~dep_time)
 }
 

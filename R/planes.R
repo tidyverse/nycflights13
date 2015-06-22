@@ -20,9 +20,12 @@
 #' @examples
 #' if (require("dplyr")) {
 #' planes
-#'
+#' 
+#' \dontrun{
+#' db <- src_postgres(host = "localhost", user="postgres", password="postgres", dbname = "airlines")
+#' flights <- tbl(db, "flights")
 #' # Flights that don't have plane metadata
 #' flights %>% anti_join(planes, "tailnum")
-#'
+#' }
 #' }
 "planes"

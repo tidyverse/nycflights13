@@ -58,4 +58,4 @@ planes <- all %>%
   semi_join(flights, "tailnum") %>%
   arrange(tailnum)
 
-save(planes, file = "data/planes.rda")
+save(planes, file = "data/planes.rda", compress = "xz")
