@@ -7,14 +7,14 @@ if (!file.exists(lcl)) {
   download.file(src, lcl)
 }
 
-load("data/flights.rda")
+# load("data/flights.rda")
 
 raw <- read.csv(lcl)
-airlines <- raw %>%
+carriers <- raw %>%
   tbl_df() %>%
   select(carrier = Code, name = Description) %>%
 #  semi_join(flights) %>%
   filter(!is.na(carrier)) %>%
   arrange(carrier)
 
-save(airlines, file = "data/airlines.rda", compress = "xz")
+save(carriers, file = "data/carriers.rda", compress = "xz")

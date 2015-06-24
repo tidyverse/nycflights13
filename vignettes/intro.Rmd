@@ -4,7 +4,7 @@ author: "Ben Baumer"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Vignette Title}
+  %\VignetteIndexEntry{Airlines}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -40,7 +40,7 @@ lapply(years, pushFlightsYear, db = db, temp.dir = "~/dumps")
 There are several ancillary tables that we can also push to the database server. 
 
 ```{r, eval=FALSE}
-dbWriteTable(db$con, "carriers", as.data.frame(airlines), overwrite=TRUE, row.names = FALSE)
+dbWriteTable(db$con, "carriers", as.data.frame(carriers), overwrite=TRUE, row.names = FALSE)
 dbWriteTable(db$con, "airports", as.data.frame(airports), overwrite=TRUE, row.names = FALSE)
 dbWriteTable(db$con, "planes", as.data.frame(planes), overwrite=TRUE, row.names = FALSE)
 dbWriteTable(db$con, "weather", as.data.frame(weather), overwrite=TRUE, row.names = FALSE)
@@ -54,7 +54,7 @@ buildIndices(db)
 
 ## Accessing the airlines database
 
-let's see what has been created:
+Let's see what has been created:
 
 ```{r}
 dbListTables(db$con)
@@ -75,6 +75,22 @@ We can retrieve some basic information about what results are present in the dat
 ```{r, eval=FALSE}
 flights %>%
    group_by(year, origin) %>%
-   summarise(N = n(), numDests = count(distinct(dest)), numCarriers = count(distinct(carrier)), numPlanes = count(distinct(tailnum))) %>%
+   summarise(N = n(), numDests = count(distinct(dest)), 
+             numCarriers = count(distinct(carrier)), 
+             numPlanes = count(distinct(tailnum))) %>%
    arrange(desc(N))
+```
+
+## Recover nycflights13
+
+To restrict this to only flights to and from the three New York City airports in 2013, we simply `filter` and `trim`:
+
+```{r, eval=FALSE}
+nycFlights13 <- flights %>%
+  filter(year == 2013) %>%
+  filter(origin %in% c("JFK", "LGA", "EWR"))
+
+tbl_list <- trim(db, flights = nycFlights13)
+airports <- collect(tbl_list$airports)
+# save(airports, file = "data/airports.rda")
 ```

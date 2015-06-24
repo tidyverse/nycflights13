@@ -4,10 +4,24 @@
 \alias{trim}
 \title{trim}
 \usage{
-trim()
+trim(db, flights)
+}
+\arguments{
+\item{db}{a \code{dplyr} \code{src}}
+
+\item{flights}{a \code{tbl} containing flight information}
+}
+\value{
+a list of \code{tbl}s
 }
 \description{
 Enforce minimal referential integrity on the flights DB.
+}
+\details{
+This function will enforce minimal referential integrity on a table
+of flights. That is, given a data set of flights, it will trim the \code{\link{airports}},
+\code{\link{planes}}, and \code{\link{carriers}} tables to include only those
+entries that are present in \code{flights}.
 }
 \examples{
 library(dplyr)
@@ -17,20 +31,20 @@ if (require(RPostgreSQL)) {
  db <- src_postgres(host = "localhost", user="postgres", password="postgres", dbname = "airlines")
 }
 
-#' # save files in a specific location
+# save files in a specific location
 \dontrun{
-feb <- getMonth(year = 2013, month = 2, temp.dir = "~/dumps")
-pushFlights(db, feb)
 pushYear(db, year = 2013, temp.dir = "~/dumps")
 }
 
-#' # check the results
+# restrict to just flights from NYC in 2013
 \dontrun{
-flights.db <- tbl(db, "flights")
-flights.db \%>\%
-  group_by(year, origin) \%>\%
-  summarise(N = n(), min.month = min(month), max.month = max(month)) \%>\%
-  arrange(desc(N))
+flights <- tbl(db, "flights")
+nycFlights13 <- flights \%>\%
+  filter(year == 2013) \%>\%
+  filter(origin \%in\% c("JFK", "LGA", "EWR"))
+tbl_list <- trim(db, flights = nycFlights13)
+airports <- collect(tbl_list$airports)
+save(airports, file = "data/airports.rda")
 }
 }
 

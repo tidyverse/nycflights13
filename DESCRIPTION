@@ -13,13 +13,14 @@ License: CC0
 LazyData: true
 Imports: 
   dplyr,
-  DBI
+  DBI,
+  methods,
+  RSQLite
 Depends: 
   R (>= 2.10)
 Suggests:
   RPostgreSQL,
-  RMySQL,
-  RSQLite
+  RMySQL
 URL: http://github.com/beanumber/airlines
 Suggests: knitr
 VignetteBuilder: knitr
