@@ -87,8 +87,11 @@ buildIndices <- function (db) {
     con <- db
   }
   message("Creating indices...")
+  dbGetQuery(con, "ALTER TABLE airports MODIFY COLUMN faa varchar(3);")
   dbGetQuery(con, "ALTER TABLE airports ADD CONSTRAINT airports_pk PRIMARY KEY (faa);")
+  dbGetQuery(con, "ALTER TABLE carriers MODIFY COLUMN carrier varchar(6);")
   dbGetQuery(con, "ALTER TABLE carriers ADD CONSTRAINT carrier_pk PRIMARY KEY (carrier);")
+  dbGetQuery(con, "ALTER TABLE planes MODIFY COLUMN tailnum varchar(6);")
   dbGetQuery(con, "ALTER TABLE planes ADD CONSTRAINT tailnum_pk PRIMARY KEY (tailnum);")
   dbBuildIndex(con, "flights", c("Year", "Month", "Day"), indexname = "date_idx")
   dbBuildIndex(con, "flights", "origin")

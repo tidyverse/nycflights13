@@ -34,14 +34,17 @@ a utility function to push a data frame to a DB.
 }
 \examples{
 library(dplyr)
+\dontrun{
 if (require(RMySQL)) {
  # must have pre-existing database "airlines"
  db <- src_mysql(host = "localhost", user="bbaumer", password="fakepass", dbname = "airlines")
 }
-
+}
+\dontrun{
 if (require(RPostgreSQL)) {
  # must have pre-existing database "airlines"
  db <- src_postgres(host = "localhost", user="postgres", password="postgres", dbname = "airlines")
+}
 }
 
 #' # save files in a specific location

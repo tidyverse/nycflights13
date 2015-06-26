@@ -19,8 +19,9 @@ Imports:
 Depends: 
   R (>= 2.10)
 Suggests:
+  knitr,
   RPostgreSQL,
   RMySQL
 URL: http://github.com/beanumber/airlines
-Suggests: knitr
+BugReports: https://github.com/beanumber/airlines/issues
 VignetteBuilder: knitr

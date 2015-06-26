@@ -21,25 +21,33 @@ First, we create a connection to the database server. We can work with database 
 ```{r}
 library(RPostgreSQL)
 #' # must have pre-existing database "airlines"
-db <- src_postgres(host = "localhost", user="postgres", password="postgres", dbname = "airlines")
+db <- src_postgres(host = "localhost", user = "postgres", password = "postgres", dbname = "airlines")
 ```
+
+```{r, eval=FALSE}
+# library(RMySQL)
+#' # must have pre-existing database "airlines"
+# db <- src_mysql(host = "localhost", user = "mdsr", password = "mdsr", dbname = "airlines")
+```
+
 
 Next, download `flights` for a single year, and push it to the database server. 
 
 ```{r, eval=FALSE}
-pushFlightsYear(db, year = 2013, temp.dir = "~/dumps")
+pushFlightsYear(db, year = 2013, temp.dir = "~/dumps/airlines")
 ```
 
 Given more time, we might loop through many years. 
 
 ```{r, eval=FALSE}
 years <- 2014:2015
-lapply(years, pushFlightsYear, db = db, temp.dir = "~/dumps")
+lapply(years, pushFlightsYear, db = db, temp.dir = "~/dumps/airlines")
 ```
 
 There are several ancillary tables that we can also push to the database server. 
 
 ```{r, eval=FALSE}
+# copy_to(db, carriers, indexes = list("carrier"), temporary = FALSE)
 dbWriteTable(db$con, "carriers", as.data.frame(carriers), overwrite=TRUE, row.names = FALSE)
 dbWriteTable(db$con, "airports", as.data.frame(airports), overwrite=TRUE, row.names = FALSE)
 dbWriteTable(db$con, "planes", as.data.frame(planes), overwrite=TRUE, row.names = FALSE)
