@@ -45,7 +45,7 @@ etl_push.etl_airlines <- function(obj, year = NULL, month = NULL, ...) {
 }
 
 
-push_month <- function (obj, csv, ...) {
+push_month <- function(obj, csv, ...) {
   message(paste("Reading flight data from", csv))
   flights <- tbl_df(get_flights(csv))
   message(print(object.size(flights), units = "Mb"))
@@ -57,6 +57,8 @@ push_month <- function (obj, csv, ...) {
   # remove the data frame
   rm(flights)
 }
+
+#' @export
 
 get_flights <- function(csv) {
   read.csv(csv, stringsAsFactors = FALSE) %>%

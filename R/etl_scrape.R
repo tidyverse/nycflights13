@@ -30,17 +30,14 @@
 #' }
 #' 
 
-etl_scrape.etl_airlines <- function(obj, year = 2013, startMonth = 1, endMonth = 12, ...) {
+etl_scrape.etl_airlines <- function(obj, year = 2013, month = NULL, ...) {
   thisYear <- as.numeric(format(Sys.Date(), '%Y'))
-  if (startMonth < 1 | startMonth > 12) {
+  if (month < 1 | month > 12) {
     startMonth <- 1
-  }
-  if (endMonth < 1 | endMonth > 12) {
     endMonth <- 12
-  }
-  if (startMonth > endMonth) {
-    startMonth <- min(startMonth, endMonth)
-    endMonth <- max(startMonth, endMonth)
+  } else {
+    startMonth <- month
+    endMonth <- month
   }
   if (year == 1987) {
     startMonth <- min(startMonth, 10)
@@ -52,7 +49,7 @@ etl_scrape.etl_airlines <- function(obj, year = 2013, startMonth = 1, endMonth =
   return(obj)
 }
 
-scrape_month <- function(obj, year = 2013, month = 1, ...) {
+scrape_month <- function(obj, year = 2013, month = NULL, ...) {
   needed <- paste0(year, "-", month, ".zip")
   
   if (!needed %in% dir(obj$dir)) {

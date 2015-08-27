@@ -4,17 +4,16 @@
 \alias{etl_scrape.etl_airlines}
 \title{etl_scrape}
 \usage{
-\method{etl_scrape}{etl_airlines}(obj, year = 2013, startMonth = 1,
-  endMonth = 12, ...)
+\method{etl_scrape}{etl_airlines}(obj, year = 2013, month = NULL, ...)
 }
 \arguments{
 \item{obj}{an \code{\link{etl}} object}
 
 \item{year}{a year represented as a four-digit integer}
 
-\item{...}{arguments passed to methods}
-
 \item{month}{the month represented as an integer}
+
+\item{...}{arguments passed to methods}
 }
 \description{
 a utility function to download a year's worth of airline data

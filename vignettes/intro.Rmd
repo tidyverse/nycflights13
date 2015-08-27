@@ -28,23 +28,28 @@ First, we create a connection to the database server. We can work with database 
 ```{r, eval=FALSE}
 library(RMySQL)
 # must have pre-existing database "airlines"
-db <- src_mysql(host = "localhost", user = "mysql", password = "mysql", dbname = "airlines")
-etl_airlines <- etl::etl_connect("airlines", db, dir = "~/dumps/airlines")
-etl_update(etl_airlines, year = 2013, month = 9)
+db <- src_mysql(host = "localhost", user = "r-user", password = "mypass", dbname = "airlines")
+airlines <- etl::etl_connect("airlines", db, dir = "~/dumps/airlines")
 ```
 
-
-Next, download `flights` for a single year, and push it to the database server. 
-
-```{r, eval=FALSE}
-pushFlightsYear(db, year = 1987, temp.dir = "~/dumps/airlines")
+```{r}
+airlines <- airlines %>%
+  etl_create(year = 2013, month = 9)
 ```
 
-Given more time, we might loop through many years. 
+Once the database is set up, you can update the flights. 
 
 ```{r, eval=FALSE}
-years <- 2012:2012
-lapply(years, pushFlightsYear, db = db, temp.dir = "~/dumps/airlines")
+airlines %>%
+  etl_update(year = 2001, month = 3)
+  etl_update(year = 2012)
+```
+
+Given more time, we might loop through many years. **NOTE: this will take a looong time.**
+
+```{r, eval=FALSE}
+years <- 1987:2015
+lapply(years, etl_update, obj = etl_airlines)
 ```
 
 There are several ancillary tables that we can also push to the database server. 
@@ -57,11 +62,6 @@ dbWriteTable(db$con, "planes", as.data.frame(planes), overwrite=TRUE, row.names 
 dbWriteTable(db$con, "weather", as.data.frame(weather), overwrite=TRUE, row.names = FALSE)
 ```
 
-To complete the setup, we should build primary keys and indexes on these tables. 
-
-```{r, eval=FALSE}
-buildIndices(db)
-```
 
 ## Accessing the airlines database
 

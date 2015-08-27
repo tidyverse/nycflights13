@@ -1,6 +1,6 @@
 # Load the airline delays data into MySQL
 
-USE airlines;
+# USE airlines;
 
 DROP TABLE IF EXISTS flights;
 
@@ -18,7 +18,7 @@ CREATE TABLE flights (
   `origin` varchar(3) NOT NULL DEFAULT '',
   `dest` varchar(3) NOT NULL DEFAULT '',
   `air_time` smallint(4) DEFAULT NULL,
-  `distance` smallint(4) DEFAULT NULL
+  `distance` smallint(4) DEFAULT NULL,
   KEY `Year` (`year`),
   KEY `Date` (`year`, `month`, `day`),
   KEY `Origin` (`origin`),
@@ -58,6 +58,65 @@ CREATE TABLE flights (
     PARTITION p29 VALUES IN (2015)
 );
 
-DROP VIEW IF EXISTS summary;
-CREATE VIEW summary AS 
-  SELECT year, sum(1) as numFlights FROM flights GROUP BY year;
+DROP TABLE IF EXISTS carriers;
+
+CREATE TABLE `carriers` (
+  `carrier` varchar(7) NOT NULL DEFAULT '',
+  `name` varchar(255) NOT NULL DEFAULT '',
+  PRIMARY KEY (`carrier`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+DROP TABLE IF EXISTS airports;
+
+CREATE TABLE `airports` (
+  `faa` varchar(3) NOT NULL DEFAULT '',
+  `name` varchar(255),
+  `lat` decimal(10,7) DEFAULT NULL,
+  `lon` decimal(10,7) DEFAULT NULL,
+  `alt` int(11) DEFAULT NULL,
+  `tz` smallint(4) DEFAULT NULL,
+  `dst` char(1),
+  PRIMARY KEY (`faa`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+DROP TABLE IF EXISTS planes;
+
+CREATE TABLE `planes` (
+  `tailnum` varchar(6) NOT NULL DEFAULT '',
+  `year` int(11) DEFAULT NULL,
+  `type` text,
+  `manufacturer` text,
+  `model` text,
+  `engines` int(11) DEFAULT NULL,
+  `seats` int(11) DEFAULT NULL,
+  `speed` int(11) DEFAULT NULL,
+  `engine` text,
+  PRIMARY KEY (`tailnum`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+DROP TABLE IF EXISTS weather;
+
+CREATE TABLE `weather` (
+  `origin` text,
+  `year` double DEFAULT NULL,
+  `month` double DEFAULT NULL,
+  `day` int(11) DEFAULT NULL,
+  `hour` int(11) DEFAULT NULL,
+  `temp` double DEFAULT NULL,
+  `dewp` double DEFAULT NULL,
+  `humid` double DEFAULT NULL,
+  `wind_dir` double DEFAULT NULL,
+  `wind_speed` double DEFAULT NULL,
+  `wind_gust` double DEFAULT NULL,
+  `precip` double DEFAULT NULL,
+  `pressure` double DEFAULT NULL,
+  `visib` double DEFAULT NULL,
+  `date` datetime DEFAULT NULL,
+  KEY `year_idx` (`year`),
+  KEY `date_widx` (`date`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+
+# DROP VIEW IF EXISTS summary;
+# CREATE VIEW summary AS 
+#   SELECT year, sum(1) as numFlights FROM flights GROUP BY year;
