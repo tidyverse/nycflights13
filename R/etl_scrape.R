@@ -8,6 +8,7 @@
 #' 
 #' @import dplyr
 #' @export
+#' @family etl functions
 #' 
 #' @examples
 #' 
@@ -45,11 +46,11 @@ etl_scrape.etl_airlines <- function(obj, year = 2013, month = NULL, ...) {
   if (year == thisYear) {
     endMonth <- min(endMonth, as.numeric(format(Sys.Date(), '%m')) - 1)
   }
-  lapply(startMonth:endMonth, scrape_month, obj = obj, year = year)
+  obj$files <- append(obj$files, sapply(startMonth:endMonth, scrape_month, obj = obj, year = year))
   return(obj)
 }
 
-scrape_month <- function(obj, year = 2013, month = NULL, ...) {
+scrape_month <- function(obj, year = 2013, month = 1, ...) {
   needed <- paste0(year, "-", month, ".zip")
   
   if (!needed %in% dir(obj$dir)) {
@@ -57,6 +58,7 @@ scrape_month <- function(obj, year = 2013, month = NULL, ...) {
     url <- flight_url(year, month)
     download.file(url, paste0(obj$dir, "/", needed))
   }
+  return(needed)
 }
 
 flight_url <- function(year = 2013, month) {

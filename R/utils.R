@@ -5,7 +5,7 @@ match_year_month <- function(files, year = NULL, month = NULL, ...) {
     ignore <- union(ignore, files[!grepl(year, files)])
   }  
   if (!is.null(month)) {
-    ignore <- union(ignore, files[!grepl(paste0(month, "\\."), files)])
+    ignore <- union(ignore, files[!grepl(paste0("(-|_)", month, "\\."), files)])
   }
   return(setdiff(files, ignore))
 }

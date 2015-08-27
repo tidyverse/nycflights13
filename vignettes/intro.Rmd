@@ -32,16 +32,18 @@ db <- src_mysql(host = "localhost", user = "r-user", password = "mypass", dbname
 airlines <- etl::etl_connect("airlines", db, dir = "~/dumps/airlines")
 ```
 
-```{r}
+If the database has not been populated yet, we use the `etl_create` function to initialize it and insert some data. 
+
+```{r, eval=FALSE}
 airlines <- airlines %>%
   etl_create(year = 2013, month = 9)
 ```
 
-Once the database is set up, you can update the flights. 
+Once the database is set up, you can update the flights table with more data.  
 
 ```{r, eval=FALSE}
 airlines %>%
-  etl_update(year = 2001, month = 3)
+  etl_update(year = 2001, month = 3) %>%
   etl_update(year = 2012)
 ```
 
@@ -49,32 +51,33 @@ Given more time, we might loop through many years. **NOTE: this will take a looo
 
 ```{r, eval=FALSE}
 years <- 1987:2015
-lapply(years, etl_update, obj = etl_airlines)
+lapply(years, etl_update, obj = airlines)
 ```
 
-There are several ancillary tables that we can also push to the database server. 
+If the process get disturbed, you can fine-tune using the individual [ETL](https://github.com/beanumber/etl/blob/master/README.md) functions. Note `etl_update` is just a wrapper for these functions.
 
-```{r, eval=FALSE}
-# copy_to(db, carriers, indexes = list("carrier"), temporary = FALSE)
-dbWriteTable(db$con, "carriers", as.data.frame(carriers), field.types = list(carrier = "varchar(7)", name = "varchar(255)"), overwrite=TRUE, row.names = FALSE)
-dbWriteTable(db$con, "airports", as.data.frame(airports), field.types = list(faa = "varchar(3)", name = "varchar(255)", lat = "decimal(10,7)", long = "decimal(10,7)", alt = "int", tz = "smallint", dst = "char(1)"), overwrite=TRUE, row.names = FALSE)
-dbWriteTable(db$con, "planes", as.data.frame(planes), overwrite=TRUE, row.names = FALSE)
-dbWriteTable(db$con, "weather", as.data.frame(weather), overwrite=TRUE, row.names = FALSE)
+```{r}
+getS3method("etl_update", "default")
 ```
 
+Furthermore, `etl_create` is just a wrapper for `etl_init` and `etl_update`.
+
+```{r}
+getS3method("etl_create", "default")
+```
 
 ## Accessing the airlines database
 
 Let's see what has been created:
 
-```{r}
+```{r, eval=FALSE}
 dbListTables(db$con)
 dbListFields(db$con, "airports")
 ```
 
 Now we can connect to these tables using `dplyr`:
 
-```{r}
+```{r, eval=FALSE}
 airports <- tbl(db, "airports")
 planes <- tbl(db, "planes")
 carriers <- tbl(db, "carriers")

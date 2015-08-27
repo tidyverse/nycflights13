@@ -36,6 +36,7 @@
 etl_init.etl_airlines <- function(obj, ...) {
   # sql <- system.file(package = "airlines")
   obj$init <- dbRunScript(obj$con, "~/Dropbox/lib/airlines/inst/sql/init.mysql")
+  return(obj)
 }
 
 carriers <- function(obj, ...) {

@@ -40,7 +40,7 @@ etl_push.etl_airlines <- function(obj, year = NULL, month = NULL, ...) {
   csvs <- dir(obj$dir, pattern = "\\.csv")
   topush <- match_year_month(csvs, year, month)
   
-  lapply(paste0(obj$dir, "/", topush), push_month, obj = obj, ...)
+  obj$push <- sapply(paste0(obj$dir, "/", topush), push_month, obj = obj, ...)
   return(obj)
 }
 
@@ -53,9 +53,9 @@ push_month <- function(obj, csv, ...) {
   # write the table to the DB
   message("Writing flight data to the database...")
   msg <- dbWriteTable(obj$con, "flights", as.data.frame(flights), append = TRUE, row.names = FALSE, ...)
-  obj$push <- append(obj$push, msg)
   # remove the data frame
   rm(flights)
+  return(msg)
 }
 
 #' @export
