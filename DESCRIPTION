@@ -1,6 +1,6 @@
 Package: airlines
 Title: Data About flights
-Version: 0.1.0.9000
+Version: 0.1.0.9001
 Authors@R: as.person(c(
     "Ben Baumer <ben.baumer@gmail.com> [aut, cre]", 
     "Hadley Wickham <h.wickham@gmail.com> [aut]"
@@ -12,6 +12,7 @@ Description: Airline on-time data for all flights.
 License: CC0
 LazyData: true
 Imports: 
+  etl,
   dplyr,
   DBI,
   methods,

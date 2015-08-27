@@ -1,0 +1,63 @@
+# Load the airline delays data into MySQL
+
+USE airlines;
+
+DROP TABLE IF EXISTS flights;
+
+CREATE TABLE flights (  
+  `year` smallint(4) DEFAULT NULL,
+  `month` smallint(2) DEFAULT NULL,
+  `day` smallint(2) DEFAULT NULL,
+  `dep_time` smallint(4) DEFAULT NULL,
+  `dep_delay` smallint(4) DEFAULT NULL,
+  `arr_time` smallint(4) DEFAULT NULL,
+  `arr_delay` smallint(4) DEFAULT NULL,
+  `carrier` varchar(2) NOT NULL DEFAULT '',
+  `tailnum` varchar(6) NOT NULL DEFAULT '',
+  `flight` smallint(4) DEFAULT NULL,
+  `origin` varchar(3) NOT NULL DEFAULT '',
+  `dest` varchar(3) NOT NULL DEFAULT '',
+  `air_time` smallint(4) DEFAULT NULL,
+  `distance` smallint(4) DEFAULT NULL
+  KEY `Year` (`year`),
+  KEY `Date` (`year`, `month`, `day`),
+  KEY `Origin` (`origin`),
+  KEY `Dest` (`dest`),
+  KEY `Carrier` (`carrier`),
+  KEY `tailNum` (`tailNum`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1
+  PARTITION BY LIST (Year) (
+    PARTITION p1 VALUES IN (1987),
+    PARTITION p2 VALUES IN (1988),
+    PARTITION p3 VALUES IN (1989),
+    PARTITION p4 VALUES IN (1990),
+    PARTITION p5 VALUES IN (1991),
+    PARTITION p6 VALUES IN (1992),
+    PARTITION p7 VALUES IN (1993),
+    PARTITION p8 VALUES IN (1994),
+    PARTITION p9 VALUES IN (1995),
+    PARTITION p10 VALUES IN (1996),
+    PARTITION p11 VALUES IN (1997),
+    PARTITION p12 VALUES IN (1998),
+    PARTITION p13 VALUES IN (1999),
+    PARTITION p14 VALUES IN (2000),
+    PARTITION p15 VALUES IN (2001),
+    PARTITION p16 VALUES IN (2002),
+    PARTITION p17 VALUES IN (2003),
+    PARTITION p18 VALUES IN (2004),
+    PARTITION p19 VALUES IN (2005),
+    PARTITION p20 VALUES IN (2006),
+    PARTITION p21 VALUES IN (2007),
+    PARTITION p22 VALUES IN (2008),
+    PARTITION p23 VALUES IN (2009),
+    PARTITION p24 VALUES IN (2010),
+    PARTITION p25 VALUES IN (2011),
+    PARTITION p26 VALUES IN (2012),
+    PARTITION p27 VALUES IN (2013),
+    PARTITION p28 VALUES IN (2014),
+    PARTITION p29 VALUES IN (2015)
+);
+
+DROP VIEW IF EXISTS summary;
+CREATE VIEW summary AS 
+  SELECT year, sum(1) as numFlights FROM flights GROUP BY year;

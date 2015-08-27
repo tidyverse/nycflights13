@@ -21,26 +21,28 @@ First, we create a connection to the database server. We can work with database 
 ```{r}
 library(RPostgreSQL)
 #' # must have pre-existing database "airlines"
-db <- src_postgres(host = "localhost", user = "postgres", password = "postgres", dbname = "airlines")
+db <- src_postgres(host = "localhost", user = "postgres", dbname = "airlines")
 ```
 
 ```{r, eval=FALSE}
-# library(RMySQL)
+library(RMySQL)
 #' # must have pre-existing database "airlines"
-# db <- src_mysql(host = "localhost", user = "mdsr", password = "mdsr", dbname = "airlines")
+library(etl)
+etl_airlines <- etl_connect("airlines", db, dir = "~/dumps/airlines")
+etl_update(etl_airlines, year = 2013)
 ```
 
 
 Next, download `flights` for a single year, and push it to the database server. 
 
 ```{r, eval=FALSE}
-pushFlightsYear(db, year = 2013, temp.dir = "~/dumps/airlines")
+pushFlightsYear(db, year = 1987, temp.dir = "~/dumps/airlines")
 ```
 
 Given more time, we might loop through many years. 
 
 ```{r, eval=FALSE}
-years <- 2014:2015
+years <- 2012:2012
 lapply(years, pushFlightsYear, db = db, temp.dir = "~/dumps/airlines")
 ```
 
@@ -48,8 +50,8 @@ There are several ancillary tables that we can also push to the database server.
 
 ```{r, eval=FALSE}
 # copy_to(db, carriers, indexes = list("carrier"), temporary = FALSE)
-dbWriteTable(db$con, "carriers", as.data.frame(carriers), overwrite=TRUE, row.names = FALSE)
-dbWriteTable(db$con, "airports", as.data.frame(airports), overwrite=TRUE, row.names = FALSE)
+dbWriteTable(db$con, "carriers", as.data.frame(carriers), field.types = list(carrier = "varchar(7)", name = "varchar(255)"), overwrite=TRUE, row.names = FALSE)
+dbWriteTable(db$con, "airports", as.data.frame(airports), field.types = list(faa = "varchar(3)", name = "varchar(255)", lat = "decimal(10,7)", long = "decimal(10,7)", alt = "int", tz = "smallint", dst = "char(1)"), overwrite=TRUE, row.names = FALSE)
 dbWriteTable(db$con, "planes", as.data.frame(planes), overwrite=TRUE, row.names = FALSE)
 dbWriteTable(db$con, "weather", as.data.frame(weather), overwrite=TRUE, row.names = FALSE)
 ```
