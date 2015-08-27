@@ -37,4 +37,7 @@ lapply(2012:2013, etl_scrape, obj = etl_airlines)
 list.files(etl_airlines$dir)
 }
 }
+\seealso{
+Other etl.functions: \code{\link{etl_cleanup.etl_airlines}}
+}
 

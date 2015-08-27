@@ -34,12 +34,22 @@
 #' }
 
 etl_init.etl_airlines <- function(obj, ...) {
-  # sql <- system.file(package = "airlines")
-  obj$init <- dbRunScript(obj$con, "~/Dropbox/lib/airlines/inst/sql/init.mysql")
+  if (class(obj$con) == "MySQLConnection") {
+    sql <- system.file("sql", "init.mysql", package = "airlines")
+  } else if (class(obj$con) == "PostgreSQLConnection") {
+    sql <- system.file("sql", "init.psql", package = "airlines")
+  } else {
+    sql <- system.file("sql", "init.sql", package = "airlines")
+  }
+  obj$init <- dbRunScript(obj$con, sql)
+  init_carriers(obj)
+  init_airports(obj)
+  init_planes(obj)
+  init_weather(obj)
   return(obj)
 }
 
-carriers <- function(obj, ...) {
+init_carriers <- function(obj, ...) {
   src <- "http://www.transtats.bts.gov/Download_Lookup.asp?Lookup=L_UNIQUE_CARRIERS"
   lcl <- paste0(obj$dir, "/carriers.csv")
   
@@ -59,8 +69,8 @@ carriers <- function(obj, ...) {
   dbWriteTable(obj$con, "carriers", as.data.frame(carriers), overwrite = TRUE, row.names = FALSE)
 }
 
-airports <- function(obj, ...) {
-  src <- "http://sourceforge.net/p/openflights/code/HEAD/tree/openflights/data/airports.dat?format=raw"
+init_airports <- function(obj, ...) {
+  src <- "https://raw.githubusercontent.com/jpatokal/openflights/master/data/airports.dat"
   lcl <- paste0(obj$dir, "/airports.dat")
   
   if (!file.exists(lcl)) {
@@ -69,7 +79,7 @@ airports <- function(obj, ...) {
   obj$files <- append(obj$files, lcl)
   
   raw <- read.csv(lcl, header = FALSE, stringsAsFactors = FALSE)
-  names(raw) <- c("id", "name", "city", "country", "faa", "icao", "lat", "lon", "alt", "tz", "dst")
+  names(raw) <- c("id", "name", "city", "country", "faa", "icao", "lat", "lon", "alt", "tz", "dst", "region")
   
   airports <- raw %>% 
     tbl_df() %>%
@@ -82,6 +92,10 @@ airports <- function(obj, ...) {
   dbWriteTable(obj$con, "airports", as.data.frame(airports), overwrite = TRUE, row.names = FALSE)
 }
 
-planes <- function(obj, ...) {
+init_planes <- function(obj, ...) {
   dbWriteTable(obj$con, "planes", as.data.frame(planes), overwrite = TRUE, row.names = FALSE)
+}
+
+init_weather <- function(obj, ...) {
+  dbWriteTable(obj$con, "weather", as.data.frame(weather), overwrite = TRUE, row.names = FALSE)
 }
