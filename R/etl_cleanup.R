@@ -1,6 +1,8 @@
 #' @title Cleanup after data loaded into DB
 #'
 #' @inheritParams etl::etl_cleanup
+#' @param delete_zip should the ZIP files we downloaded be deleted? 
+#' @param delete_csv should the CSV files we downloaded by deleted?
 #' @export
 #' @method etl_cleanup etl_airlines
 #' @family etl functions

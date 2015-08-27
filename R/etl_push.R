@@ -3,7 +3,8 @@
 #' @description a utility function to push a data frame to a DB.
 #' 
 #' @inheritParams etl::etl_push
-#' 
+#' @param year four-digit integer indicating the year to upload
+#' @param month integer indicating the month to upload
 #' @import dplyr
 #' @importFrom DBI dbWriteTable
 #' @method etl_push etl_airlines 
@@ -57,8 +58,6 @@ push_month <- function(obj, csv, ...) {
   rm(flights)
   return(msg)
 }
-
-#' @export
 
 get_flights <- function(csv) {
   read.csv(csv, stringsAsFactors = FALSE) %>%

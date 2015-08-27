@@ -1,7 +1,7 @@
 ^\.travis\.yml$
 ^.*\.Rproj$
-^.*\old.R$
 ^\.Rproj\.user$
 ^data-raw$
 ^cran-comments\.md$
 ^NEWS\.md$
+^.*\.Rignore$

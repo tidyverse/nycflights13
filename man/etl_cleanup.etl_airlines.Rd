@@ -10,6 +10,10 @@
 \arguments{
 \item{obj}{an \code{\link{etl}} object}
 
+\item{delete_zip}{should the ZIP files we downloaded be deleted?}
+
+\item{delete_csv}{should the CSV files we downloaded by deleted?}
+
 \item{...}{arguments passed to methods}
 }
 \description{

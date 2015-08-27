@@ -61,10 +61,10 @@ init_carriers <- function(obj, ...) {
   raw <- read.csv(lcl)
   carriers <- raw %>%
     tbl_df() %>%
-    select(carrier = Code, name = Description) %>%
+    select_(carrier = ~Code, name = ~Description) %>%
     #  semi_join(flights) %>%
-    filter(!is.na(carrier)) %>%
-    arrange(carrier)
+    filter_(~!is.na(carrier)) %>%
+    arrange_(~carrier)
   
   dbWriteTable(obj$con, "carriers", as.data.frame(carriers), overwrite = TRUE, row.names = FALSE)
 }
@@ -83,11 +83,11 @@ init_airports <- function(obj, ...) {
   
   airports <- raw %>% 
     tbl_df() %>%
-    filter(country == "United States", faa != "") %>%
-    filter(name != "Beaufort") %>%
-    select(faa, name, lat, lon, alt, tz, dst) %>%
-    mutate(lat = as.numeric(lat), lon = as.numeric(lon)) %>%
-    arrange(faa)
+    filter_(~country == "United States", ~faa != "") %>%
+    filter_(~name != "Beaufort") %>%
+    select_(~faa, ~name, ~lat, ~lon, ~alt, ~tz, ~dst) %>%
+    mutate_(lat = ~as.numeric(lat), lon = ~as.numeric(lon)) %>%
+    arrange_(~faa)
   
   dbWriteTable(obj$con, "airports", as.data.frame(airports), overwrite = TRUE, row.names = FALSE)
 }

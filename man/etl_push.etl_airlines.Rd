@@ -9,6 +9,10 @@
 \arguments{
 \item{obj}{an \code{\link{etl}} object}
 
+\item{year}{four-digit integer indicating the year to upload}
+
+\item{month}{integer indicating the month to upload}
+
 \item{...}{arguments passed to methods}
 }
 \description{
