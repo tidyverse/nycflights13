@@ -52,8 +52,8 @@ push_month <- function (obj, csv, ...) {
   
   # write the table to the DB
   message("Writing flight data to the database...")
-  dbWriteTable(obj$con, "flights", as.data.frame(flights), append = TRUE, row.names = FALSE, ...)
-
+  msg <- dbWriteTable(obj$con, "flights", as.data.frame(flights), append = TRUE, row.names = FALSE, ...)
+  obj$push <- append(obj$push, msg)
   # remove the data frame
   rm(flights)
 }

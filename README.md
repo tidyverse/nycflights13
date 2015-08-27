@@ -1,3 +1,5 @@
+[![Travis-CI Build Status](https://travis-ci.org/beanumber/airlines.svg?branch=master)](https://travis-ci.org/beanumber/airlines)
+
 # airlines
 
 This package contains information about flights, and provides functionality for

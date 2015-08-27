@@ -11,6 +11,7 @@ vignette: >
 
 ```{r, message=FALSE}
 library(dplyr)
+library(etl)
 library(airlines)
 ```
 
@@ -19,17 +20,17 @@ library(airlines)
 First, we create a connection to the database server. We can work with database connections used by either `dplyr` or `DBI`. 
 
 ```{r}
-library(RPostgreSQL)
-#' # must have pre-existing database "airlines"
-db <- src_postgres(host = "localhost", user = "postgres", dbname = "airlines")
+# library(RPostgreSQL)
+# must have pre-existing database "airlines"
+# db <- src_postgres(host = "localhost", user = "postgres", dbname = "airlines")
 ```
 
 ```{r, eval=FALSE}
 library(RMySQL)
-#' # must have pre-existing database "airlines"
-library(etl)
-etl_airlines <- etl_connect("airlines", db, dir = "~/dumps/airlines")
-etl_update(etl_airlines, year = 2013)
+# must have pre-existing database "airlines"
+db <- src_mysql(host = "localhost", user = "mysql", password = "mysql", dbname = "airlines")
+etl_airlines <- etl::etl_connect("airlines", db, dir = "~/dumps/airlines")
+etl_update(etl_airlines, year = 2013, month = 9)
 ```
 
 
