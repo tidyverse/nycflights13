@@ -1,8 +1,8 @@
-#' etl_process
+#' etl_transform
 #' 
 #' @description a utility function to process a single month's worth of airline data
 #' 
-#' @inheritParams etl::etl_process
+#' @inheritParams etl::etl_transform
 #' @param year a year represented as a four-digit integer
 #' @param month the month represented as an integer
 #' 
@@ -21,14 +21,14 @@
 #' library(etl)
 #' etl_airlines <- etl_connect("airlines", db, dir = "~/dumps/airlines")
 #' # get one entire year of data
-#' etl_airlines <- etl_scrape(etl_airlines, year = 2013)
+#' etl_airlines <- etl_extract(etl_airlines, year = 2013)
 #' list.files(etl_airlines$dir)
-#' etl_process(etl_airlines, month = 6)
+#' etl_transform(etl_airlines, month = 6)
 #' list.files(etl_airlines$dir)
 #' }
 
 
-etl_process.etl_airlines <- function(obj, year = NULL, month = NULL, ...) {
+etl_transform.etl_airlines <- function(obj, year = NULL, month = NULL, ...) {
   zips <- dir(obj$dir, pattern = "\\.zip")
   tounzip <- match_year_month(zips, year, month)
   

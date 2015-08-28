@@ -1,8 +1,8 @@
-#' etl_scrape
+#' etl_extract
 #' 
 #' @description a utility function to download a year's worth of airline data
 #' 
-#' @inheritParams etl::etl_scrape
+#' @inheritParams etl::etl_extract
 #' @param year a year represented as a four-digit integer
 #' @param month the month represented as an integer
 #' 
@@ -22,16 +22,16 @@
 #' library(etl)
 #' etl_airlines <- etl_connect("airlines", db, dir = "~/dumps/airlines")
 #' # get one entire year of data
-#' etl_airlines <- etl_scrape(etl_airlines, year = 2013)
+#' etl_airlines <- etl_extract(etl_airlines, year = 2013)
 #' list.files(etl_airlines$dir)
 #' 
 #' # get two years worth
-#' lapply(2012:2013, etl_scrape, obj = etl_airlines)
+#' lapply(2012:2013, etl_extract, obj = etl_airlines)
 #' list.files(etl_airlines$dir)
 #' }
 #' 
 
-etl_scrape.etl_airlines <- function(obj, year = 2013, month = NULL, ...) {
+etl_extract.etl_airlines <- function(obj, year = 2013, month = NULL, ...) {
   thisYear <- as.numeric(format(Sys.Date(), '%Y'))
   if (month < 1 | month > 12) {
     startMonth <- 1

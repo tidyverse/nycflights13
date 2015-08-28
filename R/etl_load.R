@@ -1,13 +1,13 @@
-#' etl_push
+#' etl_load
 #' 
 #' @description a utility function to push a data frame to a DB.
 #' 
-#' @inheritParams etl::etl_push
+#' @inheritParams etl::etl_load
 #' @param year four-digit integer indicating the year to upload
 #' @param month integer indicating the month to upload
 #' @import dplyr
 #' @importFrom DBI dbWriteTable
-#' @method etl_push etl_airlines 
+#' @method etl_load etl_airlines 
 #' @export
 #' 
 #' @examples
@@ -22,9 +22,9 @@
 #' etl_airlines <- etl_connect("airlines", db, dir = "~/dumps/airlines")
 #' # get one entire year of data
 #' etl_airlines <- etl_airlines %>%
-#'   etl_scrape(year = 2013) %>%
-#'   etl_process(month = 6) %>%
-#'   etl_push(year = 2013, month = 6)
+#'   etl_extract(year = 2013) %>%
+#'   etl_transform(month = 6) %>%
+#'   etl_load(year = 2013, month = 6)
 #' }
 #' 
 #' #' # check the results
@@ -37,7 +37,7 @@
 #' }
 
 
-etl_push.etl_airlines <- function(obj, year = NULL, month = NULL, ...) {
+etl_load.etl_airlines <- function(obj, year = NULL, month = NULL, ...) {
   csvs <- dir(obj$dir, pattern = "\\.csv")
   topush <- match_year_month(csvs, year, month)
   

@@ -32,6 +32,6 @@ etl_cars \%>\%
 }
 }
 \seealso{
-Other etl.functions: \code{\link{etl_scrape.etl_airlines}}
+Other etl.functions: \code{\link{etl_extract.etl_airlines}}
 }
 
