@@ -1,6 +1,6 @@
 Package: airlines
 Title: Data About flights
-Version: 0.1.0.9005
+Version: 0.1.0.9006
 Authors@R: as.person(c(
     "Ben Baumer <ben.baumer@gmail.com> [aut, cre]", 
     "Hadley Wickham <h.wickham@gmail.com> [aut]"
@@ -19,6 +19,7 @@ Depends:
   R (>= 2.10)
 Suggests:
   knitr,
+  magrittr,
   methods,
   RSQLite,
   RPostgreSQL,

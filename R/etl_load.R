@@ -32,9 +32,9 @@
 #' }
 
 
-etl_load.etl_airlines <- function(obj, year = NULL, month = NULL, ...) {
+etl_load.etl_airlines <- function(obj, year = NULL, months = NULL, ...) {
   csvs <- dir(obj$dir, pattern = "\\.csv")
-  topush <- match_year_month(csvs, year, month)
+  topush <- match_year_months(csvs, year, months)
   
   obj$push <- sapply(paste0(obj$dir, "/", topush), push_month, obj = obj, ...)
   return(obj)

@@ -13,7 +13,7 @@ CREATE TABLE flights (
   `arr_time` smallint(4) DEFAULT NULL,
   `arr_delay` smallint(4) DEFAULT NULL,
   `carrier` varchar(2) NOT NULL DEFAULT '',
-  `tailnum` varchar(6) NOT NULL DEFAULT '',
+  `tailnum` varchar(6) DEFAULT NULL,
   `flight` smallint(4) DEFAULT NULL,
   `origin` varchar(3) NOT NULL DEFAULT '',
   `dest` varchar(3) NOT NULL DEFAULT '',

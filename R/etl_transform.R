@@ -2,11 +2,16 @@
 #' @inheritParams etl_transform.etl_airlines
 #' @export
 
-etl_transform.etl_airlines <- function(obj, year = NULL, month = NULL, ...) {
-  zips <- dir(obj$dir, pattern = "\\.zip")
-  tounzip <- match_year_month(zips, year, month)
+etl_transform.etl_airlines <- function(obj, year = NULL, months = NULL, ...) {
+  zipped <- dir(obj$dir, pattern = "\\.zip")
+  must_unzip <- match_year_months(zipped, year, months)
   
-  lapply(paste0(obj$dir, "/", tounzip), unzip_month)
+  unzipped <- dir(obj$dir, pattern = "\\.csv")
+  tounzip <- setdiff(must_unzip, gsub("\\.csv", "\\.zip", unzipped))
+  
+  if (length(tounzip) > 0) {
+    lapply(paste0(obj$dir, "/", tounzip), unzip_month)
+  }
   return(obj)
 }
 
@@ -26,9 +31,8 @@ unzip_month <- function(filename) {
     writeLines(good, csv_fullpath)
   }
   
-  #  src <- paste0(obj$dir, "/", csv)
-  #  dst <- paste0(obj$dir, "/", year, "-", month, ".csv")
-  #  file.rename(src, dst)
+  # rename the CSV to match the ZIP
+  file.rename(csv_fullpath, gsub(".zip", ".csv", filename))
 }
 
 

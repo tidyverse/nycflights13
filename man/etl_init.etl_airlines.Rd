@@ -11,13 +11,13 @@
 \method{etl_cleanup}{etl_airlines}(obj, delete_zip = FALSE,
   delete_csv = FALSE, ...)
 
-\method{etl_extract}{etl_airlines}(obj, year = 2013, month = NULL, ...)
+\method{etl_extract}{etl_airlines}(obj, year = 2013, months = 1:12, ...)
 
 \method{etl_init}{etl_airlines}(obj, ...)
 
-\method{etl_load}{etl_airlines}(obj, year = NULL, month = NULL, ...)
+\method{etl_load}{etl_airlines}(obj, year = NULL, months = NULL, ...)
 
-\method{etl_transform}{etl_airlines}(obj, year = NULL, month = NULL, ...)
+\method{etl_transform}{etl_airlines}(obj, year = NULL, months = NULL, ...)
 }
 \arguments{
 \item{obj}{an \code{\link{etl}} object}
@@ -30,7 +30,7 @@
 
 \item{year}{a year represented as a four-digit integer}
 
-\item{month}{the month represented as an integer}
+\item{months}{a vector of integers representing the months}
 }
 \description{
 Perform ETL operations on the airlines database.

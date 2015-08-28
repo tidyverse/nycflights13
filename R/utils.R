@@ -1,11 +1,22 @@
 
-match_year_month <- function(files, year = NULL, month = NULL, ...) {
-  ignore <- NULL
+match_year_months <- function(files, year = NULL, months = 1:12, ...) {
   if (!is.null(year)) {
-    ignore <- union(ignore, files[!grepl(year, files)])
-  }  
-  if (!is.null(month)) {
-    ignore <- union(ignore, files[!grepl(paste0("(-|_)", month, "\\."), files)])
+    keep_y <- match_year(files, year)
+  } else {
+    keep_y <- files
   }
-  return(setdiff(files, ignore))
+  keep_m <- match_months(files, months)
+  return(intersect(keep_y, keep_m))
+}
+
+match_year <- function(files, year = 2000, ...) {
+  files[grepl(year, files)]
+}
+
+match_month <- function(files, month = 1, ...) {
+  files[grepl(paste0("(-|_)", month, "\\."), files)]
+}
+
+match_months <- function(files, months = 1:12, ...) {
+  unlist(lapply(months, match_month, files = files))
 }

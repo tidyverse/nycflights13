@@ -1,27 +1,21 @@
 #' @rdname etl_init.etl_airlines
 #' @inheritParams etl::etl_extract
 #' @param year a year represented as a four-digit integer
-#' @param month the month represented as an integer
+#' @param months a vector of integers representing the months
 #' @details If a \code{year} and/or \code{month} is specified, then
 #' only flight data from matching months is used.
 #' @export
 
-etl_extract.etl_airlines <- function(obj, year = 2013, month = NULL, ...) {
+etl_extract.etl_airlines <- function(obj, year = 2013, months = 1:12, ...) {
   thisYear <- as.numeric(format(Sys.Date(), '%Y'))
-  if (month < 1 | month > 12) {
-    startMonth <- 1
-    endMonth <- 12
-  } else {
-    startMonth <- month
-    endMonth <- month
-  }
+  months <- intersect(1:12, months)
   if (year == 1987) {
-    startMonth <- min(startMonth, 10)
+    months <- intersect(10:12, months)
   }
   if (year == thisYear) {
-    endMonth <- min(endMonth, as.numeric(format(Sys.Date(), '%m')) - 1)
+    months <- intersect(1:(as.numeric(format(Sys.Date(), '%m')) - 1), months)
   }
-  obj$files <- append(obj$files, sapply(startMonth:endMonth, scrape_month, obj = obj, year = year))
+  obj$files <- append(obj$files, sapply(months, scrape_month, obj = obj, year = year))
   return(obj)
 }
 

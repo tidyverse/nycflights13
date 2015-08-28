@@ -29,21 +29,25 @@ First, we create a connection to the database server. We can work with database 
 library(RMySQL)
 # must have pre-existing database "airlines"
 db <- src_mysql(host = "localhost", user = "r-user", password = "mypass", dbname = "airlines")
-airlines <- etl::etl_connect("airlines", db, dir = "~/dumps/airlines")
+```
+
+```{r, eval=FALSE}
+airlines <- etl("airlines", db, dir = "~/dumps/airlines")
 ```
 
 If the database has not been populated yet, we use the `etl_create` function to initialize it and insert some data. 
 
 ```{r, eval=FALSE}
-airlines <- airlines %>%
-  etl_create(year = 2013, month = 9)
+library(magrittr)
+airlines %<>%
+  etl_create(year = 2013, months = 9)
 ```
 
 Once the database is set up, you can update the flights table with more data.  
 
 ```{r, eval=FALSE}
-airlines %>%
-  etl_update(year = 2001, month = 3) %>%
+airlines %<>%
+  etl_update(year = 2001, months = 3) %>%
   etl_update(year = 2012)
 ```
 
