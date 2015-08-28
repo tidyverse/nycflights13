@@ -1,36 +1,36 @@
-#' etl_init
-#' 
-#' @description Initialize the database.
+#' ETL functionality for the airlines database
+#' @description Perform ETL operations on the airlines database.
 #' 
 #' @inheritParams etl::etl_init
 #' 
-#' @details This will initialize the database.
+#' @details This will initialize and populate the database.
 #' 
 #' @method etl_init etl_airlines
-#' 
 #' @import etl
+#' @import dplyr
+#' @importFrom DBI dbWriteTable
 #' @export
 #' @seealso \code{\link[etl]{etl_init}}
 #' 
 #' @examples
 #' 
-#' library(dplyr)
-#' library(etl)
-#' 
+#' require(dplyr)
 #' \dontrun{
 #' if (require(RPostgreSQL)) {
 #' # must have pre-existing database "airlines"
 #' db <- src_postgres(host = "localhost", user = "postgres", dbname = "airlines")
 #' }
-#' etl_airlines <- etl_connect("airlines", db)
-#' etl_init(etl_airlines)
+#' airlines <- etl_connect("airlines", db)
+#' etl_init(airlines)
 #' 
 #' if (require(RMySQL)) {
 #' # must have pre-existing database "airlines"
 #' db <- src_mysql(user = "mysql", password = "mysql", dbname = "airlines")
 #' }
-#' etl_airlines <- etl_connect("airlines", db)
-#' etl_init(etl_airlines)
+#' airlines <- etl_connect("airlines", db)
+#' etl_init(airlines)
+#' 
+#' etl_update(airlines, year = 2013, month = 6)
 #' }
 
 etl_init.etl_airlines <- function(obj, ...) {

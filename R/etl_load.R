@@ -1,10 +1,5 @@
-#' etl_load
-#' 
-#' @description a utility function to push a data frame to a DB.
-#' 
-#' @inheritParams etl::etl_load
-#' @param year four-digit integer indicating the year to upload
-#' @param month integer indicating the month to upload
+#' @rdname etl_init.etl_airlines
+#' @inheritParams etl_extract.etl_airlines
 #' @import dplyr
 #' @importFrom DBI dbWriteTable
 #' @method etl_load etl_airlines 

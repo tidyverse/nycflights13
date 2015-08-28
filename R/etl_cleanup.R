@@ -1,23 +1,10 @@
-#' @title Cleanup after data loaded into DB
-#'
+#' @rdname etl_init.etl_airlines
 #' @inheritParams etl::etl_cleanup
 #' @param delete_zip should the ZIP files we downloaded be deleted? 
 #' @param delete_csv should the CSV files we downloaded by deleted?
 #' @export
+#' @seealso \code{\link[etl]{etl_cleanup}}
 #' @method etl_cleanup etl_airlines
-#' @family etl functions
-#' @examples
-#'
-#' \dontrun{
-#' require(RPostgreSQL)
-#' # connect directly
-#' require(dplyr)
-#' db <- src_postgres("mtcars", user = "postgres", host = "localhost")
-#' etl_cars <- etl_connect("mtcars", db)
-#' etl_cars %>%
-#'  etl_create() %>%
-#'  etl_cleanup()
-#' }
 
 etl_cleanup.etl_airlines <- function(obj, delete_zip = FALSE, delete_csv = FALSE, ...) {
   files <- list.files(obj$dir)

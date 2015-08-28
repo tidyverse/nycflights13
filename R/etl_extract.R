@@ -1,35 +1,10 @@
-#' etl_extract
-#' 
-#' @description a utility function to download a year's worth of airline data
-#' 
+#' @rdname etl_init.etl_airlines
 #' @inheritParams etl::etl_extract
 #' @param year a year represented as a four-digit integer
 #' @param month the month represented as an integer
-#' 
-#' @import dplyr
+#' @details If a \code{year} and/or \code{month} is specified, then
+#' only flight data from matching months is used.
 #' @export
-#' @family etl functions
-#' 
-#' @examples
-#' 
-#' \dontrun{
-#' 
-#' library(dplyr)
-#' if (require(RMySQL)) {
-#' # must have pre-existing database "airlines"
-#' db <- src_mysql(user = "mysql", password = "mysql", dbname = "airlines")
-#' }
-#' library(etl)
-#' etl_airlines <- etl_connect("airlines", db, dir = "~/dumps/airlines")
-#' # get one entire year of data
-#' etl_airlines <- etl_extract(etl_airlines, year = 2013)
-#' list.files(etl_airlines$dir)
-#' 
-#' # get two years worth
-#' lapply(2012:2013, etl_extract, obj = etl_airlines)
-#' list.files(etl_airlines$dir)
-#' }
-#' 
 
 etl_extract.etl_airlines <- function(obj, year = 2013, month = NULL, ...) {
   thisYear <- as.numeric(format(Sys.Date(), '%Y'))
