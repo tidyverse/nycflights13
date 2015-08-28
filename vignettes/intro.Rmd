@@ -101,7 +101,7 @@ flights %>%
 
 ## Recover nycflights13
 
-To restrict this to only flights to and from the three New York City airports in 2013, we simply `filter` and `trim`:
+To restrict this to only flights from the three New York City airports in 2013, we simply `filter` and `trim`:
 
 ```{r, eval=FALSE}
 nycFlights13 <- flights %>%
