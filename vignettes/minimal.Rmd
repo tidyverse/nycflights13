@@ -9,10 +9,18 @@ vignette: >
   %\VignetteEncoding{UTF-8}
 ---
 
+## Install packages
+
+```{r, eval=FALSE, message=FALSE}
+install.packages("devtools")
+devtools::install_github("beanumber/etl")
+devtools::install_github("beanumber/airlines")
+```
+
+## Load packages
 
 ```{r, message=FALSE}
 require(dplyr)
-# devtools::install_github("beanumber/etl")
 require(etl)
 require(airlines)
 ```
