@@ -2,7 +2,7 @@
 #' @inheritParams etl_transform.etl_airlines
 #' @export
 
-etl_transform.etl_airlines <- function(obj, year = NULL, months = NULL, ...) {
+etl_transform.etl_airlines <- function(obj, year = 2015, months = 1:12, ...) {
   zipped <- dir(obj$dir, pattern = "\\.zip")
   must_unzip <- match_year_months(zipped, year, months)
   

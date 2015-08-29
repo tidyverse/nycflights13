@@ -6,7 +6,7 @@
 #' only flight data from matching months is used.
 #' @export
 
-etl_extract.etl_airlines <- function(obj, year = 2013, months = 1:12, ...) {
+etl_extract.etl_airlines <- function(obj, year = 2015, months = 1:12, ...) {
   thisYear <- as.numeric(format(Sys.Date(), '%Y'))
   months <- intersect(1:12, months)
   if (year == 1987) {

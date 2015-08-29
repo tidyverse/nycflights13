@@ -1,0 +1,45 @@
+---
+title: "Minimal Example"
+author: "Ben Baumer"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Minimal Example}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+
+```{r, message=FALSE}
+require(dplyr)
+# devtools::install_github("beanumber/etl")
+require(etl)
+require(airlines)
+```
+
+## Create the airlines database
+
+```{r, eval=FALSE}
+library(RMySQL)
+# must have pre-existing database "airlines"
+db <- src_mysql(host = "localhost", user = "r-user", password = "mypass", dbname = "airlines")
+```
+
+Instantiate the `etl` object
+
+```{r, eval=FALSE}
+airlines <- etl("airlines", db, dir = "~/dumps/airlines")
+```
+
+```{r, eval=FALSE}
+library(magrittr)
+airlines %<>%
+  etl_create(year = 1987)
+```
+
+Once the database is set up, you can update the flights table with more data.  
+
+```{r, eval=FALSE}
+years <- 1988:2015
+lapply(years, etl_update, obj = airlines)
+```

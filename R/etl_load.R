@@ -32,7 +32,7 @@
 #' }
 
 
-etl_load.etl_airlines <- function(obj, year = NULL, months = NULL, ...) {
+etl_load.etl_airlines <- function(obj, year = 2015, months = 1:12, ...) {
   csvs <- dir(obj$dir, pattern = "\\.csv")
   topush <- match_year_months(csvs, year, months)
   
