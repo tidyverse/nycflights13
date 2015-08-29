@@ -31,10 +31,18 @@ Instantiate the `etl` object
 airlines <- etl("airlines", db, dir = "~/dumps/airlines")
 ```
 
+Initialize the database
+
 ```{r, eval=FALSE}
 library(magrittr)
 airlines %<>%
   etl_create(year = 1987)
+```
+
+If this fails, try initializing the database via the command line -- something like:
+
+```{bash, eval=FALSE}
+mysql -u r-user -p airlines < ~/R/x86_64-pc-linux-gnu-library/3.2/airlines/sql/init.mysql
 ```
 
 Once the database is set up, you can update the flights table with more data.  
@@ -42,4 +50,22 @@ Once the database is set up, you can update the flights table with more data.
 ```{r, eval=FALSE}
 years <- 1988:2015
 lapply(years, etl_update, obj = airlines)
+```
+
+Verify that the data seems accurate.
+
+```{r, eval=FALSE}
+flights <- db %>%
+  tbl(from = "flights")
+flights %>%
+  summarise(numFlights = n())
+```
+
+This should return about 163 million flights from October 1987 to July 2015. 
+
+```{r, eval=FALSE}
+flights %>%
+  filter(year > 2013) %>%
+  group_by(year) %>%
+  summarise(numMonths = count(distinct(month)), numFlights = n())
 ```
