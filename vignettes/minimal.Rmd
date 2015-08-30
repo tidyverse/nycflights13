@@ -69,7 +69,7 @@ flights %>%
   summarise(numFlights = n())
 ```
 
-This should return about 163 million flights from October 1987 to July 2015. 
+This should return about 163 million flights from October 1987 to June 2015. 
 
 ```{r, eval=FALSE}
 flights %>%
