@@ -47,17 +47,10 @@ airlines %<>%
   etl_create(year = 1987)
 ```
 
-If this fails, try initializing the database via the command line -- something like:
-
-```{bash, eval=FALSE}
-mysql -u r-user -p airlines < ~/R/x86_64-pc-linux-gnu-library/3.2/airlines/sql/init.mysql
-```
-
 Once the database is set up, you can update the flights table with more data.  
 
 ```{r, eval=FALSE}
-years <- 1988:2015
-lapply(years, etl_update, obj = airlines)
+lapply(1988:2015, etl_update, obj = airlines)
 ```
 
 Verify that the data seems accurate.

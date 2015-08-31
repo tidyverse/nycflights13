@@ -40,22 +40,21 @@ If the database has not been populated yet, we use the `etl_create` function to 
 ```{r, eval=FALSE}
 library(magrittr)
 airlines %<>%
-  etl_create(year = 2013, months = 9)
+  etl_create(year = 1987, months = 10)
 ```
 
 Once the database is set up, you can update the flights table with more data.  
 
 ```{r, eval=FALSE}
 airlines %<>%
-  etl_update(year = 2001, months = 3) %>%
-  etl_update(year = 2012)
+  etl_update(year = 1987, months = 11:12) %>%
+  etl_update(year = 1988)
 ```
 
 Given more time, we might loop through many years. **NOTE: this will take a looong time.**
 
 ```{r, eval=FALSE}
-years <- 1987:2015
-lapply(years, etl_update, obj = airlines)
+lapply(1989:2015, etl_update, obj = airlines)
 ```
 
 If the process get disturbed, you can fine-tune using the individual [ETL](https://github.com/beanumber/etl/blob/master/README.md) functions. Note `etl_update` is just a wrapper for these functions.

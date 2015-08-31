@@ -121,6 +121,6 @@ CREATE TABLE `weather` (
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 
-# DROP VIEW IF EXISTS summary;
-# CREATE VIEW summary AS 
-#   SELECT year, sum(1) as numFlights FROM flights GROUP BY year;
+DROP VIEW IF EXISTS summary;
+CREATE VIEW summary AS 
+  SELECT year, sum(1) as numFlights FROM flights GROUP BY year;
