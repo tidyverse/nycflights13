@@ -11,7 +11,7 @@
 #' library(dplyr)
 #' if (require(RMySQL)) {
 #' # must have pre-existing database "airlines"
-#' db <- src_mysql(user = "mysql", password = "mysql", dbname = "airlines")
+#' db <- src_mysql(user = "r-user", password = "mypass", dbname = "airlines")
 #' }
 #' library(etl)
 #' etl_airlines <- etl_connect("airlines", db, dir = "~/dumps/airlines")
@@ -61,7 +61,8 @@ get_flights <- function(csv) {
       year = ~Year, month = ~Month, day = ~DayofMonth, dep_time = ~DepTime,
       dep_delay = ~DepDelay, arr_time = ~ArrTime, arr_delay = ~ArrDelay,
       carrier = ~Carrier,  tailnum = ~TailNum, flight = ~FlightNum,
-      origin = ~Origin, dest = ~Dest, air_time = ~AirTime, distance = ~Distance
+      origin = ~Origin, dest = ~Dest, air_time = ~AirTime, distance = ~Distance,
+      cancelled = ~Cancelled
     ) %>%
 #    mutate_(hour = ~dep_time %/% 100, minute = ~dep_time %% 100) %>%
     #    filter(origin %in% c("JFK", "LGA", "EWR")) %>%

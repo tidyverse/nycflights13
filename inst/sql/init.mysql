@@ -19,6 +19,7 @@ CREATE TABLE flights (
   `dest` varchar(3) NOT NULL DEFAULT '',
   `air_time` smallint(4) DEFAULT NULL,
   `distance` smallint(4) DEFAULT NULL,
+  `cancelled`, tinyint(1) DEFAULT NULL,
   KEY `Year` (`year`),
   KEY `Date` (`year`, `month`, `day`),
   KEY `Origin` (`origin`),

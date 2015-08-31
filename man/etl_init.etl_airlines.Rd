@@ -43,6 +43,7 @@ This will initialize and populate the database.
 }
 \examples{
 require(dplyr)
+require(etl)
 \dontrun{
 if (require(RPostgreSQL)) {
 # must have pre-existing database "airlines"
@@ -53,9 +54,9 @@ etl_init(airlines)
 
 if (require(RMySQL)) {
 # must have pre-existing database "airlines"
-db <- src_mysql(user = "mysql", password = "mysql", dbname = "airlines")
+db <- src_mysql(user = "r-user", password = "mypass", dbname = "airlines")
 }
-airlines <- etl_connect("airlines", db)
+airlines <- etl("airlines", db)
 etl_init(airlines)
 
 etl_update(airlines, year = 2013, month = 6)
@@ -64,7 +65,7 @@ etl_update(airlines, year = 2013, month = 6)
 library(dplyr)
 if (require(RMySQL)) {
 # must have pre-existing database "airlines"
-db <- src_mysql(user = "mysql", password = "mysql", dbname = "airlines")
+db <- src_mysql(user = "r-user", password = "mypass", dbname = "airlines")
 }
 library(etl)
 etl_airlines <- etl_connect("airlines", db, dir = "~/dumps/airlines")
