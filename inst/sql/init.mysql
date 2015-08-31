@@ -19,7 +19,8 @@ CREATE TABLE flights (
   `dest` varchar(3) NOT NULL DEFAULT '',
   `air_time` smallint(4) DEFAULT NULL,
   `distance` smallint(4) DEFAULT NULL,
-  `cancelled`, tinyint(1) DEFAULT NULL,
+  `cancelled` tinyint(1) DEFAULT NULL,
+  `diverted` tinyint(1) DEFAULT NULL,
   KEY `Year` (`year`),
   KEY `Date` (`year`, `month`, `day`),
   KEY `Origin` (`origin`),
@@ -77,6 +78,8 @@ CREATE TABLE `airports` (
   `alt` int(11) DEFAULT NULL,
   `tz` smallint(4) DEFAULT NULL,
   `dst` char(1),
+  `city` varchar(255) DEFAULT NULL,
+  `country` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`faa`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 

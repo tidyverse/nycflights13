@@ -67,7 +67,7 @@ init_carriers <- function(obj, ...) {
     filter_(~!is.na(carrier)) %>%
     arrange_(~carrier)
   
-  dbWriteTable(obj$con, "carriers", as.data.frame(carriers), overwrite = TRUE, row.names = FALSE)
+  dbWriteTable(obj$con, "carriers", as.data.frame(carriers), append = TRUE, row.names = FALSE)
 }
 
 init_airports <- function(obj, ...) {
@@ -86,17 +86,17 @@ init_airports <- function(obj, ...) {
     tbl_df() %>%
     filter_(~country == "United States", ~faa != "") %>%
     filter_(~name != "Beaufort") %>%
-    select_(~faa, ~name, ~lat, ~lon, ~alt, ~tz, ~dst) %>%
+    select_(~faa, ~name, ~lat, ~lon, ~alt, ~tz, ~dst, ~city, ~country) %>%
     mutate_(lat = ~as.numeric(lat), lon = ~as.numeric(lon)) %>%
     arrange_(~faa)
   
-  dbWriteTable(obj$con, "airports", as.data.frame(airports), overwrite = TRUE, row.names = FALSE)
+  dbWriteTable(obj$con, "airports", as.data.frame(airports), append = TRUE, row.names = FALSE)
 }
 
 init_planes <- function(obj, ...) {
-  dbWriteTable(obj$con, "planes", as.data.frame(planes), overwrite = TRUE, row.names = FALSE)
+  dbWriteTable(obj$con, "planes", as.data.frame(planes), append = TRUE, row.names = FALSE)
 }
 
 init_weather <- function(obj, ...) {
-  dbWriteTable(obj$con, "weather", as.data.frame(weather), overwrite = TRUE, row.names = FALSE)
+  dbWriteTable(obj$con, "weather", as.data.frame(weather), append = TRUE, row.names = FALSE)
 }
