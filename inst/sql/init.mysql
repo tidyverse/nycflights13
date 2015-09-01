@@ -123,4 +123,10 @@ CREATE TABLE `weather` (
 
 DROP VIEW IF EXISTS summary;
 CREATE VIEW summary AS 
-  SELECT year, sum(1) as numFlights FROM flights GROUP BY year;
+SELECT year, count(distinct month) as numMonths
+, sum(1) as numFlights
+, sum(1) / count(distinct concat(month, '-', day)) as avgFlightsPerDay
+, count(distinct carrier) as numCarriers
+, count(distinct origin) as numOrigins
+FROM flights 
+GROUP BY year;

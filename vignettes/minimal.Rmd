@@ -66,7 +66,14 @@ This should return about 163 million flights from October 1987 to June 2015.
 
 ```{r, eval=FALSE}
 flights %>%
-  filter(year > 2013) %>%
+#  filter(year > 2003) %>%
   group_by(year) %>%
-  summarise(numMonths = count(distinct(month)), numFlights = n())
+  summarise(numMonths = count(distinct(month)), numFlights = n()) %>%
+  print(n = 40)
+```
+
+Check the size of your partiions.
+
+```{bash, eval=FALSE}
+sudo ls -lhS /var/lib/mysql/airlines/ | grep .MYD
 ```
