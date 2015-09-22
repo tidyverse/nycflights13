@@ -1,5 +1,5 @@
 Package: airlines
-Title: Data About flights
+Title: Data About Flights
 Version: 0.1.1.9001
 Authors@R: as.person(c(
     "Ben Baumer <ben.baumer@gmail.com> [aut, cre]", 
