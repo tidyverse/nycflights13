@@ -21,7 +21,6 @@ devtools::install_github("beanumber/airlines")
 
 ```{r, message=FALSE}
 require(dplyr)
-require(etl)
 require(airlines)
 ```
 
