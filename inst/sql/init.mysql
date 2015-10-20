@@ -128,5 +128,5 @@ SELECT year, count(distinct month) as numMonths
 , sum(1) / count(distinct concat(month, '-', day)) as avgFlightsPerDay
 , count(distinct carrier) as numCarriers
 , count(distinct origin) as numOrigins
-FROM flights 
+FROM flights
 GROUP BY year;
