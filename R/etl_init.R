@@ -71,7 +71,7 @@ init_carriers <- function(obj, ...) {
 }
 
 init_airports <- function(obj, ...) {
-  src <- "https://raw.githubusercontent.com/jpatokal/openflights/master/data/airports.dat"
+  src <- "http://raw.githubusercontent.com/jpatokal/openflights/master/data/airports.dat"
   lcl <- paste0(obj$dir, "/airports.dat")
   
   if (!file.exists(lcl)) {
