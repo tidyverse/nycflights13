@@ -8,17 +8,23 @@ library(readr)
 # Download ---------------------------------------------------------------------
 
 get_asos <- function(station) {
-  url <- "https://mesonet.agron.iastate.edu/cgi-bin/request/getData.py"
+  url <- "http://mesonet.agron.iastate.edu/cgi-bin/request/asos.py?"
   query <- list(
     station = station, data = "all",
     year1 = "2013", month1 = "1", day1 = "1",
     year2 = "2013", month2 = "12", day2 = "31", tz = "GMT",
     format = "comma", latlon = "no", direct = "yes")
-
+  
   r <- GET(url, query = query)
   stop_for_status(r)
-
-  writeBin(content(r, "raw"), paste0("data-raw/weather/", station, ".csv"))
+  if(!dir.exists("data-raw/weather")){
+    if(!dir.exists("data-raw"))
+      dir.create("data-raw")
+    
+    dir.create("data-raw/weather")
+  }
+    
+  writeBin(content(r, "raw"), paste0("./data-raw/weather/", station, ".csv"))
 }
 stations <- c("JFK", "LGA", "EWR")
 paths <- paste0(stations, ".csv")
