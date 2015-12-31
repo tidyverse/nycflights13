@@ -15,17 +15,11 @@ get_asos <- function(station) {
     year2 = "2013", month2 = "12", day2 = "31", tz = "GMT",
     format = "comma", latlon = "no", direct = "yes")
   
-  r <- GET(url, query = query)
+  dir.create("data-raw/weather", showWarnings = FALSE, recursive = TRUE)
+  r <- GET(url, query = query, write_disk(paste0("./data-raw/weather", station, ".csv")))
   stop_for_status(r)
-  if(!dir.exists("data-raw/weather")){
-    if(!dir.exists("data-raw"))
-      dir.create("data-raw")
-    
-    dir.create("data-raw/weather")
-  }
-    
-  writeBin(content(r, "raw"), paste0("./data-raw/weather/", station, ".csv"))
 }
+
 stations <- c("JFK", "LGA", "EWR")
 paths <- paste0(stations, ".csv")
 missing <- stations[!(paths %in% dir("data-raw/weather/"))]
