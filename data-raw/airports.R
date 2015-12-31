@@ -17,5 +17,5 @@ airports <- raw %>%
   select(faa, name, lat, lon, alt, tz, dst) %>%
   group_by(faa) %>% slice(1) %>% ungroup() # take first if duplicated
 
-write.csv(airports, "data-raw/airports.csv", row.names = FALSE)
+write_csv(airports, "data-raw/airports.csv")
 save(airports, file = "data/airports.rda")
