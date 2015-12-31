@@ -57,4 +57,5 @@ weather <- raw %>%
     date = ISOdatetime(year, month, day, hour, 0, 0)
   )
 
+write_csv(weather, "data-raw/weather.csv")
 save(weather, file = "data/weather.rda")
