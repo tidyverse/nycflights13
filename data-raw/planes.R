@@ -1,4 +1,5 @@
 library(dplyr)
+library(readr)
 
 src <- "http://registry.faa.gov/database/AR062014.zip"
 lcl <- "data-raw/planes"
@@ -58,4 +59,5 @@ planes <- all %>%
   semi_join(flights, "tailnum") %>%
   arrange(tailnum)
 
+write_csv(planes, "data-raw/planes.csv")
 save(planes, file = "data/planes.rda")
