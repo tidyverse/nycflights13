@@ -43,6 +43,7 @@ get_nyc <- function(path) {
 }
 
 all <- lapply(dir("data-raw/flights", full.names = TRUE), get_nyc)
-flights <- rbind_all(all) %>% tbl_df()
+flights <- bind_rows(all) %>% tbl_df()
+flights$tailnum[flights$tailnum == ""] <- NA
 
 save(flights, file = "data/flights.rda", compress = "bzip2")
