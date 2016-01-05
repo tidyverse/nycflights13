@@ -9,8 +9,15 @@ vignette: >
   %\VignetteEncoding{UTF-8}
 ---
 
+## Install packages
+
+```{r, eval=FALSE, message=FALSE}
+install.packages("devtools")
+devtools::install_github("beanumber/etl")
+devtools::install_github("beanumber/airlines")
+```
+
 ```{r, message=FALSE}
-library(dplyr)
 library(airlines)
 ```
 
@@ -62,7 +69,7 @@ If the process get disturbed, you can fine-tune using the individual [ETL](https
 getS3method("etl_update", "default")
 ```
 
-Furthermore, `etl_create` is just a wrapper for `etl_init` and `etl_update`.
+Furthermore, `etl_create` is just a wrapper for `etl_update`.
 
 ```{r}
 getS3method("etl_create", "default")
@@ -109,4 +116,29 @@ nycFlights13 <- flights %>%
 tbl_list <- trim(db, flights = nycFlights13)
 airports <- collect(tbl_list$airports)
 # save(airports, file = "data/airports.rda")
+```
+
+Verify that the data seems accurate.
+
+```{r, eval=FALSE}
+flights <- db %>%
+  tbl(from = "flights")
+flights %>%
+  summarise(numFlights = n())
+```
+
+This should return about 163 million flights from October 1987 to June 2015. 
+
+```{r, eval=FALSE}
+flights %>%
+#  filter(year > 2003) %>%
+  group_by(year) %>%
+  summarise(numMonths = count(distinct(month)), numFlights = n()) %>%
+  print(n = 40)
+```
+
+Check the size of your partiions.
+
+```{bash, eval=FALSE}
+sudo ls -lhS /var/lib/mysql/airlines/ | grep .MYD
 ```

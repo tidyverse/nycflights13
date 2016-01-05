@@ -1,4 +1,4 @@
-#' @rdname etl_init.etl_airlines
+#' @rdname etl_load.etl_airlines
 #' @inheritParams etl::etl_extract
 #' @param year a year represented as a four-digit integer
 #' @param months a vector of integers representing the months
@@ -15,17 +15,18 @@ etl_extract.etl_airlines <- function(obj, year = 2015, months = 1:12, ...) {
   if (year == thisYear) {
     months <- intersect(1:(as.numeric(format(Sys.Date(), '%m')) - 1), months)
   }
-  obj$files <- append(obj$files, sapply(months, scrape_month, obj = obj, year = year))
-  return(obj)
+#  obj$files <- append(obj$files, sapply(months, scrape_month, obj = obj, year = year))
+  sapply(months, scrape_month, obj = obj, year = year)
+  invisible(obj)
 }
 
 scrape_month <- function(obj, year = 2013, month = 1, ...) {
   needed <- paste0(year, "-", month, ".zip")
   
-  if (!needed %in% dir(obj$dir)) {
+  if (!needed %in% dir(attr(obj, "raw_dir"))) {
     message("Downloading flight data...")
     url <- flight_url(year, month)
-    download.file(url, paste0(obj$dir, "/", needed))
+    download.file(url, paste0(attr(obj, "raw_dir"), "/", needed))
   }
   return(needed)
 }

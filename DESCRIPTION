@@ -1,6 +1,6 @@
 Package: airlines
 Title: Data About Flights
-Version: 0.1.1.9002
+Version: 0.2.1.9000
 Authors@R: as.person(c(
     "Ben Baumer <ben.baumer@gmail.com> [aut, cre]", 
     "Hadley Wickham <h.wickham@gmail.com> [aut]"
@@ -8,22 +8,23 @@ Authors@R: as.person(c(
 Description: Airline on-time data for all flights.
     Also includes useful metadata on airlines, airports, weather, and planes.
     This packages provides the functionality to upload multiple years worth of
-    airline data to a database server. 
+    airline data to a database server.
 License: CC0
 LazyData: true
-Imports: 
-  dplyr,
-  DBI
-Depends: 
-  R (>= 2.10),
-  etl
+Imports:
+    dplyr,
+    DBI
+Depends:
+    R (>= 2.10),
+    etl
 Suggests:
-  knitr,
-  magrittr,
-  methods,
-  RSQLite,
-  RPostgreSQL,
-  RMySQL
+    knitr,
+    magrittr,
+    methods,
+    RSQLite,
+    RPostgreSQL,
+    RMySQL
 URL: http://github.com/beanumber/airlines
 BugReports: https://github.com/beanumber/airlines/issues
 VignetteBuilder: knitr
+RoxygenNote: 5.0.1
