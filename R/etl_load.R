@@ -99,9 +99,11 @@ push_month <- function(obj, csv, ...) {
   rm(flights)
 }
 
+#' @importFrom readr read_csv
+
 get_flights <- function(csv) {
-  read.csv(csv, stringsAsFactors = FALSE) %>%
-    tbl_df() %>%
+#  read.csv(csv, stringsAsFactors = FALSE) %>%
+  readr::read_csv(csv) %>%
     select_(
       year = ~Year, month = ~Month, day = ~DayofMonth, dep_time = ~DepTime,
       dep_delay = ~DepDelay, arr_time = ~ArrTime, arr_delay = ~ArrDelay,
@@ -122,9 +124,8 @@ init_carriers <- function(obj, ...) {
     download.file(src, lcl)
   }
   
-  raw <- read.csv(lcl)
+  raw <- readr::read_csv(lcl)
   carriers <- raw %>%
-    tbl_df() %>%
     select_(carrier = ~Code, name = ~Description) %>%
     #  semi_join(flights) %>%
     filter_(~!is.na(carrier)) %>%
@@ -141,11 +142,10 @@ init_airports <- function(obj, ...) {
     download.file(src, lcl)
   }
   
-  raw <- read.csv(lcl, header = FALSE, stringsAsFactors = FALSE)
+  raw <- readr::read_csv(lcl, col_names = FALSE)
   names(raw) <- c("id", "name", "city", "country", "faa", "icao", "lat", "lon", "alt", "tz", "dst", "region")
   
   airports <- raw %>% 
-    tbl_df() %>%
     filter_(~country == "United States", ~faa != "") %>%
     filter_(~name != "Beaufort") %>%
     select_(~faa, ~name, ~lat, ~lon, ~alt, ~tz, ~dst, ~city, ~country) %>%

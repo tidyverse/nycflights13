@@ -13,7 +13,8 @@ License: CC0
 LazyData: true
 Imports:
     dplyr,
-    DBI
+    DBI,
+    readr
 Depends:
     R (>= 2.10),
     etl
