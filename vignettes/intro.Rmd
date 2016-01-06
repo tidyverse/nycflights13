@@ -41,7 +41,7 @@ airlines <- etl("airlines")
 
 However, SQLite doesn't support some features (like partitions) that will be useful for these data. So we'll connect to a MySQL database instead. Furthermore, we'll specify a place to store the raw and intermediate files that we create. By default, these will be created for you in a temporary folder, but it's a good idea to keep them someplace else, since you'll probably want to hang onto them for a while. 
 
-```{r, eval=TRUE}
+```{r, eval=FALSE}
 library(RMySQL)
 # must have pre-existing database "airlines"
 db <- src_mysql(host = "localhost", user = "r-user", password = "mypass", dbname = "airlines")
@@ -64,7 +64,7 @@ During initialization, four supplementary tables will be created in the database
 If you want to see the initialization script, locate the file using `get_schema`. 
 
 ```{r}
-init <- get_schema(airlines, schema_name = "init", pkg = "airlines")
+init <- system.file("sql", "init.mysql", package = "airlines")
 head(readLines(init), 10)
 ```
 
@@ -105,7 +105,7 @@ airlines %>%
 
 Now that your airlines database has been populated, you can use it just like you would any other `dplyr::src_sql`. It contains the following tables:
 
-```{r}
+```{r, eval=FALSE}
 src_tbls(airlines)
 airlines %>%
   tbl("flights") %>%
