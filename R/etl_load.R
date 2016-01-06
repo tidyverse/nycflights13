@@ -135,11 +135,13 @@ init_carriers <- function(obj, ...) {
 }
 
 init_airports <- function(obj, ...) {
-  src <- "http://raw.githubusercontent.com/jpatokal/openflights/master/data/airports.dat"
+  src <- "https://raw.githubusercontent.com/jpatokal/openflights/master/data/airports.dat"
   lcl <- paste0(attr(obj, "raw_dir"), "/airports.dat")
   
   if (!file.exists(lcl)) {
-    download.file(src, lcl)
+    # https://github.com/beanumber/airlines/issues/30
+    # need to test on OS X and Windows
+    download.file(src, lcl, method = "curl")
   }
   
   raw <- readr::read_csv(lcl, col_names = FALSE)

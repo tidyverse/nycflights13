@@ -107,6 +107,11 @@ Now that your airlines database has been populated, you can use it just like you
 
 ```{r, eval=FALSE}
 src_tbls(airlines)
+```
+
+Here is a basic summary of the data you have stored. 
+
+```{r, eval=FALSE}
 airlines %>%
   tbl("flights") %>%
   group_by(year, origin) %>%
