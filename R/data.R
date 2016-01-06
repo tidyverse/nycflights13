@@ -2,6 +2,7 @@
 #'
 #' Look up airline names from their carrier codes.
 #'
+#' @docType data
 #' @source http://www.transtats.bts.gov/DL_SelectFields.asp?Table_ID=236
 #' @format Data frame with columns
 #' \describe{
@@ -16,6 +17,7 @@
 #'
 #' Useful metadata about airports.
 #'
+#' @docType data
 #' @source \url{http://openflights.org/data.html}, downloaded 2014-06-27
 #' @format A data frame with columns:
 #' \describe{
@@ -48,7 +50,7 @@
 #' registry. American Airways (AA) and Envoy Air (MQ) report fleet numbers
 #' rather than tail numbers (e.g. \url{http://www.flyerguide.com/Tail_Numbers_(AA)})
 #' so can't be matched.
-#'
+#' @docType data
 #' @source FAA Aircraft registry,
 #'  \url{http://www.faa.gov/licenses_certificates/aircraft_certification/aircraft_registry/releasable_aircraft_download/}
 #' @format A data frame with columns:
@@ -78,6 +80,7 @@
 #'
 #' Hourly meterological data for LGA, JFK and EWR.
 #'
+#' @docType data
 #' @source ASOS download from Iowa Environmental Mesonet,
 #'   https://mesonet.agron.iastate.edu/request/download.phtml.
 #' @format A data frame with columns

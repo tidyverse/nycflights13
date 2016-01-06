@@ -1,6 +1,7 @@
-#' Load airlines data
+#' ETL functionality for airlines data
 #' 
-#' @description load the airlines data
+#' @description These functions implement \code{etl_airlines} methods
+#' for the core ETL functions defined in \code{\link[etl]{etl}}. 
 #' 
 #' @inheritParams etl_load.etl_airlines
 #' @import etl
@@ -18,21 +19,29 @@
 #' \dontrun{
 #' if (require(RMySQL)) {
 #'   # must have pre-existing database "airlines"
-#'   db <- src_mysql(user = "r-user", password = "mypass", dbname = "airlines_nick")
+#'   db <- src_mysql(user = "r-user", password = "mypass", dbname = "airlines")
 #' }
 #' 
 #' airlines <- etl("airlines", db, dir = "~/dumps/airlines")
 #' # get two months of data
 #' airlines %>%
 #'   etl_extract(year = 2013, months = 5:6) %>%
-#'   etl_transform(months = 6) %>%
+#'   etl_transform(year = 2013, months = 5:6) %>%
 #'   etl_load(year = 2013, months = 6)
 #' }
 #' 
 #' # re-initialize the database with complementary tables
 #' \dontrun{
 #' airlines %>%
-#'   etl_load(schema = TRUE, year = 2013, months = 5)
+#'   etl_load(schema = TRUE, year = 2013, months = 6)
+#' 
+#' # Initialize the database and import one month of data
+#' airlines %>%
+#'   etl_create(year = 2013, months = 5)
+#'  
+#'  # add another month WITHOUT re-initializing the database
+#'  airlines %>%
+#'    etl_update(year = 2013, months = 6)
 #' }
 #' 
 #' # check the results
@@ -58,10 +67,9 @@ etl_load.etl_airlines <- function(obj, schema = FALSE, year = 2015, months = 1:1
   if (is(obj$con, "DBIConnection")) {
     if (schema == TRUE) {
       schema <- get_schema(obj, schema_name = "init", pkg = "airlines")
-      cat(schema)
     }
     if (!missing(schema)) {
-      message(dbRunScript(obj$con, schema, ...))
+      dbRunScript(obj$con, schema, ...)
       init_carriers(obj)
       init_airports(obj)
       init_planes(obj)

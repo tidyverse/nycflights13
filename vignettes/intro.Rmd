@@ -1,15 +1,19 @@
 ---
-title: "Airlines"
+title: "Welcome to Data Airlines"
 author: "Ben Baumer"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Airlines}
+  %\VignetteIndexEntry{Welcome to Data Airlines}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
 
+The `airlines` package provides a user-friendly interface to create and maintain an SQL database of flight information from the [U.S. Bureau of Transportation Statistics Airline On-Time Performance](http://www.transtats.bts.gov/DatabaseInfo.asp?DB_ID=120&Link=0) data. The user of the `airlines` package only needs a valid place to store the data -- no sophisticated SQL administration skills are necessary. 
+
 ## Install packages
+
+The `etl` package provides the generic framework for the `airlines` package. To install the `airlines` package, you must install `etl` first. Since both packages currently live on GitHub and not on CRAN, you have to install both manually. 
 
 ```{r, eval=FALSE, message=FALSE}
 install.packages("devtools")
@@ -17,36 +21,51 @@ devtools::install_github("beanumber/etl")
 devtools::install_github("beanumber/airlines")
 ```
 
+To begin, load the `airlines` package. Note that this loads `etl`, which in turn loads `dplyr`. 
+
 ```{r, message=FALSE}
 library(airlines)
 ```
 
-## Create the airlines database
+## Connecting to a database
 
-First, we create a connection to the database server. We can work with database connections used by either `dplyr` or `DBI`. 
+The data accessible through the `airlines` package is **medium data**. The full data set stretches back to 1987, and provides information on more than 160 million flights (as of 2015). Simply downloading this data will take several hours and occupy gigabytes of disk space. For most users, the `flights` table is far too big to store in memory. At the same time, these data are not "big", in the sense that no servers or computing clusters are required -- any recent laptop is perfectly capable of handling data of this magnitude. What is needed is a storage and retrieval system that is capable of storing all of the data on disk, but only loading some of it into memory. SQL is a venerable solution for this problem. 
+
+In order to work with the `airlines` data, you need to connect to an SQL source. If you don't specify a source, a local SQLite database will be created for you. That said, a MySQL or PostgreSQL source is strongly recommended given the size of the data. However, in principle any source that inherits from `dplyr::src_sql` can be used. 
+
+To use the default SQLite source, we simply instantiate a new `etl` object. 
 
 ```{r}
-# library(RPostgreSQL)
-# must have pre-existing database "airlines"
-# db <- src_postgres(host = "localhost", user = "postgres", dbname = "airlines")
+airlines <- etl("airlines")
 ```
 
-```{r, eval=FALSE}
+However, SQLite doesn't support some features (like partitions) that will be useful for these data. So we'll connect to a MySQL database instead. Furthermore, we'll specify a place to store the raw and intermediate files that we create. By default, these will be created for you in a temporary folder, but it's a good idea to keep them someplace else, since you'll probably want to hang onto them for a while. 
+
+```{r, eval=TRUE}
 library(RMySQL)
 # must have pre-existing database "airlines"
 db <- src_mysql(host = "localhost", user = "r-user", password = "mypass", dbname = "airlines")
-```
-
-```{r, eval=FALSE}
 airlines <- etl("airlines", db, dir = "~/dumps/airlines")
 ```
+
+Note that this assumes that the database `airlines` already exists on the local MySQL server. For instructions on how to set this up, please see the server administrator. 
+
+## Populating the database
 
 If the database has not been populated yet, we use the `etl_create` function to initialize it and insert some data. 
 
 ```{r, eval=FALSE}
-library(magrittr)
-airlines %<>%
+airlines %>%
   etl_create(year = 1987, months = 10)
+```
+
+During initialization, four supplementary tables will be created in the database. These contain information about planes, airports, carriers, and the weather. The more substantial data about flights will be downloaded from the BTS site, unzipped, loaded into R, and then pumped into your database. 
+
+If you want to see the initialization script, locate the file using `get_schema`. 
+
+```{r}
+init <- get_schema(airlines, schema_name = "init", pkg = "airlines")
+head(readLines(init), 10)
 ```
 
 Once the database is set up, you can update the flights table with more data.  
@@ -63,53 +82,47 @@ Given more time, we might loop through many years. **NOTE: this will take a looo
 lapply(1989:2015, etl_update, obj = airlines)
 ```
 
-If the process get disturbed, you can fine-tune using the individual [ETL](https://github.com/beanumber/etl/blob/master/README.md) functions. Note `etl_update` is just a wrapper for these functions.
+If the process get disturbed, you can fine-tune using the individual [ETL](https://github.com/beanumber/etl/blob/master/README.md) functions (e.g. `etl_extract`, `etl_transform` and `etl_load`). Note that `etl_update` is just a wrapper for these functions.
 
 ```{r}
 getS3method("etl_update", "default")
 ```
 
-Furthermore, `etl_create` is just a wrapper for `etl_update`.
+Furthermore, `etl_create` is just a wrapper for `etl_update`, with the `schema` argument set.
 
 ```{r}
 getS3method("etl_create", "default")
 ```
 
+The ZIP files that are downloaded to your hard drive by `etl_extract` and the CSV files that are subsequently created by `etl_transform` can fill up several gigabytes of space. If you want to clear all that data once you have it safely in your SQL database, use `etl_cleanup` -- but use it **with caution**. Once you delete the ZIP files you will have to re-download them again if you run `etl_extract` again. 
+
+```{r, eval=FALSE}
+airlines %>%
+  etl_cleanup()
+```
+
 ## Accessing the airlines database
 
-Let's see what has been created:
+Now that your airlines database has been populated, you can use it just like you would any other `dplyr::src_sql`. It contains the following tables:
 
-```{r, eval=FALSE}
-dbListTables(db$con)
-dbListFields(db$con, "airports")
-```
-
-Now we can connect to these tables using `dplyr`:
-
-```{r, eval=FALSE}
-airports <- tbl(db, "airports")
-planes <- tbl(db, "planes")
-carriers <- tbl(db, "carriers")
-flights <- tbl(db, "flights")
-```
-
-We can retrieve some basic information about what results are present in the database. 
-
-```{r, eval=FALSE}
-flights %>%
-   group_by(year, origin) %>%
-   summarise(N = n(), numDests = count(distinct(dest)), 
-             numCarriers = count(distinct(carrier)), 
-             numPlanes = count(distinct(tailnum))) %>%
-   arrange(desc(N))
+```{r}
+src_tbls(airlines)
+airlines %>%
+  tbl("flights") %>%
+  group_by(year, origin) %>%
+  summarise(N = n(), numDests = count(distinct(dest)), 
+           numCarriers = count(distinct(carrier)), 
+           numPlanes = count(distinct(tailnum))) %>%
+  arrange(desc(N))
 ```
 
 ## Recover nycflights13
 
-To restrict this to only flights from the three New York City airports in 2013, we simply `filter` and `trim`:
+Hadley Wickham's [`nycflights13`](https://cran.r-project.org/web/packages/nycflights13/index.html) package was a predecessor to this one. In fact, `nycflights13` is based on a subset of the full data available through `airlines`. To restrict this to only flights from the three New York City airports in 2013, we can simply use `filter`:
 
 ```{r, eval=FALSE}
-nycFlights13 <- flights %>%
+nycFlights13 <- airlines %>%
+  tbl("flights") %>%
   filter(year == 2013) %>%
   filter(origin %in% c("JFK", "LGA", "EWR"))
 
@@ -118,26 +131,31 @@ airports <- collect(tbl_list$airports)
 # save(airports, file = "data/airports.rda")
 ```
 
-Verify that the data seems accurate.
+## Verification
+
+It is important to verify the integrity of the data. 
 
 ```{r, eval=FALSE}
-flights <- db %>%
-  tbl(from = "flights")
-flights %>%
+airlines %>%
+  tbl(from = "flights") %>%
   summarise(numFlights = n())
 ```
 
 This should return about 163 million flights from October 1987 to June 2015. 
 
 ```{r, eval=FALSE}
-flights %>%
-#  filter(year > 2003) %>%
+airlines %>%
+  tbl(from = "flights") %>%
   group_by(year) %>%
   summarise(numMonths = count(distinct(month)), numFlights = n()) %>%
   print(n = 40)
 ```
 
-Check the size of your partiions.
+## Paritioning
+
+For MySQL users, the default schema uses [partitioning](https://dev.mysql.com/doc/refman/5.7/en/partitioning.html) to put each year of flights in its own file on disk. The full table is still available to the user, but if you are often querying individual years, you may see substantial performance improvements on a partitioned table. 
+
+In a *nix environment, you can check the size of your partitions easily using the command line. The MySQL data directory may be a different place depending on your operating system and your installation, but on Ubuntu the default location is `/var/lib/mysql/` and on Mac OS X it is `/usr/local/mysql/data/`. To see the size of the partitions, try:
 
 ```{bash, eval=FALSE}
 sudo ls -lhS /var/lib/mysql/airlines/ | grep .MYD

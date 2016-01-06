@@ -1,71 +1,44 @@
 ---
-title: "Minimal Example"
+title: "Airlines on a Budget"
 author: "Ben Baumer"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Minimal Example}
+  %\VignetteIndexEntry{Airlines on a budget}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
 
-## Install packages
+## Minimal install script
 
 ```{r, eval=FALSE, message=FALSE}
 install.packages("devtools")
 devtools::install_github("beanumber/etl")
 devtools::install_github("beanumber/airlines")
-```
-
-## Load packages
-
-```{r, message=FALSE}
-require(dplyr)
-require(airlines)
-```
-
-## Create the airlines database
-
-```{r, eval=FALSE}
-library(RMySQL)
+library(airlines)
 # must have pre-existing database "airlines"
 db <- src_mysql(host = "localhost", user = "r-user", password = "mypass", dbname = "airlines")
-```
-
-Instantiate the `etl` object
-
-```{r, eval=FALSE}
 airlines <- etl("airlines", db, dir = "~/dumps/airlines")
-```
-
-Initialize the database
-
-```{r, eval=FALSE}
-library(magrittr)
-airlines %<>%
+airlines %>%
   etl_create(year = 1987)
-```
-
-Once the database is set up, you can update the flights table with more data.  
-
-```{r, eval=FALSE}
 lapply(1988:2015, etl_update, obj = airlines)
 ```
+
+## Diagnostics
 
 Verify that the data seems accurate.
 
 ```{r, eval=FALSE}
-flights <- db %>%
-  tbl(from = "flights")
-flights %>%
+airlines %>%
+  tbl(from = "flights") %>%
   summarise(numFlights = n())
 ```
 
 This should return about 163 million flights from October 1987 to June 2015. 
 
 ```{r, eval=FALSE}
-flights %>%
-#  filter(year > 2003) %>%
+airlines %>%
+  tbl(from = "flights") %>%
   group_by(year) %>%
   summarise(numMonths = count(distinct(month)), numFlights = n()) %>%
   print(n = 40)

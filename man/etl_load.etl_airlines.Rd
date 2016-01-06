@@ -5,7 +5,7 @@
 \alias{etl_extract.etl_airlines}
 \alias{etl_load.etl_airlines}
 \alias{etl_transform.etl_airlines}
-\title{Load airlines data}
+\title{ETL functionality for airlines data}
 \usage{
 \method{etl_cleanup}{etl_airlines}(obj, delete_zip = FALSE,
   delete_csv = FALSE, ...)
@@ -40,7 +40,8 @@ note that SQL syntax is not, in general, completely portable. Use with caution, 
 clobber any existing data you have in an existing database.}
 }
 \description{
-load the airlines data
+These functions implement \code{etl_airlines} methods
+for the core ETL functions defined in \code{\link[etl]{etl}}.
 }
 \details{
 If a \code{year} and/or \code{month} is specified, then
@@ -56,21 +57,29 @@ str(airlines)
 \dontrun{
 if (require(RMySQL)) {
   # must have pre-existing database "airlines"
-  db <- src_mysql(user = "r-user", password = "mypass", dbname = "airlines_nick")
+  db <- src_mysql(user = "r-user", password = "mypass", dbname = "airlines")
 }
 
 airlines <- etl("airlines", db, dir = "~/dumps/airlines")
 # get two months of data
 airlines \%>\%
   etl_extract(year = 2013, months = 5:6) \%>\%
-  etl_transform(months = 6) \%>\%
+  etl_transform(year = 2013, months = 5:6) \%>\%
   etl_load(year = 2013, months = 6)
 }
 
 # re-initialize the database with complementary tables
 \dontrun{
 airlines \%>\%
-  etl_load(schema = TRUE, year = 2013, months = 5)
+  etl_load(schema = TRUE, year = 2013, months = 6)
+
+# Initialize the database and import one month of data
+airlines \%>\%
+  etl_create(year = 2013, months = 5)
+ 
+ # add another month WITHOUT re-initializing the database
+ airlines \%>\%
+   etl_update(year = 2013, months = 6)
 }
 
 # check the results
