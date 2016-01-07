@@ -31,7 +31,7 @@ library(airlines)
 
 The data accessible through the `airlines` package is **medium data**. The full data set stretches back to 1987, and provides information on more than 160 million flights (as of 2015). Simply downloading this data will take several hours and occupy gigabytes of disk space. For most users, the `flights` table is far too big to store in memory. At the same time, these data are not "big", in the sense that no servers or computing clusters are required -- any recent laptop is perfectly capable of handling data of this magnitude. What is needed is a storage and retrieval system that is capable of storing all of the data on disk, but only loading some of it into memory. SQL is a venerable solution for this problem. 
 
-In order to work with the `airlines` data, you need to connect to an SQL source. If you don't specify a source, a local SQLite database will be created for you. That said, a MySQL or PostgreSQL source is strongly recommended given the size of the data. However, in principle any source that inherits from `dplyr::src_sql` can be used. 
+In order to work with the `airlines` data, you need to connect to an SQL source. If you don't specify a source, a local [SQLite](http://www.sqlite.org) database will be created for you. That said, a [MySQL](http://www.mysql.com) or [PostgreSQL](http://www.postgresql.com) source is strongly recommended given the size of the data. However, in principle any source that inherits from `dplyr::src_sql` can be used. 
 
 To use the default SQLite source, we simply instantiate a new `etl` object. 
 
