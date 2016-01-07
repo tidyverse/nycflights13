@@ -65,11 +65,13 @@ etl_load.etl_airlines <- function(obj, schema = FALSE, year = 2015, months = 1:1
   topush <- match_year_months(csvs, year, months)
   
   if (is(obj$con, "DBIConnection")) {
-    if (schema == TRUE) {
+    if (schema == TRUE & inherits(obj, "src_mysql")) {
       schema <- get_schema(obj, schema_name = "init", pkg = "airlines")
     }
     if (!missing(schema)) {
-      dbRunScript(obj$con, schema, ...)
+      if (file.exists(as.character(schema))) {
+        dbRunScript(obj$con, schema, ...)
+      }
       init_carriers(obj)
       init_airports(obj)
       init_planes(obj)
