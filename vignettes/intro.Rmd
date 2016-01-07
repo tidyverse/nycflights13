@@ -39,6 +39,12 @@ To use the default SQLite source, we simply instantiate a new `etl` object.
 airlines <- etl("airlines")
 ```
 
+If you don't specify a location for the SQLite database, it will be created in a temp folder, and a message will alert you to its location. You will probably want to move this file somewhere else on your hard drive for safekeeping. Alternatively, you could just specify the location of a new SQLite database at instantiation. 
+
+```{r, eval=FALSE}
+db <- src_sqlite(path = "~/dumps/airlines/airlines.sqlite3", create = TRUE)
+```
+
 However, SQLite doesn't support some features (like partitions) that will be useful for these data. So we'll connect to a MySQL database instead. Furthermore, we'll specify a place to store the raw and intermediate files that we create. By default, these will be created for you in a temporary folder, but it's a good idea to keep them someplace else, since you'll probably want to hang onto them for a while. 
 
 ```{r, eval=FALSE}
