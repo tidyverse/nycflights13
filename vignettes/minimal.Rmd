@@ -21,7 +21,7 @@ db <- src_mysql(host = "localhost", user = "r-user", password = "mypass", dbname
 airlines <- etl("airlines", db, dir = "~/dumps/airlines")
 airlines %>%
   etl_create(year = 1987)
-lapply(1988:2015, etl_update, obj = airlines)
+lapply(1988:2015, etl_update, obj = airlines, schema = FALSE)
 ```
 
 ## Diagnostics

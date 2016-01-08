@@ -51,7 +51,6 @@ airlines <- etl("airlines", db)
 However, SQLite doesn't support some features (like partitions) that will be useful for these data. So we'll connect to a MySQL database instead. Furthermore, we'll specify a place to store the raw and intermediate files that we create. By default, these will be created for you in a temporary folder, but it's a good idea to keep them someplace else, since you'll probably want to hang onto them for a while. 
 
 ```{r, eval=FALSE}
-library(RMySQL)
 # must have pre-existing database "airlines"
 db <- src_mysql(host = "localhost", user = "r-user", password = "mypass", dbname = "airlines")
 airlines <- etl("airlines", db, dir = "~/dumps/airlines")
@@ -88,7 +87,7 @@ airlines %<>%
 Given more time, we might loop through many years. **NOTE: this will take a looong time.**
 
 ```{r, eval=FALSE}
-lapply(1989:2015, etl_update, obj = airlines)
+lapply(1989:2015, etl_update, obj = airlines, schema = FALSE)
 ```
 
 If the process get disturbed, you can fine-tune using the individual [ETL](https://github.com/beanumber/etl/blob/master/README.md) functions (e.g. `etl_extract`, `etl_transform` and `etl_load`). Note that `etl_update` is just a wrapper for these functions.
