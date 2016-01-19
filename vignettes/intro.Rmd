@@ -79,7 +79,7 @@ head(readLines(init), 10)
 Once the database is set up, you can update the flights table with more data.  
 
 ```{r, eval=FALSE}
-airlines %<>%
+airlines %>%
   etl_update(year = 1987, months = 11:12) %>%
   etl_update(year = 1988)
 ```
