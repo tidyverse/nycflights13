@@ -1,6 +1,10 @@
 # nycflights13 0.1.0.9000
 
-* `flights`
+* `airlines`: `carrier` columns are characters instead of factors (#2).
+
+* `airports`: duplicate entry for BFT removed (#7).
+
+* `flights`:
     
     * new `date` variable combines `year`, `month`, and `day` into a single 
       variable (#11).
@@ -12,11 +16,7 @@
 
     * missing `tailnum` now recorded as `NA`, not `""` (#10).
 
-* `carrier` columns are characters instead of factors (#2).
-
-* `airports`: duplicate entry for BFT removed (#7).
-
-* `weather`
+* `weather`:
   
   * Includes weather data for all airports.
 
