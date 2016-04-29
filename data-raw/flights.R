@@ -1,4 +1,5 @@
 library(dplyr)
+library(readr)
 
 flight_url <- function(year = 2013, month) {
   base_url <- "http://www.transtats.bts.gov/Download/"
@@ -29,21 +30,34 @@ missing <- months[!(needed %in% dir("data-raw/flights"))]
 lapply(missing, download_month, year = 2013)
 
 get_nyc <- function(path) {
-  read.csv(path, stringsAsFactors = FALSE) %>%
-    tbl_df() %>%
+  col_types <- cols(
+    DepTime = col_integer(),
+    ArrTime = col_integer(),
+    CRSDepTime = col_integer(),
+    CRSArrTime = col_integer(),
+    Carrier = col_character(),
+    UniqueCarrier = col_character()
+  )
+  read_csv(path, col_types = col_types) %>%
     select(
-      year = Year, month = Month, day = DayofMonth, dep_time = DepTime,
-      dep_delay = DepDelay, arr_time = ArrTime, arr_delay = ArrDelay,
-      carrier = Carrier,  tailnum = TailNum, flight = FlightNum,
-      origin = Origin, dest = Dest, air_time = AirTime, distance = Distance
+      year = Year, month = Month, day = DayofMonth,
+      dep_time = DepTime, sched_dep_time = CRSDepTime, dep_delay = DepDelay,
+      arr_time = ArrTime, sched_arr_time = CRSArrTime, arr_delay = ArrDelay,
+      carrier = Carrier,  flight = FlightNum, tailnum = TailNum,
+      origin = Origin, dest = Dest,
+      air_time = AirTime, distance = Distance
     ) %>%
-    mutate(hour = dep_time %/% 100, minute = dep_time %% 100) %>%
     filter(origin %in% c("JFK", "LGA", "EWR")) %>%
+    mutate(
+      hour = sched_dep_time %/% 100,
+      minute = sched_dep_time %% 100,
+      time_hour = lubridate::make_datetime(year, month, day, hour, 0, 0)
+    ) %>%
     arrange(year, month, day, dep_time)
 }
 
 all <- lapply(dir("data-raw/flights", full.names = TRUE), get_nyc)
-flights <- bind_rows(all) %>% tbl_df()
+flights <- bind_rows(all)
 flights$tailnum[flights$tailnum == ""] <- NA
 
 save(flights, file = "data/flights.rda", compress = "bzip2")

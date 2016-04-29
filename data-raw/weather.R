@@ -14,7 +14,7 @@ get_asos <- function(station) {
     year1 = "2013", month1 = "1", day1 = "1",
     year2 = "2013", month2 = "12", day2 = "31", tz = "GMT",
     format = "comma", latlon = "no", direct = "yes")
-  
+
   dir.create("data-raw/weather", showWarnings = FALSE, recursive = TRUE)
   r <- GET(url, query = query, write_disk(paste0("./data-raw/weather", station, ".csv")))
   stop_for_status(r)
@@ -53,7 +53,7 @@ weather <- raw %>%
   ungroup() %>%
   filter(!is.na(month)) %>%
   mutate(
-    date = ISOdatetime(year, month, day, hour, 0, 0)
+    time_hour = ISOdatetime(year, month, day, hour, 0, 0)
   )
 
 write_csv(weather, "data-raw/weather.csv")

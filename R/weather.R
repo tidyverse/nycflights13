@@ -16,6 +16,6 @@
 #' \item{precip}{Preciptation, in inches}
 #' \item{pressure}{Sea level pressure in millibars}
 #' \item{visib}{Visibility in miles}
-#' \item{date}{Date and Time of the recording as a \code{POSIXct} date}
+#' \item{time_hour}{Date and hour of the recording as a \code{POSIXct} date}
 #' }
 "weather"
