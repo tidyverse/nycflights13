@@ -4,3 +4,4 @@
 ^data-raw$
 ^cran-comments\.md$
 ^NEWS\.md$
+^revdep$
