@@ -8,8 +8,8 @@
 
 * `flights`:
     
-    * new `date` variable combines `year`, `month`, and `day` into a single 
-      variable (#11).
+    * new `time_hour` variable combines `year`, `month`, `day`, and 
+      `hour` into a single variable (#11).
 
     * new `sched_dep_time` and `sched_arr_time` variables give scheduled 
       departure and  arrival times - these are more appropriate for connecting 
