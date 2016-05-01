@@ -1,4 +1,4 @@
-# nycflights13 0.1.0.9000
+# nycflights13 0.2.0
 
 * `airlines`: `carrier` columns are characters instead of factors (#2).
 
