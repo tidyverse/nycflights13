@@ -65,9 +65,9 @@
 #' }
 
 
-etl_load.etl_airlines <- function(obj, schema = FALSE, year = 2015, months = 1:12, ...) {
+etl_load.etl_airlines <- function(obj, schema = FALSE, years = 2015, months = 1:12, ...) {
   csvs <- dir(attr(obj, "load_dir"), pattern = "\\.csv")
-  topush <- match_year_months(csvs, year, months)
+  topush <- match_year_months(csvs, years, months)
   
   if (methods::is(obj$con, "DBIConnection")) {
     if (schema == TRUE & inherits(obj, "src_mysql")) {
@@ -91,9 +91,8 @@ etl_load.etl_airlines <- function(obj, schema = FALSE, year = 2015, months = 1:1
 
 
 push_month <- function(obj, csv, ...) {
-  message(paste("Reading flight data from", csv))
   # write the table directly to the DB
-  message("Writing flight data to the database...")
+  message(paste("Importing flight data from", csv, "to the database..."))
   if (DBI::dbWriteTable(obj$con, "flights", csv, append = TRUE, ...)) {
     message("Data was successfully written to database.")
   }

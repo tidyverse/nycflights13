@@ -8,7 +8,7 @@ library(readr)
 # Download ---------------------------------------------------------------------
 
 get_asos <- function(station) {
-  url <- "https://mesonet.agron.iastate.edu/cgi-bin/request/getData.py"
+  url <- "https://mesonet.agron.iastate.edu/cgi-bin/request/asos.py"
   query <- list(
     station = station, data = "all",
     year1 = "2013", month1 = "1", day1 = "1",

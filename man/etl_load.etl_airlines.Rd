@@ -10,12 +10,12 @@
 \method{etl_cleanup}{etl_airlines}(obj, delete_zip = FALSE,
   delete_csv = FALSE, ...)
 
-\method{etl_extract}{etl_airlines}(obj, year = 2015, months = 1:12, ...)
+\method{etl_extract}{etl_airlines}(obj, years = 2015, months = 1:12, ...)
 
-\method{etl_load}{etl_airlines}(obj, schema = FALSE, year = 2015,
+\method{etl_load}{etl_airlines}(obj, schema = FALSE, years = 2015,
   months = 1:12, ...)
 
-\method{etl_transform}{etl_airlines}(obj, year = 2015, months = 1:12, ...)
+\method{etl_transform}{etl_airlines}(obj, years = 2015, months = 1:12, ...)
 }
 \arguments{
 \item{obj}{an \code{\link{etl}} object}
@@ -26,7 +26,7 @@
 
 \item{...}{arguments passed to methods}
 
-\item{year}{a year represented as a four-digit integer}
+\item{years}{a vector of integers representing the years}
 
 \item{months}{a vector of integers representing the months}
 

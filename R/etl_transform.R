@@ -2,9 +2,9 @@
 #' @inheritParams etl_transform.etl_airlines
 #' @export
 
-etl_transform.etl_airlines <- function(obj, year = 2015, months = 1:12, ...) {
+etl_transform.etl_airlines <- function(obj, years = 2015, months = 1:12, ...) {
   zipped <- dir(attr(obj, "raw_dir"), pattern = "\\.zip")
-  must_unzip <- match_year_months(zipped, year, months)
+  must_unzip <- match_year_months(zipped, years, months)
   
   unzipped <- dir(attr(obj, "load_dir"), pattern = "\\.csv")
   tounzip <- setdiff(must_unzip, gsub("\\.csv", "\\.zip", unzipped))

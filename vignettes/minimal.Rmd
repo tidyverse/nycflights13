@@ -20,8 +20,9 @@ library(airlines)
 db <- src_mysql(host = "localhost", user = "r-user", password = "mypass", dbname = "airlines")
 airlines <- etl("airlines", db, dir = "~/dumps/airlines")
 airlines %>%
-  etl_create(year = 1987)
-lapply(1988:2015, etl_update, obj = airlines, schema = FALSE)
+  etl_create(years = 1987)
+airlines %>%
+  etl_update(years = 1988:2015)
 ```
 
 ## Diagnostics

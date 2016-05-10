@@ -1,7 +1,7 @@
 
-match_year_months <- function(files, year = NULL, months = 1:12, ...) {
-  if (!is.null(year)) {
-    keep_y <- match_year(files, year)
+match_year_months <- function(files, years = 1987:as.numeric(format(Sys.Date(), '%Y')), months = 1:12, ...) {
+  if (!is.null(years)) {
+    keep_y <- match_years(files, years)
   } else {
     keep_y <- files
   }
@@ -11,6 +11,10 @@ match_year_months <- function(files, year = NULL, months = 1:12, ...) {
 
 match_year <- function(files, year = 2000, ...) {
   files[grepl(year, files)]
+}
+
+match_years <- function(files, years = 1987:as.numeric(format(Sys.Date(), '%Y')), ...) {
+  unlist(lapply(years, match_year, files = files))
 }
 
 match_month <- function(files, month = 1, ...) {
