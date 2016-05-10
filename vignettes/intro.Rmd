@@ -27,36 +27,21 @@ To begin, load the `airlines` package. Note that this loads `etl`, which in turn
 library(airlines)
 ```
 
-## Connecting to a database
+## Setting up a database
 
 The data accessible through the `airlines` package is **medium data**. The full data set stretches back to 1987, and provides information on more than 160 million flights (as of 2015). Simply downloading this data will take several hours and occupy gigabytes of disk space. For most users, the `flights` table is far too big to store in memory. At the same time, these data are not "big", in the sense that no servers or computing clusters are required -- any recent laptop is perfectly capable of handling data of this magnitude. What is needed is a storage and retrieval system that is capable of storing all of the data on disk, but only loading some of it into memory. SQL is a venerable solution for this problem. 
 
-In order to work with the `airlines` data, you need to connect to an SQL source. If you don't specify a source, a local [SQLite](http://www.sqlite.org) database will be created for you. That said, a [MySQL](http://www.mysql.com) or [PostgreSQL](http://www.postgresql.com) source is strongly recommended given the size of the data. However, in principle any source that inherits from `dplyr::src_sql` can be used. 
+In order to work with the `airlines` data, you need two things:
 
-To use the default SQLite source, we simply instantiate a new `etl` object. 
++ `dir`: a local directory to store files. If you don't specify one, a temporary directory will be for you.
++ `db`: a connection to an SQL database that inherits from `dplyr::src_sql`. If you don't specify one, a [SQLite](http://www.sqlite.org) database will be created for you in `dir`. Given the size of the data, you might do better with a [MySQL](http://www.mysql.com) or [PostgreSQL](http://www.postgresql.com) database, but these require external configurations that can be intimidating if you are not already familiar with SQL. If you're a newbie, get started with SQLite, but at some point you might want to [consider alternatives](https://www.sqlite.org/whentouse.html). 
+
+To use the default SQLite source, simply instantiate a new `etl` object. 
 
 ```{r}
+# use default temporary directory and SQLite database
 airlines <- etl("airlines")
 ```
-
-If you don't specify a location for the SQLite database, it will be created in a temp folder, and a message will alert you to its location. You will probably want to move this file somewhere else on your hard drive for safekeeping. Alternatively, you could just specify the location of a new SQLite database at instantiation. 
-
-> Note: make sure that the directory that you specify in the `path` argument actually exists!]
-
-```{r, eval=FALSE}
-db <- src_sqlite(path = "~/dumps/airlines/airlines.sqlite3", create = TRUE)
-airlines <- etl("airlines", db)
-```
-
-However, SQLite doesn't support some features (like partitions) that will be useful for these data. So we'll connect to a MySQL database instead. Furthermore, we'll specify a place to store the raw and intermediate files that we create. By default, these will be created for you in a temporary folder, but it's a good idea to keep them someplace else, since you'll probably want to hang onto them for a while. 
-
-```{r, eval=FALSE}
-# must have pre-existing database "airlines"
-db <- src_mysql(host = "localhost", user = "r-user", password = "mypass", dbname = "airlines")
-airlines <- etl("airlines", db, dir = "~/dumps/airlines")
-```
-
-Note that this assumes that the database `airlines` already exists on the local MySQL server. For instructions on how to set this up, please see the server administrator. 
 
 ## Populating the database
 
@@ -67,14 +52,7 @@ airlines %>%
   etl_create(year = 1987, months = 10)
 ```
 
-During initialization, four supplementary tables will be created in the database. These contain information about planes, airports, carriers, and the weather. The more substantial data about flights will be downloaded from the BTS site, unzipped, loaded into R, and then pumped into your database. 
-
-If you want to see the initialization script, locate the file using `get_schema`. 
-
-```{r}
-init <- system.file("sql", "init.mysql", package = "airlines")
-head(readLines(init), 10)
-```
+During initialization, four supplementary tables will be created in the database. These contain information about `planes`, `airports`, `carriers`, and the `weather`. The more substantial data about `flights` will be downloaded from the BTS site, unzipped, loaded into R, and then pumped into your database. 
 
 Once the database is set up, you can update the flights table with more data.  
 
@@ -111,7 +89,13 @@ airlines %>%
 
 ## Accessing the airlines database
 
-Now that your airlines database has been populated, you can use it just like you would any other `dplyr::src_sql`. It contains the following tables:
+Now that your airlines database has been populated, you can use it just like you would any other `dplyr::src_sql`. 
+
+```{r}
+class(airlines)
+```
+
+It contains the following tables:
 
 ```{r, eval=FALSE}
 src_tbls(airlines)
@@ -129,9 +113,61 @@ airlines %>%
   arrange(desc(N))
 ```
 
+
+## Verification
+
+It is important to verify the integrity of the data. This should return about 163 million flights from October 1987 to June 2015. 
+
+```{r, eval=FALSE}
+airlines %>%
+  tbl(from = "flights") %>%
+  summarise(numFlights = n())
+```
+
+If you want to check for individual years, use the `group_by` verb. 
+
+```{r, eval=FALSE}
+airlines %>%
+  tbl(from = "flights") %>%
+  group_by(year) %>%
+  summarise(numMonths = count(distinct(month)), numFlights = n()) %>%
+  print(n = 40)
+```
+
+## MySQL installation
+
+SQLite doesn't support some features (like [partitions](https://en.wikipedia.org/wiki/Partition_(database))) that will be useful for these data. You might want to connect to a MySQL or PostgreSQL database instead. Furthermore, since are are going to be downloading a lot of files, it's a good idea to keep them somewhere where they won't get thrown away when you restart R. We'll specify a place to store the raw and intermediate files that we create.
+
+```{r, eval=FALSE}
+# must have pre-existing database "airlines"
+db <- src_mysql(host = "localhost", user = "r-user", password = "mypass", dbname = "airlines")
+airlines <- etl("airlines", db, dir = "~/dumps/airlines")
+```
+
+Note that this assumes that the database `airlines` already exists on the local MySQL server. For instructions on how to set this up, please see the server administrator. 
+
+
+If you want to see the initialization script, locate the file using `get_schema`. 
+
+```{r}
+init <- system.file("sql", "init.mysql", package = "airlines")
+head(readLines(init), 10)
+```
+
+
+### Paritioning
+
+For MySQL users, the default schema uses [partitioning](https://dev.mysql.com/doc/refman/5.7/en/partitioning.html) to put each year of flights in its own file on disk. The full table is still available to the user, but if you are often querying individual years, you may see substantial performance improvements on a partitioned table. 
+
+In a *nix environment, you can check the size of your partitions easily using the command line. The MySQL data directory may be a different place depending on your operating system and your installation, but on Ubuntu the default location is `/var/lib/mysql/` and on Mac OS X it is `/usr/local/mysql/data/`. To see the size of the partitions, try:
+
+```{bash, eval=FALSE}
+sudo ls -lhS /var/lib/mysql/airlines/ | grep .MYD
+```
+
 ## Recover nycflights13
 
-Hadley Wickham's [`nycflights13`](https://cran.r-project.org/web/packages/nycflights13/index.html) package was a predecessor to this one. In fact, `nycflights13` is based on a subset of the full data available through `airlines`. To restrict this to only flights from the three New York City airports in 2013, we can simply use `filter`:
+Hadley Wickham's [`nycflights13`](https://cran.r-project.org/web/packages/nycflights13/index.html) package is a predecessor to this one. In fact, `nycflights13` is based on a subset of the full data available through `airlines`. To restrict this to only flights from the three New York City airports in 2013, we can simply use `filter`:
 
 ```{r, eval=FALSE}
 nycFlights13 <- airlines %>%
@@ -142,34 +178,4 @@ nycFlights13 <- airlines %>%
 tbl_list <- trim(db, flights = nycFlights13)
 airports <- collect(tbl_list$airports)
 # save(airports, file = "data/airports.rda")
-```
-
-## Verification
-
-It is important to verify the integrity of the data. 
-
-```{r, eval=FALSE}
-airlines %>%
-  tbl(from = "flights") %>%
-  summarise(numFlights = n())
-```
-
-This should return about 163 million flights from October 1987 to June 2015. 
-
-```{r, eval=FALSE}
-airlines %>%
-  tbl(from = "flights") %>%
-  group_by(year) %>%
-  summarise(numMonths = count(distinct(month)), numFlights = n()) %>%
-  print(n = 40)
-```
-
-## Paritioning
-
-For MySQL users, the default schema uses [partitioning](https://dev.mysql.com/doc/refman/5.7/en/partitioning.html) to put each year of flights in its own file on disk. The full table is still available to the user, but if you are often querying individual years, you may see substantial performance improvements on a partitioned table. 
-
-In a *nix environment, you can check the size of your partitions easily using the command line. The MySQL data directory may be a different place depending on your operating system and your installation, but on Ubuntu the default location is `/var/lib/mysql/` and on Mac OS X it is `/usr/local/mysql/data/`. To see the size of the partitions, try:
-
-```{bash, eval=FALSE}
-sudo ls -lhS /var/lib/mysql/airlines/ | grep .MYD
 ```
