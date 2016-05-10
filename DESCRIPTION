@@ -1,6 +1,6 @@
 Package: airlines
 Title: Data About Flights
-Version: 0.2.2.9000
+Version: 0.2.2.9001
 Authors@R: as.person(c(
     "Ben Baumer <ben.baumer@gmail.com> [aut, cre]", 
     "Hadley Wickham <h.wickham@gmail.com> [aut]"
@@ -15,6 +15,7 @@ Imports:
     dplyr,
     DBI,
     lubridate,
+    methods,
     readr
 Depends:
     R (>= 3.2),
@@ -22,7 +23,6 @@ Depends:
 Suggests:
     knitr,
     magrittr,
-    methods,
     rmarkdown,
     RSQLite,
     RPostgreSQL,

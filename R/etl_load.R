@@ -6,6 +6,8 @@
 #' @inheritParams etl_load.etl_airlines
 #' @import etl
 #' @importFrom DBI dbWriteTable
+#' @importFrom methods is
+#' @importFrom utils download.file
 #' @method etl_load etl_airlines 
 #' @export
 #' 
@@ -67,7 +69,7 @@ etl_load.etl_airlines <- function(obj, schema = FALSE, year = 2015, months = 1:1
   csvs <- dir(attr(obj, "load_dir"), pattern = "\\.csv")
   topush <- match_year_months(csvs, year, months)
   
-  if (is(obj$con, "DBIConnection")) {
+  if (methods::is(obj$con, "DBIConnection")) {
     if (schema == TRUE & inherits(obj, "src_mysql")) {
       schema <- get_schema(obj, schema_name = "init", pkg = "airlines")
     }
@@ -103,7 +105,7 @@ init_carriers <- function(obj, ...) {
   lcl <- paste0(attr(obj, "raw_dir"), "/carriers.csv")
   
   if (!file.exists(lcl)) {
-    download.file(src, lcl)
+    utils::download.file(src, lcl)
   }
   
   raw <- readr::read_csv(lcl)
@@ -123,7 +125,7 @@ init_airports <- function(obj, ...) {
   if (!file.exists(lcl)) {
     # https://github.com/beanumber/airlines/issues/30
     # need to test on OS X and Windows
-    download.file(src, lcl, method = "curl")
+    utils::download.file(src, lcl, method = "curl")
   }
   
   raw <- readr::read_csv(lcl, col_names = FALSE)
