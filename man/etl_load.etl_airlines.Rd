@@ -57,7 +57,10 @@ str(airlines)
 \dontrun{
 if (require(RMySQL)) {
   # must have pre-existing database "airlines"
-  db <- src_mysql(user = "r-user", password = "mypass", dbname = "airlines")
+  # if not, try
+  system("mysql -e 'CREATE DATABASE IF NOT EXISTS airlines;'")
+  db <- src_mysql(default.file = path.expand("~/.my.cnf"), group = "client",
+                  user = NULL, password = NULL, dbname = "airlines")
 }
 
 airlines <- etl("airlines", db, dir = "~/dumps/airlines")

@@ -10,31 +10,53 @@ etl_transform.etl_airlines <- function(obj, year = 2015, months = 1:12, ...) {
   tounzip <- setdiff(must_unzip, gsub("\\.csv", "\\.zip", unzipped))
   
   if (length(tounzip) > 0) {
-    lapply(paste0(attr(obj, "raw_dir"), "/", tounzip), unzip_month)
+    lapply(paste0(attr(obj, "raw_dir"), "/", tounzip), clean_flights)
   }
   invisible(obj)
 }
 
-unzip_month <- function(filename) {
-  files <- unzip(filename, list = TRUE)
-  # Only extract biggest file
-  csv <- files$Name[order(files$Length, decreasing = TRUE)[1]]
-  message(paste("Unzipping", csv))
-  load_dir <- gsub("/raw", "/load", dirname(filename))
-  unzip(filename, exdir = load_dir, overwrite = TRUE, junkpaths = TRUE, files = csv)
-  
-  # fix unprintable charater bug. See:
-  # https://github.com/beanumber/airlines/issues/11
-  csv_fullpath <- paste0(load_dir, "/", csv)
-  if (grepl("2001_3.csv", csv_fullpath)) {
-    bad <- readLines(csv_fullpath)
-    good <- gsub("[^[:print:]]", "", bad)
-    writeLines(good, csv_fullpath)
-  }
-  
+#' @importFrom readr read_csv
+
+clean_flights <- function(path_zip) {
   # rename the CSV to match the ZIP
-  csv_new_path <- gsub(".zip", ".csv", paste0(load_dir, "/", basename(filename)))
-  file.rename(csv_fullpath, csv_new_path)
+  load_dir <- gsub("/raw", "/load", dirname(path_zip))
+  path_csv <- gsub(".zip", ".csv", paste0(load_dir, "/", basename(path_zip)))
+  readr::read_csv(path_zip) %>%
+    select_(
+      year = ~Year, month = ~Month, day = ~DayofMonth, dep_time = ~DepTime,
+      dep_delay = ~DepDelay, arr_time = ~ArrTime, arr_delay = ~ArrDelay,
+      carrier = ~Carrier,  tailnum = ~TailNum, flight = ~FlightNum,
+      origin = ~Origin, dest = ~Dest, air_time = ~AirTime, distance = ~Distance,
+      cancelled = ~Cancelled
+    ) %>%
+    #    mutate_(hour = ~dep_time %/% 100, minute = ~dep_time %% 100) %>%
+    #    filter(origin %in% c("JFK", "LGA", "EWR")) %>%
+    arrange_(~year, ~month, ~day, ~dep_time) %>%
+    readr::write_csv(path = path_csv)
 }
 
-
+## deprecated
+# 
+# unzip_month <- function(path_zip) {
+#   files <- unzip(path_zip, list = TRUE)
+#   # Only extract biggest file
+#   csv <- files$Name[order(files$Length, decreasing = TRUE)[1]]
+#   message(paste("Unzipping", csv))
+#   load_dir <- gsub("/raw", "/load", dirname(path_zip))
+#   unzip(path_zip, exdir = load_dir, overwrite = TRUE, junkpaths = TRUE, files = csv)
+#   
+#   # fix unprintable charater bug. See:
+#   # https://github.com/beanumber/airlines/issues/11
+#   # UPDATE: this doesn't seem to be an issue since readr uses UTF-8 by default
+#   path_csv <- paste0(load_dir, "/", csv)
+#   if (grepl("2001_3.csv", path_csv)) {
+#     bad <- readLines(path_csv)
+#     good <- gsub("[^[:print:]]", "", bad)
+#     writeLines(good, path_csv)
+#   }
+#   
+#   # rename the CSV to match the ZIP
+#   path_csv_new <- gsub(".zip", ".csv", paste0(load_dir, "/", basename(path_zip)))
+#   file.rename(path_csv, path_csv_new)
+#   return(path_csv_new)
+# }

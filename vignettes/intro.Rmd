@@ -123,9 +123,9 @@ Here is a basic summary of the data you have stored.
 airlines %>%
   tbl("flights") %>%
   group_by(year, origin) %>%
-  summarise(N = n(), numDests = count(distinct(dest)), 
-           numCarriers = count(distinct(carrier)), 
-           numPlanes = count(distinct(tailnum))) %>%
+  summarise(N = n(), numDests = n_distinct(dest), 
+           numCarriers = n_distinct(carrier), 
+           numPlanes = n_distinct(tailnum)) %>%
   arrange(desc(N))
 ```
 

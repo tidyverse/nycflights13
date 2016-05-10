@@ -19,7 +19,10 @@
 #' \dontrun{
 #' if (require(RMySQL)) {
 #'   # must have pre-existing database "airlines"
-#'   db <- src_mysql(user = "r-user", password = "mypass", dbname = "airlines")
+#'   # if not, try
+#'   system("mysql -e 'CREATE DATABASE IF NOT EXISTS airlines;'")
+#'   db <- src_mysql(default.file = path.expand("~/.my.cnf"), group = "client",
+#'                   user = NULL, password = NULL, dbname = "airlines")
 #' }
 #' 
 #' airlines <- etl("airlines", db, dir = "~/dumps/airlines")
@@ -87,36 +90,13 @@ etl_load.etl_airlines <- function(obj, schema = FALSE, year = 2015, months = 1:1
 
 push_month <- function(obj, csv, ...) {
   message(paste("Reading flight data from", csv))
-  flights <- tbl_df(get_flights(csv))
-  message(print(object.size(flights), units = "Mb"))
-  
-  # write the table to the DB
+  # write the table directly to the DB
   message("Writing flight data to the database...")
-  if (DBI::dbWriteTable(obj$con, "flights", as.data.frame(flights), append = TRUE, row.names = FALSE, ...)) {
+  if (DBI::dbWriteTable(obj$con, "flights", csv, append = TRUE, ...)) {
     message("Data was successfully written to database.")
-    message(DBI::dbListTables(obj$con))
   }
-    
-  # remove the data frame
-  rm(flights)
 }
 
-#' @importFrom readr read_csv
-
-get_flights <- function(csv) {
-#  read.csv(csv, stringsAsFactors = FALSE) %>%
-  readr::read_csv(csv) %>%
-    select_(
-      year = ~Year, month = ~Month, day = ~DayofMonth, dep_time = ~DepTime,
-      dep_delay = ~DepDelay, arr_time = ~ArrTime, arr_delay = ~ArrDelay,
-      carrier = ~Carrier,  tailnum = ~TailNum, flight = ~FlightNum,
-      origin = ~Origin, dest = ~Dest, air_time = ~AirTime, distance = ~Distance,
-      cancelled = ~Cancelled
-    ) %>%
-#    mutate_(hour = ~dep_time %/% 100, minute = ~dep_time %% 100) %>%
-    #    filter(origin %in% c("JFK", "LGA", "EWR")) %>%
-    arrange_(~year, ~month, ~day, ~dep_time)
-}
 
 init_carriers <- function(obj, ...) {
   src <- "http://www.transtats.bts.gov/Download_Lookup.asp?Lookup=L_UNIQUE_CARRIERS"

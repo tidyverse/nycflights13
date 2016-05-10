@@ -40,7 +40,7 @@ This should return about 163 million flights from October 1987 to June 2015.
 airlines %>%
   tbl(from = "flights") %>%
   group_by(year) %>%
-  summarise(numMonths = count(distinct(month)), numFlights = n()) %>%
+  summarise(numMonths = n_distinct(month), numFlights = n()) %>%
   print(n = 40)
 ```
 
