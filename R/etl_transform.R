@@ -16,21 +16,35 @@ etl_transform.etl_airlines <- function(obj, year = 2015, months = 1:12, ...) {
 }
 
 #' @importFrom readr read_csv
+#' @importFrom lubridate make_datetime
 
 clean_flights <- function(path_zip) {
   # rename the CSV to match the ZIP
   load_dir <- gsub("/raw", "/load", dirname(path_zip))
   path_csv <- gsub(".zip", ".csv", paste0(load_dir, "/", basename(path_zip)))
+  # col_types <- readr::cols(
+  #   DepTime = col_integer(),
+  #   ArrTime = col_integer(),
+  #   CRSDepTime = col_integer(),
+  #   CRSArrTime = col_integer(),
+  #   Carrier = col_character()
+  # )
+  # can't get col_types argument to work!
+  # readr::read_csv(path_zip, col_types = col_types) %>%
   readr::read_csv(path_zip) %>%
     select_(
-      year = ~Year, month = ~Month, day = ~DayofMonth, dep_time = ~DepTime,
-      dep_delay = ~DepDelay, arr_time = ~ArrTime, arr_delay = ~ArrDelay,
+      year = ~Year, month = ~Month, day = ~DayofMonth, 
+      dep_time = ~as.numeric(DepTime), sched_dep_time = ~as.numeric(CRSDepTime), dep_delay = ~DepDelay, 
+      arr_time = ~as.numeric(ArrTime), sched_arr_time = ~as.numeric(CRSArrTime), arr_delay = ~ArrDelay, 
       carrier = ~Carrier,  tailnum = ~TailNum, flight = ~FlightNum,
       origin = ~Origin, dest = ~Dest, air_time = ~AirTime, distance = ~Distance,
       cancelled = ~Cancelled
     ) %>%
-    #    mutate_(hour = ~dep_time %/% 100, minute = ~dep_time %% 100) %>%
-    #    filter(origin %in% c("JFK", "LGA", "EWR")) %>%
+#    filter(origin %in% c("JFK", "LGA", "EWR")) %>%
+    mutate_(hour = ~as.numeric(sched_dep_time) %/% 100,
+           minute = ~as.numeric(sched_dep_time) %% 100,
+           time_hour = ~lubridate::make_datetime(year, month, day, hour, 0, 0)) %>%
+    mutate_(tailnum = ~ifelse(tailnum == "", NA, tailnum)) %>%
     arrange_(~year, ~month, ~day, ~dep_time) %>%
     readr::write_csv(path = path_csv)
 }
