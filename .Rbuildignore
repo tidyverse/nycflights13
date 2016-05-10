@@ -5,3 +5,4 @@
 ^cran-comments\.md$
 ^NEWS\.md$
 ^.*\.Rignore$
+^README\.Rmd
