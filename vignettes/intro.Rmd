@@ -62,7 +62,7 @@ airlines %>%
   etl_update(years = 1988)
 ```
 
-Given more time, we might loop through many years. **NOTE: this will take a looong time.**
+Given more time, we might loop through many years. **NOTE: this will take a looong time.** On my computer, it took a little more than an hour to download the files, which occupied nearly 6 gigabytes on disk, it took about an hour and fifteen minutes to transform the files, which occupied another 15 gigabytes, and it took another two hours to load the data into MySQL (see below) -- those data occupied another 30 gigabytes on disk. 
 
 ```{r, eval=FALSE}
 airlines %>%
