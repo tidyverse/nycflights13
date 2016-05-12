@@ -52,7 +52,7 @@ airlines %>%
   etl_create(years = 1987, months = 10)
 ```
 
-During initialization, four supplementary tables will be created in the database. These contain information about `planes`, `airports`, `carriers`, and the `weather`. The more substantial data about `flights` will be downloaded from the BTS site, unzipped, loaded into R, and then pumped into your database. 
+During initialization, four supplementary tables will be created in the database. These contain information about `planes`, `airports`, and `carriers`. The more substantial data about `flights` will be downloaded from the BTS site, unzipped, loaded into R, and then pumped into your database. 
 
 Once the database is set up, you can update the flights table with more data.  
 

@@ -1,12 +1,12 @@
 Package: airlines
 Title: Data About Flights
-Version: 0.2.2.9002
+Version: 0.2.2.9003
 Authors@R: as.person(c(
     "Ben Baumer <ben.baumer@gmail.com> [aut, cre]", 
     "Hadley Wickham <h.wickham@gmail.com> [aut]"
   ))
 Description: Airline on-time data for all flights.
-    Also includes useful metadata on airlines, airports, weather, and planes.
+    Also includes useful metadata on carriers, airports, and planes.
     This packages provides the functionality to upload multiple years worth of
     airline data to a database server.
 License: CC0

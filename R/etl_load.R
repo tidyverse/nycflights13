@@ -80,7 +80,6 @@ etl_load.etl_airlines <- function(obj, schema = FALSE, years = 2015, months = 1:
       init_carriers(obj)
       init_airports(obj)
       init_planes(obj)
-      init_weather(obj)
     }
     sapply(paste0(attr(obj, "load_dir"), "/", topush), push_month, obj = obj, ...)
   } else {
@@ -142,9 +141,5 @@ init_airports <- function(obj, ...) {
 
 init_planes <- function(obj, ...) {
   dbWriteTable(obj$con, "planes", as.data.frame(planes), append = TRUE, row.names = FALSE)
-}
-
-init_weather <- function(obj, ...) {
-  dbWriteTable(obj$con, "weather", as.data.frame(weather), append = TRUE, row.names = FALSE)
 }
 

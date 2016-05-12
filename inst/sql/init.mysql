@@ -103,29 +103,6 @@ CREATE TABLE `planes` (
   PRIMARY KEY (`tailnum`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
-DROP TABLE IF EXISTS weather;
-
-CREATE TABLE `weather` (
-  `origin` text,
-  `year` double DEFAULT NULL,
-  `month` double DEFAULT NULL,
-  `day` int(11) DEFAULT NULL,
-  `hour` int(11) DEFAULT NULL,
-  `temp` double DEFAULT NULL,
-  `dewp` double DEFAULT NULL,
-  `humid` double DEFAULT NULL,
-  `wind_dir` double DEFAULT NULL,
-  `wind_speed` double DEFAULT NULL,
-  `wind_gust` double DEFAULT NULL,
-  `precip` double DEFAULT NULL,
-  `pressure` double DEFAULT NULL,
-  `visib` double DEFAULT NULL,
-  `date` datetime DEFAULT NULL,
-  KEY `year_idx` (`year`),
-  KEY `date_widx` (`date`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
-
-
 DROP VIEW IF EXISTS summary;
 CREATE VIEW summary AS 
 SELECT year, count(distinct month) as numMonths
