@@ -33,7 +33,7 @@ The data accessible through the `airlines` package is **medium data**. The full 
 
 In order to work with the `airlines` data, you need two things:
 
-+ `dir`: a local directory to store files. If you don't specify one, a temporary directory will be for you.
++ `dir`: a local directory to store files. If you don't specify one, a temporary directory will be created for you.
 + `db`: a connection to an SQL database that inherits from `dplyr::src_sql`. If you don't specify one, a [SQLite](http://www.sqlite.org) database will be created for you in `dir`. Given the size of the data, you might do better with a [MySQL](http://www.mysql.com) or [PostgreSQL](http://www.postgresql.com) database, but these require external configurations that can be intimidating if you are not already familiar with SQL. If you're a newbie, get started with SQLite, but at some point you might want to [consider alternatives](https://www.sqlite.org/whentouse.html). 
 
 To use the default SQLite source, simply instantiate a new `etl` object. 
@@ -137,7 +137,7 @@ airlines %>%
 
 ## MySQL installation
 
-SQLite doesn't support some features (like [partitions](https://en.wikipedia.org/wiki/Partition_(database))) that will be useful for these data. You might want to connect to a MySQL or PostgreSQL database instead. Furthermore, since are are going to be downloading a lot of files, it's a good idea to keep them somewhere where they won't get thrown away when you restart R. We'll specify a place to store the raw and intermediate files that we create.
+SQLite doesn't support some features (like [partitions](https://en.wikipedia.org/wiki/Partition_(database))) that will be useful for these data. You might want to connect to a MySQL or PostgreSQL database instead. Furthermore, since we are going to be downloading a lot of files, it's a good idea to keep them somewhere where they won't get thrown away when you restart R. We'll specify a place to store the raw and intermediate files that we create.
 
 ```{r, eval=FALSE}
 # must have pre-existing database "airlines"
