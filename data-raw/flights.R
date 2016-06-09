@@ -2,11 +2,11 @@
 
 library(airlines)
 library(dplyr)
-db <- src_sqlite(path = "~/dumps/airlines/airlines.sqlite3", create = TRUE)
-airlines <- etl("airlines", db, dir = "~/dumps/airlines")
+airlines <- etl("airlines", dir = "~/dumps/airlines")
 airlines %>%
-  etl_create(year = 1987, month = 11)
+  etl_create(year = 1999, month = 12)
 flights <- tbl(airlines, "flights") %>%
+  filter(day > 20) %>%
   collect() %>%
   mutate(time_hour = lubridate::ymd_hms(time_hour))
 glimpse(flights)

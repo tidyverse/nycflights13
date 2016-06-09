@@ -61,7 +61,7 @@
 #' # delete intermediate files
 #' \dontrun{
 #' airlines %>%
-#'   etl_cleanup(delete_csv = TRUE)
+#'   etl_cleanup(delete_load = TRUE)
 #' }
 
 
@@ -140,6 +140,6 @@ init_airports <- function(obj, ...) {
 }
 
 init_planes <- function(obj, ...) {
-  dbWriteTable(obj$con, "planes", as.data.frame(planes), append = TRUE, row.names = FALSE)
+  dbWriteTable(obj$con, "planes", as.data.frame(airlines::planes), append = TRUE, row.names = FALSE)
 }
 

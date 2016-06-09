@@ -15,24 +15,12 @@ etl_extract.etl_airlines <- function(obj, years = 2015, months = 1:12, ...) {
     rename_(year = ~Var1, month = ~Var2) %>%
     filter_(~!(year == 1987 & month < 10)) %>%
     filter_(~!(year == this_year & month > as.numeric(format(Sys.Date(), '%m')) - 1)) %>%
-    arrange_(~year, ~month)
+    arrange_(~year, ~month) %>%
+    mutate_(url = ~paste0("http://tsdata.bts.gov/PREZIP/On_Time_On_Time_Performance_", 
+                     year, "_", month, ".zip"))
   
-  mapply(FUN = scrape_month, valid_months$year, valid_months$month, MoreArgs = list(obj = obj))
+  message("Downloading flight data...")
+  smart_download(obj, valid_months$url)
   invisible(obj)
 }
 
-scrape_month <- function(obj, year = 2013, month = 1, ...) {
-  needed <- paste0(year, "-", month, ".zip")
-  
-  if (!needed %in% dir(attr(obj, "raw_dir"))) {
-    message("Downloading flight data...")
-    url <- flight_url(year, month)
-    download.file(url, paste0(attr(obj, "raw_dir"), "/", needed))
-  }
-  return(needed)
-}
-
-flight_url <- function(year = 2013, month) {
-  base_url <- "http://tsdata.bts.gov/PREZIP/"
-  sprintf(paste0(base_url, "On_Time_On_Time_Performance_%d_%d.zip"), year, month)
-}

@@ -13,11 +13,11 @@ vignette: >
 
 ```{r, eval=FALSE, message=FALSE}
 install.packages("devtools")
-devtools::install_github("beanumber/etl")
 devtools::install_github("beanumber/airlines")
 library(airlines)
 # must have pre-existing database "airlines"
-db <- src_mysql(host = "localhost", user = "r-user", password = "mypass", dbname = "airlines")
+db <- src_mysql(default.file = "~/.my.cnf", host = "localhost", user = NULL, 
+                password = NULL, dbname = "airlines")
 airlines <- etl("airlines", db, dir = "~/dumps/airlines")
 airlines %>%
   etl_create(years = 1987)

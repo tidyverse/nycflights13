@@ -17,7 +17,6 @@ The `etl` package provides the generic framework for the `airlines` package. To 
 
 ```{r, eval=FALSE, message=FALSE}
 install.packages("devtools")
-devtools::install_github("beanumber/etl")
 devtools::install_github("beanumber/airlines")
 ```
 

@@ -1,3 +1,5 @@
+globalVariables(".")
+
 #' @rdname etl_load.etl_airlines
 #' @inheritParams etl_transform.etl_airlines
 #' @export
@@ -7,7 +9,9 @@ etl_transform.etl_airlines <- function(obj, years = 2015, months = 1:12, ...) {
   must_unzip <- match_year_months(zipped, years, months)
   
   unzipped <- dir(attr(obj, "load_dir"), pattern = "\\.csv")
-  tounzip <- setdiff(must_unzip, gsub("\\.csv", "\\.zip", unzipped))
+  tounzip <- setdiff(must_unzip, 
+                     gsub("On_Time_On_Time_Performance", "flights", 
+                          gsub("\\.csv", "\\.zip", unzipped)))
   
   if (length(tounzip) > 0) {
     lapply(paste0(attr(obj, "raw_dir"), "/", tounzip), clean_flights)
@@ -21,7 +25,10 @@ etl_transform.etl_airlines <- function(obj, years = 2015, months = 1:12, ...) {
 clean_flights <- function(path_zip) {
   # rename the CSV to match the ZIP
   load_dir <- gsub("/raw", "/load", dirname(path_zip))
-  path_csv <- gsub(".zip", ".csv", paste0(load_dir, "/", basename(path_zip)))
+  path_csv <- basename(path_zip) %>%
+    gsub("On_Time_On_Time_Performance", "flights", x = (.)) %>%
+    paste0(load_dir, "/", x = .) %>%
+    gsub("\\.zip", "\\.csv", x = .)
   # col_types <- readr::cols(
   #   DepTime = col_integer(),
   #   ArrTime = col_integer(),
@@ -44,7 +51,7 @@ clean_flights <- function(path_zip) {
     mutate_(hour = ~as.numeric(sched_dep_time) %/% 100,
            minute = ~as.numeric(sched_dep_time) %% 100,
            time_hour = ~lubridate::make_datetime(year, month, day, hour, minute, 0)) %>%
-    mutate_(tailnum = ~ifelse(tailnum == "", NA, tailnum)) %>%
+#    mutate_(tailnum = ~ifelse(tailnum == "", NA, tailnum)) %>%
     arrange_(~year, ~month, ~day, ~dep_time) %>%
     readr::write_csv(path = path_csv)
 }
