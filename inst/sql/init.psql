@@ -1,0 +1,79 @@
+DROP TABLE IF EXISTS flights CASCADE;
+
+CREATE TABLE flights (  
+  year smallint DEFAULT NULL,
+  month smallint DEFAULT NULL,
+  day smallint DEFAULT NULL,
+  dep_time varchar(4) NOT NULL DEFAULT '',
+  sched_dep_time smallint DEFAULT NULL,
+  dep_delay smallint DEFAULT NULL,
+  arr_time varchar(4) NOT NULL DEFAULT '',
+  sched_arr_time smallint DEFAULT NULL,
+  arr_delay smallint DEFAULT NULL,
+  carrier varchar(2) NOT NULL DEFAULT '',
+  tailnum varchar(6) DEFAULT NULL,
+  flight smallint DEFAULT NULL,
+  origin varchar(3) NOT NULL DEFAULT '',
+  dest varchar(3) NOT NULL DEFAULT '',
+  air_time smallint DEFAULT NULL,
+  distance smallint DEFAULT NULL,
+  cancelled smallint DEFAULT NULL,
+  hour smallint DEFAULT NULL,
+  minute smallint DEFAULT NULL,
+  time_hour timestamp DEFAULT NULL
+);
+
+CREATE INDEX IF NOT EXISTS year_idx ON flights (year);
+CREATE INDEX IF NOT EXISTS date_idx ON flights (year, month, day);
+CREATE INDEX IF NOT EXISTS origin_idx ON flights (origin);
+CREATE INDEX IF NOT EXISTS dest_idx ON flights (dest);
+CREATE INDEX IF NOT EXISTS carrier_idx ON flights (carrier);
+CREATE INDEX IF NOT EXISTS tailnum_idx ON flights (tailnum);
+
+DROP TABLE IF EXISTS carriers;
+
+CREATE TABLE carriers (
+  carrier varchar(7) NOT NULL DEFAULT '',
+  name varchar(255) NOT NULL DEFAULT '',
+  PRIMARY KEY (carrier)
+);
+
+DROP TABLE IF EXISTS airports;
+
+CREATE TABLE airports (
+  faa varchar(3) NOT NULL DEFAULT '',
+  name varchar(255),
+  lat decimal(10,7) DEFAULT NULL,
+  lon decimal(10,7) DEFAULT NULL,
+  alt int DEFAULT NULL,
+  tz smallint DEFAULT NULL,
+  dst char(1),
+  city varchar(255) DEFAULT NULL,
+  country varchar(255) DEFAULT NULL,
+  PRIMARY KEY (faa)
+);
+
+DROP TABLE IF EXISTS planes;
+
+CREATE TABLE planes (
+  tailnum varchar(6) NOT NULL DEFAULT '',
+  year int DEFAULT NULL,
+  type text,
+  manufacturer text,
+  model text,
+  engines int DEFAULT NULL,
+  seats int DEFAULT NULL,
+  speed int DEFAULT NULL,
+  engine text,
+  PRIMARY KEY (tailnum)
+);
+
+DROP VIEW IF EXISTS summary;
+CREATE VIEW summary AS 
+SELECT year, count(distinct month) as numMonths
+, sum(1) as numFlights
+, sum(1) / count(distinct concat(month, '-', day)) as avgFlightsPerDay
+, count(distinct carrier) as numCarriers
+, count(distinct origin) as numOrigins
+FROM flights
+GROUP BY year;

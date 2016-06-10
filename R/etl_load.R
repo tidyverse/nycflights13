@@ -70,7 +70,7 @@ etl_load.etl_airlines <- function(obj, schema = FALSE, years = 2015, months = 1:
   topush <- match_year_months(csvs, years, months)
   
   if (methods::is(obj$con, "DBIConnection")) {
-    if (schema == TRUE & inherits(obj, "src_mysql")) {
+    if (schema == TRUE & (inherits(obj, "src_mysql") | inherits(obj, "src_postgres"))) {
       schema <- get_schema(obj, schema_name = "init", pkg = "airlines")
     }
     if (!missing(schema)) {

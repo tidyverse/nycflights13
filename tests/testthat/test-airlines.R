@@ -14,5 +14,8 @@ test_that("postgres works", {
                      dbname = "airlines", password = "postgres", port = 5434)
   airlines <- etl("airlines", db = db, dir = "~/dumps/airlines")
   airlines %>%
-    etl_create(years = 2001, months = 3)
+    etl_create(years = 1999, months = 12, header = TRUE)
+  expect_equal(airlines %>%
+    tbl("flights") %>%
+    nrow(), 469945)
 })
