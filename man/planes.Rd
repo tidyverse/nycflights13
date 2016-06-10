@@ -3,7 +3,7 @@
 \docType{data}
 \name{planes}
 \alias{planes}
-\title{Plane metadata.}
+\title{Planes}
 \format{A data frame with columns:
 \describe{
 \item{tailnum}{Tail number}
@@ -26,18 +26,6 @@ Plane metadata for all plane tailnumbers found in the FAA aircraft
 registry. American Airways (AA) and Envoy Air (MQ) report fleet numbers
 rather than tail numbers (e.g. \url{http://www.flyerguide.com/Tail_Numbers_(AA)})
 so can't be matched.
-}
-\examples{
-if (require("dplyr")) {
-planes
-
-\dontrun{
-db <- src_postgres(host = "localhost", user="postgres", password="postgres", dbname = "airlines")
-flights <- tbl(db, "flights")
-# Flights that don't have plane metadata
-flights \%>\% anti_join(planes, "tailnum")
-}
-}
 }
 \keyword{datasets}
 

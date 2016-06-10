@@ -3,23 +3,20 @@
 \docType{data}
 \name{carriers}
 \alias{carriers}
-\title{Carrier names.}
+\title{Carriers}
 \format{Data frame with columns
 \describe{
 \item{carrier}{Two letter abbreviation}
 \item{name}{Full name}
 }}
 \source{
-http://www.transtats.bts.gov/DL_SelectFields.asp?Table_ID=236
+\url{http://www.transtats.bts.gov/DL_SelectFields.asp?Table_ID=236}
 }
 \usage{
 carriers
 }
 \description{
 Look up airline names from their carrier codes.
-}
-\examples{
-  carriers
 }
 \keyword{datasets}
 

@@ -3,7 +3,7 @@
 \docType{data}
 \name{airports}
 \alias{airports}
-\title{Airport metadata}
+\title{Airports}
 \format{A data frame with columns:
 \describe{
  \item{faa}{FAA airport code}
@@ -23,19 +23,6 @@ airports
 }
 \description{
 Useful metadata about airports.
-}
-\examples{
-
-
-airports
-
-\dontrun{
-db <- src_postgres(host = "localhost", user="postgres", password="postgres", dbname = "airlines")
-flights <- tbl(db, "flights")
-airports \%>\% mutate(dest = faa) \%>\% semi_join(flights)
-flights \%>\% anti_join(airports \%>\% mutate(dest = faa))
-airports \%>\% mutate(origin = faa) \%>\% semi_join(flights)
-}
 }
 \keyword{datasets}
 

@@ -27,7 +27,8 @@ Suggests:
     rmarkdown,
     RSQLite,
     RPostgreSQL,
-    RMySQL
+    RMySQL,
+    testthat
 URL: http://github.com/beanumber/airlines
 BugReports: https://github.com/beanumber/airlines/issues
 VignetteBuilder: knitr

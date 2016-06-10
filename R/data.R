@@ -1,19 +1,17 @@
-#' Carrier names.
+#' Carriers
 #'
 #' Look up airline names from their carrier codes.
 #'
 #' @docType data
-#' @source http://www.transtats.bts.gov/DL_SelectFields.asp?Table_ID=236
+#' @source \url{http://www.transtats.bts.gov/DL_SelectFields.asp?Table_ID=236}
 #' @format Data frame with columns
 #' \describe{
 #' \item{carrier}{Two letter abbreviation}
 #' \item{name}{Full name}
 #' }
-#' @examples
-#'   carriers
 "carriers"
 
-#' Airport metadata
+#' Airports
 #'
 #' Useful metadata about airports.
 #'
@@ -30,21 +28,9 @@
 #'     second Sunday of March, ends on the first Sunday of November.
 #'     U = unknown. N = no dst.}
 #' }
-#' @examples
-#' 
-#' 
-#' airports
-#'
-#' \dontrun{
-#' db <- src_postgres(host = "localhost", user="postgres", password="postgres", dbname = "airlines")
-#' flights <- tbl(db, "flights")
-#' airports %>% mutate(dest = faa) %>% semi_join(flights)
-#' flights %>% anti_join(airports %>% mutate(dest = faa))
-#' airports %>% mutate(origin = faa) %>% semi_join(flights)
-#' }
 "airports"
 
-#' Plane metadata.
+#' Planes
 #'
 #' Plane metadata for all plane tailnumbers found in the FAA aircraft
 #' registry. American Airways (AA) and Envoy Air (MQ) report fleet numbers
@@ -63,23 +49,11 @@
 #' \item{speed}{Average cruising speed in mph}
 #' \item{engine}{Type of engine}
 #' }
-#' @examples
-#' if (require("dplyr")) {
-#' planes
-#' 
-#' \dontrun{
-#' db <- src_postgres(host = "localhost", user="postgres", password="postgres", dbname = "airlines")
-#' flights <- tbl(db, "flights")
-#' # Flights that don't have plane metadata
-#' flights %>% anti_join(planes, "tailnum")
-#' }
-#' }
 "planes"
 
-#' Flights data
+#' Flights
 #'
-#' On-time data for all flights that departed NYC (i.e. JFK, LGA or EWR) in
-#' 2013.
+#' On-time data for all flights.
 #'
 #' @source RITA, Bureau of transportation statistics,
 #'  \url{http://www.transtats.bts.gov/DL_SelectFields.asp?Table_ID=236}

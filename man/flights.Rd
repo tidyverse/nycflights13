@@ -3,7 +3,7 @@
 \docType{data}
 \name{flights}
 \alias{flights}
-\title{Flights data}
+\title{Flights}
 \format{Data frame with columns
 \describe{
 \item{year,month,day}{Date of departure}
@@ -31,8 +31,7 @@ RITA, Bureau of transportation statistics,
 flights
 }
 \description{
-On-time data for all flights that departed NYC (i.e. JFK, LGA or EWR) in
-2013.
+On-time data for all flights.
 }
 \keyword{datasets}
 
