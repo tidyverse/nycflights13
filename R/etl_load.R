@@ -66,8 +66,8 @@
 
 
 etl_load.etl_airlines <- function(obj, schema = FALSE, years = 2015, months = 1:12, ...) {
-  csvs <- dir(attr(obj, "load_dir"), pattern = "\\.csv")
-  topush <- match_year_months(csvs, years, months)
+  csvs <- match_files_by_year_months(list.files(attr(obj, "load_dir")), 
+                                     pattern = "On_Time_On_Time_Performance_%Y_%m.zip", years, months)
   
   if (methods::is(obj$con, "DBIConnection")) {
     if (schema == TRUE & (inherits(obj, "src_mysql") | inherits(obj, "src_postgres"))) {
@@ -81,7 +81,7 @@ etl_load.etl_airlines <- function(obj, schema = FALSE, years = 2015, months = 1:
       init_airports(obj)
       init_planes(obj)
     }
-    sapply(paste0(attr(obj, "load_dir"), "/", topush), push_month, obj = obj, ...)
+    sapply(paste0(attr(obj, "load_dir"), "/", csvs), push_month, obj = obj, ...)
   } else {
     stop("Invalid connection to database.")
   }

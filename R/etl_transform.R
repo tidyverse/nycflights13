@@ -5,11 +5,12 @@ globalVariables(".")
 #' @export
 
 etl_transform.etl_airlines <- function(obj, years = 2015, months = 1:12, ...) {
-  zipped <- dir(attr(obj, "raw_dir"), pattern = "\\.zip")
-  must_unzip <- match_year_months(zipped, years, months)
+  must_unzip <- match_files_by_year_months(list.files(attr(obj, "raw_dir")), 
+                                           pattern = "On_Time_On_Time_Performance_%Y_%m.zip", years, months)
   
-  unzipped <- dir(attr(obj, "load_dir"), pattern = "\\.csv")
-  cat(unzipped)
+  unzipped <- match_files_by_year_months(list.files(attr(obj, "load_dir")), 
+                                         pattern = "On_Time_On_Time_Performance_%Y_%m.csv", years, months)
+#  cat(unzipped)
   missing <- !gsub("On_Time_On_Time_Performance", "flights", must_unzip) %in% 
     gsub("\\.csv", "\\.zip", unzipped)
   tounzip <- must_unzip[missing]

@@ -16,6 +16,7 @@ install.packages("devtools")
 devtools::install_github("beanumber/airlines")
 library(airlines)
 # must have pre-existing database "airlines"
+system("mysql -e 'CREATE DATABASE IF NOT EXISTS airlines;'")
 db <- src_mysql(default.file = "~/.my.cnf", host = "localhost", user = NULL, 
                 password = NULL, dbname = "airlines")
 airlines <- etl("airlines", db, dir = "~/dumps/airlines")
