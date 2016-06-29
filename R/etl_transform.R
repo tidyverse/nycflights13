@@ -9,7 +9,7 @@ etl_transform.etl_airlines <- function(obj, years = 2015, months = 1:12, ...) {
                                            pattern = "On_Time_On_Time_Performance_%Y_%m.zip", years, months)
   
   unzipped <- match_files_by_year_months(list.files(attr(obj, "load_dir")), 
-                                         pattern = "On_Time_On_Time_Performance_%Y_%m.csv", years, months)
+                                         pattern = "flights_%Y_%m.csv", years, months)
 #  cat(unzipped)
   missing <- !gsub("On_Time_On_Time_Performance", "flights", must_unzip) %in% 
     gsub("\\.csv", "\\.zip", unzipped)

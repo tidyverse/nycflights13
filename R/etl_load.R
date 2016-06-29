@@ -67,7 +67,7 @@
 
 etl_load.etl_airlines <- function(obj, schema = FALSE, years = 2015, months = 1:12, ...) {
   csvs <- match_files_by_year_months(list.files(attr(obj, "load_dir")), 
-                                     pattern = "On_Time_On_Time_Performance_%Y_%m.zip", years, months)
+                                     pattern = "flights_%Y_%m.csv", years, months)
   
   if (methods::is(obj$con, "DBIConnection")) {
     if (schema == TRUE & (inherits(obj, "src_mysql") | inherits(obj, "src_postgres"))) {
