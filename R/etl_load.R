@@ -76,6 +76,7 @@ etl_load.etl_airlines <- function(obj, script = FALSE, years = 2015, months = 1:
 
 #' @rdname etl_load.etl_airlines
 #' @method etl_init etl_airlines
+#' @inheritParams etl::etl_init
 #' @importFrom DBI dbSendQuery
 #' @export
 
