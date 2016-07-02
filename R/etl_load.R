@@ -16,7 +16,7 @@
 #' 
 #' # SQLite by default
 #' airlines <- etl("airlines")
-#' str(airlines)
+#' airlines
 #' 
 #' \dontrun{
 #' if (require(RMySQL)) {
@@ -33,12 +33,14 @@
 #'   etl_extract(year = 2013, months = 5:6) %>%
 #'   etl_transform(year = 2013, months = 5:6) %>%
 #'   etl_load(year = 2013, months = 6)
+#' src_tbls(airlines)
 #' }
 #' 
 #' # re-initialize the database with complementary tables
 #' \dontrun{
 #' airlines %>%
-#'   etl_load(schema = TRUE, year = 2013, months = 6)
+#'   etl_init() %>%
+#'   etl_load(year = 2013, months = 6)
 #' 
 #' # Initialize the database and import one month of data
 #' airlines %>%
@@ -65,26 +67,25 @@
 #' }
 
 
-etl_load.etl_airlines <- function(obj, schema = FALSE, years = 2015, months = 1:12, ...) {
+etl_load.etl_airlines <- function(obj, script = FALSE, years = 2015, months = 1:12, ...) {
   csvs <- match_files_by_year_months(list.files(attr(obj, "load_dir")), 
                                      pattern = "flights_%Y_%m.csv", years, months)
-  
-  if (methods::is(obj$con, "DBIConnection")) {
-    if (schema == TRUE & (inherits(obj, "src_mysql") | inherits(obj, "src_postgres"))) {
-      schema <- get_schema(obj, schema_name = "init", pkg = "airlines")
-    }
-    if (!missing(schema)) {
-      if (file.exists(as.character(schema))) {
-        dbRunScript(obj$con, schema, ...)
-      }
-      init_carriers(obj)
-      init_airports(obj)
-      init_planes(obj)
-    }
-    sapply(paste0(attr(obj, "load_dir"), "/", csvs), push_month, obj = obj, ...)
-  } else {
-    stop("Invalid connection to database.")
-  }
+  sapply(paste0(attr(obj, "load_dir"), "/", csvs), push_month, obj = obj, ...)
+  invisible(obj)
+}
+
+#' @rdname etl_load.etl_airlines
+#' @method etl_init etl_airlines
+#' @importFrom DBI dbSendQuery
+#' @export
+
+etl_init.etl_airlines <- function(obj, script = NULL, schema_name = "init", pkg = attr(obj, "pkg"),
+                                  ext = NULL, ...) {
+  DBI::dbSendQuery(obj$con, "DROP VIEW IF EXISTS summary")
+  NextMethod()
+  init_carriers(obj)
+  init_airports(obj)
+  init_planes(obj)
   invisible(obj)
 }
 

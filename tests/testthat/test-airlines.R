@@ -12,6 +12,24 @@ test_that("instantiation works", {
 #   airlines %>%
 #     etl_create(years = 2001, months = 3)
 # })
+
+test_that("mysql works", {
+  if (require(RMySQL) & mysqlHasDefault()) {
+    db <- src_mysql(default.file = "~/.my.cnf", 
+                       groups = "rs-dbi", dbname = "test", 
+                       user = NULL, password = NULL)
+    test_dir <- "~/dumps/airlines"
+    if (dir.exists(test_dir)) {
+      expect_s3_class(ontime_mysql <- etl("airlines", db = db, dir = test_dir), "src_mysql")
+      ontime_mysql %>%
+        etl_init()
+      expect_message(ontime_mysql %>% etl_update(years = 1987, months = 10), "success")
+      expect_output(print(ontime_mysql), "flights")
+      expect_equal(ontime_mysql %>% tbl("flights") %>% collect(n = Inf) %>% nrow(), 448620)
+    }
+  }
+})
+
 # 
 # test_that("postgres works", {
 #   db <- src_postgres(user = "postgres", host = "localhost", 

@@ -2,14 +2,18 @@
 % Please edit documentation in R/etl_extract.R, R/etl_load.R, R/etl_transform.R
 \name{etl_extract.etl_airlines}
 \alias{etl_extract.etl_airlines}
+\alias{etl_init.etl_airlines}
 \alias{etl_load.etl_airlines}
 \alias{etl_transform.etl_airlines}
 \title{ETL functionality for airlines data}
 \usage{
 \method{etl_extract}{etl_airlines}(obj, years = 2015, months = 1:12, ...)
 
-\method{etl_load}{etl_airlines}(obj, schema = FALSE, years = 2015,
+\method{etl_load}{etl_airlines}(obj, script = FALSE, years = 2015,
   months = 1:12, ...)
+
+\method{etl_init}{etl_airlines}(obj, script = NULL, schema_name = "init",
+  pkg = attr(obj, "pkg"), ext = NULL, ...)
 
 \method{etl_transform}{etl_airlines}(obj, years = 2015, months = 1:12, ...)
 }
@@ -21,15 +25,6 @@
 \item{months}{a vector of integers representing the months}
 
 \item{...}{arguments passed to methods}
-
-\item{schema}{Either a logical, a filename pointing to SQL schema file, or a character
-vector containing the schema itself. If \code{schema = TRUE}, then the built-in
-schema will be used. Note
-that the flavor of SQL in this file must match the type of the source. That is,
-if your object is of type \code{\link[dplyr]{src_mysql}}, then make sure that
-the schema you specify here is written in MySQL (and not PostgreSQL). Please
-note that SQL syntax is not, in general, completely portable. Use with caution, as this may
-clobber any existing data you have in an existing database.}
 }
 \description{
 These functions implement \code{etl_airlines} methods
@@ -43,7 +38,7 @@ only flight data from matching months is used.
 
 # SQLite by default
 airlines <- etl("airlines")
-str(airlines)
+airlines
 
 \dontrun{
 if (require(RMySQL)) {
@@ -60,12 +55,14 @@ airlines \%>\%
   etl_extract(year = 2013, months = 5:6) \%>\%
   etl_transform(year = 2013, months = 5:6) \%>\%
   etl_load(year = 2013, months = 6)
+src_tbls(airlines)
 }
 
 # re-initialize the database with complementary tables
 \dontrun{
 airlines \%>\%
-  etl_load(schema = TRUE, year = 2013, months = 6)
+  etl_init() \%>\%
+  etl_load(year = 2013, months = 6)
 
 # Initialize the database and import one month of data
 airlines \%>\%
