@@ -82,7 +82,8 @@ etl_load.etl_airlines <- function(obj, script = FALSE, years = 2015, months = 1:
 
 etl_init.etl_airlines <- function(obj, script = NULL, schema_name = "init", pkg = attr(obj, "pkg"),
                                   ext = NULL, ...) {
-  DBI::dbSendQuery(obj$con, "DROP VIEW IF EXISTS summary")
+  #  https://github.com/beanumber/airlines/issues/51
+  #  DBI::dbSendQuery(obj$con, "DROP VIEW IF EXISTS summary")
   NextMethod()
   init_carriers(obj)
   init_airports(obj)
