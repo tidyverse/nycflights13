@@ -100,6 +100,8 @@ push_month <- function(obj, csv, ...) {
   }
 }
 
+#' @importFrom readr read_csv
+#' @importFrom DBI dbWriteTable
 
 init_carriers <- function(obj, ...) {
   src <- "http://www.transtats.bts.gov/Download_Lookup.asp?Lookup=L_UNIQUE_CARRIERS"
@@ -116,8 +118,11 @@ init_carriers <- function(obj, ...) {
     filter_(~!is.na(carrier)) %>%
     arrange_(~carrier)
   
-  dbWriteTable(obj$con, "carriers", as.data.frame(carriers), append = TRUE, row.names = FALSE)
+  DBI::dbWriteTable(obj$con, "carriers", 
+                    as.data.frame(carriers), append = TRUE, row.names = FALSE)
 }
+
+#' @importFrom downloader download
 
 init_airports <- function(obj, ...) {
   src <- "https://raw.githubusercontent.com/jpatokal/openflights/master/data/airports.dat"
@@ -126,7 +131,7 @@ init_airports <- function(obj, ...) {
   if (!file.exists(lcl)) {
     # https://github.com/beanumber/airlines/issues/30
     # need to test on OS X and Windows
-    utils::download.file(src, lcl, method = "curl")
+    downloader::download(src, lcl)
   }
   
   raw <- readr::read_csv(lcl, col_names = FALSE)
@@ -139,10 +144,12 @@ init_airports <- function(obj, ...) {
     mutate_(lat = ~as.numeric(lat), lon = ~as.numeric(lon)) %>%
     arrange_(~faa)
   
-  dbWriteTable(obj$con, "airports", as.data.frame(airports), append = TRUE, row.names = FALSE)
+  DBI::dbWriteTable(obj$con, "airports", 
+                    as.data.frame(airports), append = TRUE, row.names = FALSE)
 }
 
 init_planes <- function(obj, ...) {
-  dbWriteTable(obj$con, "planes", as.data.frame(airlines::planes), append = TRUE, row.names = FALSE)
+  DBI::dbWriteTable(obj$con, "planes", 
+                    as.data.frame(airlines::planes), append = TRUE, row.names = FALSE)
 }
 
