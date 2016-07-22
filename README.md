@@ -38,22 +38,38 @@ db <- src_mysql(default.file = "~/.my.cnf",
 Once we have a database connection, we create an `etl` object, initialize the database, and then populate it with data. Please note that to update the database with all 30 years worth of flights may take a few hours.
 
 ``` r
-airlines <- etl("airlines", db = db, dir = "~/dumps/airlines")
+ontime <- etl("airlines", db = db, dir = "~/dumps/airlines")
 ```
 
 ``` r
-airlines %>%
+ontime %>%
   etl_init() %>%
   etl_update(years = 1987:2016)
 ```
 
-Diagnostics
------------
+Verify
+------
 
-Verify that the data seems accurate.
+There are over 300 months worth of files to download, and they will occupy more than 21 GB in their zipped and unzipped states.
 
 ``` r
-airlines %>%
+summary(ontime)
+```
+
+    ## files:
+    ##     n      size                              path
+    ## 1 346  6.246 GB  /home/bbaumer/dumps/airlines/raw
+    ## 2 344 15.572 GB /home/bbaumer/dumps/airlines/load
+
+    ##       Length Class           Mode       
+    ## con   1      MySQLConnection S4         
+    ## info  8      -none-          list       
+    ## disco 3      -none-          environment
+
+The full flights table should contain about 169 million flights from October 1987 to May 2016.
+
+``` r
+ontime %>%
   tbl(from = "flights") %>%
   summarise(numFlights = n())
 ```
@@ -65,10 +81,13 @@ airlines %>%
     ##        <dbl>
     ## 1  168917853
 
-This should return about 169 million flights from October 1987 to May 2016.
+Analyze
+-------
+
+The number of flights per year seems to have peaked in 2007.
 
 ``` r
-airlines %>%
+ontime %>%
   tbl(from = "flights") %>%
   group_by(year) %>%
   summarise(numMonths = n_distinct(month), numFlights = n()) %>%
@@ -111,4 +130,4 @@ airlines %>%
     ## 29  2015        12    5819079
     ## 30  2016         5    2289826
 
-Please see [the vignette](https://github.com/beanumber/airlines/blob/master/vignettes/intro.Rmd) to get started.
+Please see [the vignette](https://github.com/beanumber/airlines/blob/master/vignettes/intro.Rmd) for more detail about how to use this package.

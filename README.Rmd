@@ -43,33 +43,41 @@ db <- src_mysql(default.file = "~/.my.cnf",
 Once we have a database connection, we create an `etl` object, initialize the database, and then populate it with data. Please note that to update the database with all 30 years worth of flights may take a few hours. 
 
 ```{r}
-airlines <- etl("airlines", db = db, dir = "~/dumps/airlines")
+ontime <- etl("airlines", db = db, dir = "~/dumps/airlines")
 ```
 
 ```{r, eval=FALSE}
-airlines %>%
+ontime %>%
   etl_init() %>%
   etl_update(years = 1987:2016)
 ```
 
-## Diagnostics
+## Verify
 
-Verify that the data seems accurate.
+There are over 300 months worth of files to download, and they will occupy more than 21 GB in their zipped and unzipped states. 
+
+```{r}
+summary(ontime)
+```
+
+The full flights table should contain about 169 million flights from October 1987 to May 2016. 
 
 ```{r, eval=TRUE}
-airlines %>%
+ontime %>%
   tbl(from = "flights") %>%
   summarise(numFlights = n())
 ```
 
-This should return about 169 million flights from October 1987 to May 2016. 
+## Analyze
+
+The number of flights per year seems to have peaked in 2007. 
 
 ```{r, eval=TRUE}
-airlines %>%
+ontime %>%
   tbl(from = "flights") %>%
   group_by(year) %>%
   summarise(numMonths = n_distinct(month), numFlights = n()) %>%
   print(n = 40)
 ```
 
-Please see [the vignette](https://github.com/beanumber/airlines/blob/master/vignettes/intro.Rmd) to get started.
+Please see [the vignette](https://github.com/beanumber/airlines/blob/master/vignettes/intro.Rmd) for more detail about how to use this package.
