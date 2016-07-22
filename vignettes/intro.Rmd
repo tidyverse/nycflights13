@@ -28,7 +28,7 @@ library(airlines)
 
 ## Setting up a database
 
-The data accessible through the `airlines` package is **medium data**. The full data set stretches back to 1987, and provides information on more than 160 million flights (as of 2015). Simply downloading this data will take several hours and occupy gigabytes of disk space. For most users, the `flights` table is far too big to store in memory. At the same time, these data are not "big", in the sense that no servers or computing clusters are required -- any recent laptop is perfectly capable of handling data of this magnitude. What is needed is a storage and retrieval system that is capable of storing all of the data on disk, but only loading some of it into memory. SQL is a venerable solution for this problem. 
+The data accessible through the `airlines` package is **medium data**. The full data set stretches back to 1987, and provides information on more than 160 million flights (as of 2016). Simply downloading this data could take hours and will occupy more than 6 gigabytes of disk space. For most users, the `flights` table is far too big to store in memory. At the same time, these data are not "big", in the sense that no servers or computing clusters are required -- any recent laptop is perfectly capable of handling data of this magnitude. What is needed is a storage and retrieval system that is capable of storing all of the data on disk, but only loading some of it into memory. SQL is a venerable solution for this problem. 
 
 In order to work with the `airlines` data, you need two things:
 
@@ -61,7 +61,7 @@ airlines %>%
   etl_update(years = 1988)
 ```
 
-Given more time, we might loop through many years. **NOTE: this will take a looong time.** On my computer, it took a little more than an hour to download the files, which occupied nearly 6 gigabytes on disk, it took about an hour and fifteen minutes to transform the files, which occupied another 15 gigabytes, and it took another two hours to load the data into MySQL (see below) -- those data occupied another 30 gigabytes on disk. 
+Given more time, we might loop through many years. **NOTE: this will take a looong time.** On my computer, it took a little more than an hour to download the files, which occupied more than 6 gigabytes on disk, it took about an hour and fifteen minutes to transform the files, which occupied another 15 gigabytes, and it took another two hours to load the data into MySQL (see below) -- those data occupied another 30 gigabytes on disk. 
 
 ```{r, eval=FALSE}
 airlines %>%
@@ -93,6 +93,7 @@ Now that your airlines database has been populated, you can use it just like you
 
 ```{r}
 class(airlines)
+summary(airlines)
 ```
 
 It contains the following tables:

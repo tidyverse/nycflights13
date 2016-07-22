@@ -3,14 +3,112 @@ airlines
 
 [![Travis-CI Build Status](https://travis-ci.org/beanumber/airlines.svg?branch=master)](https://travis-ci.org/beanumber/airlines)
 
-This package contains information from the US Bureau of Transportation Statistics about flights, and provides functionality for uploading multiple years worth of data to an SQL database. To help understand what causes delays, it also includes a number of other useful datasets:
+The `airlines` package provides a user-friendly interface to create and maintain an SQL database of flight information from the [U.S. Bureau of Transportation Statistics Airline On-Time Performance](http://www.transtats.bts.gov/DatabaseInfo.asp?DB_ID=120&Link=0) data. The user of the `airlines` package only needs a valid place to store the data -- no sophisticated SQL administration skills are necessary.
 
--   `planes`: construction information about each plane
--   `airports`: airport names and locations
--   `airlines`: translation between two letter carrier codes and names
+Several existing R package could be considered subsets of these data: \#. [nycflights13](http://github.com/hadley/nycflights13): all outgoing flights from the three New York City airports (LGA, JFK, and EWR) during 2013 \#. \[hflights\]: all outgoing flights from the three New York City airports (IAH and HOU) during 2011 This `airlines` package will allow you to download data for over 165 million flights from 1987 to present, from all domestic airports.
 
-The data in the [nycflights13](http://github.com/hadley/nycflights13) package is a special case of `airlines` for the year 2013, and all outgoing flights from the three New York City airports (LaGuardia , JFK, and Newark). This `airlines` package will allow you to download data for over 160 million flights from 1987 to present, from all US airports.
+Install
+-------
 
-This package uses the [etl](http://github.com/beanumber/etl) database framework.
+The [`etl`](http://github.com/beanumber/etl) package (on CRAN) provides the generic framework for the `airlines` package. Since the `airlines` package currently lives on GitHub and not on CRAN, you have to install it using `devtools`:
+
+``` r
+install.packages("devtools")
+devtools::install_github("beanumber/airlines")
+```
+
+To begin, load the `airlines` package. Note that this loads `etl`, which in turn loads `dplyr`.
+
+``` r
+library(airlines)
+```
+
+Populate
+--------
+
+Any `etl`-derived package can make use of the SQL backends supported by `dplyr`. Here, we illustrate how to set up a local MySQL database to store the flight data. This approach uses a MySQL options file located at `~/.my.cnf`.
+
+``` r
+system("mysql -e 'CREATE DATABASE IF NOT EXISTS airlines;'")
+db <- src_mysql(default.file = "~/.my.cnf", 
+                host = "localhost", user = NULL, 
+                password = NULL, dbname = "airlines")
+```
+
+Once we have a database connection, we create an `etl` object, initialize the database, and then populate it with data. Please note that to update the database with all 30 years worth of flights may take a few hours.
+
+``` r
+airlines <- etl("airlines", db = db, dir = "~/dumps/airlines")
+```
+
+``` r
+airlines %>%
+  etl_init() %>%
+  etl_update(years = 1987:2016)
+```
+
+Diagnostics
+-----------
+
+Verify that the data seems accurate.
+
+``` r
+airlines %>%
+  tbl(from = "flights") %>%
+  summarise(numFlights = n())
+```
+
+    ## Source:   query [?? x 1]
+    ## Database: mysql 5.5.50-0ubuntu0.14.04.1 [bbaumer@localhost:/airlines]
+    ## 
+    ##   numFlights
+    ##        <dbl>
+    ## 1  168917853
+
+This should return about 169 million flights from October 1987 to May 2016.
+
+``` r
+airlines %>%
+  tbl(from = "flights") %>%
+  group_by(year) %>%
+  summarise(numMonths = n_distinct(month), numFlights = n()) %>%
+  print(n = 40)
+```
+
+    ## Source:   query [?? x 3]
+    ## Database: mysql 5.5.50-0ubuntu0.14.04.1 [bbaumer@localhost:/airlines]
+    ## 
+    ##     year numMonths numFlights
+    ##    <int>     <dbl>      <dbl>
+    ## 1   1987         3    1311826
+    ## 2   1988        12    5202096
+    ## 3   1989        12    5041200
+    ## 4   1990        12    5270893
+    ## 5   1991        12    5076925
+    ## 6   1992        12    5092157
+    ## 7   1993        12    5070501
+    ## 8   1994        12    5180048
+    ## 9   1995        12    5327435
+    ## 10  1996        12    5351983
+    ## 11  1997        12    5411843
+    ## 12  1998        12    5384721
+    ## 13  1999        12    5527884
+    ## 14  2000        12    5683047
+    ## 15  2001        12    5967780
+    ## 16  2002        12    5271359
+    ## 17  2003        12    6488540
+    ## 18  2004        12    7129270
+    ## 19  2005        12    7140596
+    ## 20  2006        12    7141922
+    ## 21  2007        12    7455458
+    ## 22  2008        12    7009726
+    ## 23  2009        12    6450285
+    ## 24  2010        12    6450117
+    ## 25  2011        12    6085281
+    ## 26  2012        12    6096762
+    ## 27  2013        12    6369482
+    ## 28  2014        12    5819811
+    ## 29  2015        12    5819079
+    ## 30  2016         5    2289826
 
 Please see [the vignette](https://github.com/beanumber/airlines/blob/master/vignettes/intro.Rmd) to get started.
