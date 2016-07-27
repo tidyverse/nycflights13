@@ -3,7 +3,7 @@
 \docType{data}
 \name{airports}
 \alias{airports}
-\title{Airports}
+\title{Useful metadata about airports.}
 \format{A data frame with columns:
 \describe{
  \item{faa}{FAA airport code}

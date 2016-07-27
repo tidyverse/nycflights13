@@ -3,7 +3,8 @@
 \docType{data}
 \name{planes}
 \alias{planes}
-\title{Planes}
+\title{Plane metadata for all plane tailnumbers found in the FAA aircraft
+registry.}
 \format{A data frame with columns:
 \describe{
 \item{tailnum}{Tail number}

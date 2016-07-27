@@ -1,5 +1,3 @@
-#' Carriers
-#'
 #' Look up airline names from their carrier codes.
 #'
 #' @docType data
@@ -11,8 +9,6 @@
 #' }
 "carriers"
 
-#' Airports
-#'
 #' Useful metadata about airports.
 #'
 #' @docType data
@@ -30,9 +26,10 @@
 #' }
 "airports"
 
-#' Planes
-#'
 #' Plane metadata for all plane tailnumbers found in the FAA aircraft
+#' registry. 
+#' 
+#' @description Plane metadata for all plane tailnumbers found in the FAA aircraft
 #' registry. American Airways (AA) and Envoy Air (MQ) report fleet numbers
 #' rather than tail numbers (e.g. \url{http://www.flyerguide.com/Tail_Numbers_(AA)})
 #' so can't be matched.
@@ -51,8 +48,6 @@
 #' }
 "planes"
 
-#' Flights
-#'
 #' On-time data for all flights.
 #'
 #' @source RITA, Bureau of transportation statistics,

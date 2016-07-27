@@ -3,7 +3,7 @@
 \docType{data}
 \name{carriers}
 \alias{carriers}
-\title{Carriers}
+\title{Look up airline names from their carrier codes.}
 \format{Data frame with columns
 \describe{
 \item{carrier}{Two letter abbreviation}

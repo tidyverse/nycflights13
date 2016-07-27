@@ -3,7 +3,7 @@
 \docType{data}
 \name{flights}
 \alias{flights}
-\title{Flights}
+\title{On-time data for all flights.}
 \format{Data frame with columns
 \describe{
 \item{year,month,day}{Date of departure}
