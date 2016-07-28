@@ -1,5 +1,8 @@
 # nycflights13 0.2.0.9000
 
+* `airports` now has a `tzone` column that contains the IANA time zone
+  for the airport (#15).
+
 # nycflights13 0.2.0
 
 * `airlines`: `carrier` columns are characters instead of factors (#2).

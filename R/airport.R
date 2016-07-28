@@ -13,6 +13,7 @@
 #'  \item{dst}{Daylight savings time zone. A = Standard US DST: starts on the
 #'     second Sunday of March, ends on the first Sunday of November.
 #'     U = unknown. N = no dst.}
+#'  \item{tzone}{IANA time zone, as determined by GeoNames webservice}
 #' }
 #' @examples
 #' if (require("dplyr")) {
