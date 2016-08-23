@@ -47,7 +47,7 @@ clean_flights <- function(path_zip) {
       arr_time = ~as.numeric(ArrTime), sched_arr_time = ~as.numeric(CRSArrTime), arr_delay = ~ArrDelay, 
       carrier = ~Carrier,  tailnum = ~TailNum, flight = ~FlightNum,
       origin = ~Origin, dest = ~Dest, air_time = ~AirTime, distance = ~Distance,
-      cancelled = ~Cancelled
+      cancelled = ~Cancelled, diverted = ~Diverted
     ) %>%
 #    filter(origin %in% c("JFK", "LGA", "EWR")) %>%
     mutate_(hour = ~as.numeric(sched_dep_time) %/% 100,

@@ -14,7 +14,7 @@ test_that("instantiation works", {
 # })
 
 test_that("mysql works", {
-  if (require(RMySQL) & mysqlHasDefault()) {
+  if (require(RMySQL) && mysqlHasDefault()) {
     db <- src_mysql(default.file = "~/.my.cnf", 
                        groups = "rs-dbi", dbname = "test", 
                        user = NULL, password = NULL)
@@ -30,18 +30,18 @@ test_that("mysql works", {
   }
 })
 
-test_that("MonetDBLite works", {
-  if (require(MonetDBLite)) {
-    db <- MonetDBLite::src_monetdblite()
-    test_dir <- "~/dumps/airlines"
-    if (dir.exists(test_dir)) {
-      expect_s3_class(ontime_monet <- etl("airlines", db = db, dir = test_dir), "src_monetdb")
-      expect_message(ontime_monet %>% etl_update(years = 1987, months = 10), "success")
-      expect_output(print(ontime_monet), "flights")
-      expect_equal(ontime_monet %>% tbl("flights") %>% collect(n = Inf) %>% nrow(), 448620)
-    }
-  }
-})
+# test_that("MonetDBLite works", {
+#   if (require(MonetDBLite)) {
+#     db <- MonetDBLite::src_monetdblite()
+#     test_dir <- "~/dumps/airlines"
+#     if (dir.exists(test_dir)) {
+#       expect_s3_class(ontime_monet <- etl("airlines", db = db, dir = test_dir), "src_monetdb")
+#       expect_message(ontime_monet %>% etl_update(years = 1987, months = 10), "success")
+#       expect_output(print(ontime_monet), "flights")
+#       expect_equal(ontime_monet %>% tbl("flights") %>% collect(n = Inf) %>% nrow(), 448620)
+#     }
+#   }
+# })
 
 # 
 # test_that("postgres works", {

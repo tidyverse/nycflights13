@@ -1,6 +1,6 @@
 Package: airlines
 Title: Data About Flights
-Version: 0.2.2.9010
+Version: 0.2.2.9011
 Date: 2016-06-29
 Authors@R: c(
     person("Ben", "Baumer", email = "ben.baumer@gmail.com",

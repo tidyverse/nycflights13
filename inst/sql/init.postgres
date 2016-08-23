@@ -18,6 +18,7 @@ CREATE TABLE flights (
   air_time smallint DEFAULT NULL,
   distance smallint DEFAULT NULL,
   cancelled smallint DEFAULT NULL,
+  diverted smallint DEFAULT NULL,
   hour smallint DEFAULT NULL,
   minute smallint DEFAULT NULL,
   time_hour timestamp DEFAULT NULL
