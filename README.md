@@ -5,7 +5,12 @@ airlines
 
 The `airlines` package provides a user-friendly interface to create and maintain an SQL database of flight information from the [U.S. Bureau of Transportation Statistics Airline On-Time Performance](http://www.transtats.bts.gov/DatabaseInfo.asp?DB_ID=120&Link=0) data. The user of the `airlines` package only needs a valid place to store the data -- no sophisticated SQL administration skills are necessary.
 
-Several existing R package could be considered subsets of these data: \#. [nycflights13](http://github.com/hadley/nycflights13): all outgoing flights from the three New York City airports (LGA, JFK, and EWR) during 2013 \#. \[hflights\]: all outgoing flights from the three New York City airports (IAH and HOU) during 2011 This `airlines` package will allow you to download data for over 165 million flights from 1987 to present, from all domestic airports.
+Several existing R package could be considered subsets of these data:
+
+1.  [nycflights13](http://github.com/hadley/nycflights13): all outgoing flights from the three New York City airports (LGA, JFK, and EWR) during 2013
+2.  [hflights](http://github.com/hadley/hflights): all outgoing flights from the three New York City airports (IAH and HOU) during 2011
+
+This `airlines` package will allow you to download data for over 165 million flights from 1987 to present, from all domestic airports.
 
 Install
 -------
@@ -30,9 +35,7 @@ Any `etl`-derived package can make use of the SQL backends supported by `dplyr`.
 
 ``` r
 system("mysql -e 'CREATE DATABASE IF NOT EXISTS airlines;'")
-db <- src_mysql(default.file = "~/.my.cnf", 
-                host = "localhost", user = NULL, 
-                password = NULL, dbname = "airlines")
+db <- src_mysql_cnf(dbname = "airlines")
 ```
 
 Once we have a database connection, we create an `etl` object, initialize the database, and then populate it with data. Please note that to update the database with all 30 years worth of flights may take a few hours.
@@ -58,15 +61,15 @@ summary(ontime)
 
     ## files:
     ##     n      size                              path
-    ## 1 346  6.246 GB  /home/bbaumer/dumps/airlines/raw
-    ## 2 344 15.572 GB /home/bbaumer/dumps/airlines/load
+    ## 1 349  6.504 GB  /home/bbaumer/dumps/airlines/raw
+    ## 2 345 18.725 GB /home/bbaumer/dumps/airlines/load
 
     ##       Length Class           Mode       
     ## con   1      MySQLConnection S4         
     ## info  8      -none-          list       
     ## disco 3      -none-          environment
 
-The full flights table should contain about 169 million flights from October 1987 to May 2016.
+The full flights table should contain about 169 million flights from October 1987 to June 2016.
 
 ``` r
 ontime %>%
@@ -75,11 +78,11 @@ ontime %>%
 ```
 
     ## Source:   query [?? x 1]
-    ## Database: mysql 5.5.50-0ubuntu0.14.04.1 [bbaumer@localhost:/airlines]
+    ## Database: mysql 5.7.13-0ubuntu0.16.04.2 [bbaumer@localhost:/airlines]
     ## 
     ##   numFlights
     ##        <dbl>
-    ## 1  168917853
+    ## 1  169405490
 
 Analyze
 -------
@@ -95,7 +98,7 @@ ontime %>%
 ```
 
     ## Source:   query [?? x 3]
-    ## Database: mysql 5.5.50-0ubuntu0.14.04.1 [bbaumer@localhost:/airlines]
+    ## Database: mysql 5.7.13-0ubuntu0.16.04.2 [bbaumer@localhost:/airlines]
     ## 
     ##     year numMonths numFlights
     ##    <int>     <dbl>      <dbl>
@@ -128,6 +131,6 @@ ontime %>%
     ## 27  2013        12    6369482
     ## 28  2014        12    5819811
     ## 29  2015        12    5819079
-    ## 30  2016         5    2289826
+    ## 30  2016         6    2777463
 
 Please see [the vignette](https://github.com/beanumber/airlines/blob/master/vignettes/intro.Rmd) for more detail about how to use this package.

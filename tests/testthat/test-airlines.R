@@ -15,9 +15,7 @@ test_that("instantiation works", {
 
 test_that("mysql works", {
   if (require(RMySQL) && mysqlHasDefault()) {
-    db <- src_mysql(default.file = "~/.my.cnf", 
-                       groups = "rs-dbi", dbname = "test", 
-                       user = NULL, password = NULL)
+    db <- src_mysql_cnf("test")
     test_dir <- "~/dumps/airlines"
     if (dir.exists(test_dir)) {
       expect_s3_class(ontime_mysql <- etl("airlines", db = db, dir = test_dir), "src_mysql")

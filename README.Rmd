@@ -10,8 +10,10 @@ output:
 The `airlines` package provides a user-friendly interface to create and maintain an SQL database of flight information from the [U.S. Bureau of Transportation Statistics Airline On-Time Performance](http://www.transtats.bts.gov/DatabaseInfo.asp?DB_ID=120&Link=0) data. The user of the `airlines` package only needs a valid place to store the data -- no sophisticated SQL administration skills are necessary. 
 
 Several existing R package could be considered subsets of these data:
+
 #. [nycflights13](http://github.com/hadley/nycflights13): all outgoing flights from the three New York City airports (LGA, JFK, and EWR) during 2013
-#. [hflights]: all outgoing flights from the three New York City airports (IAH and HOU) during 2011
+#. [hflights](http://github.com/hadley/hflights): all outgoing flights from the three New York City airports (IAH and HOU) during 2011
+
 This `airlines` package will allow you to download data for over 165 million flights from 1987 to present, from all domestic airports. 
 
 ## Install
@@ -35,9 +37,7 @@ Any `etl`-derived package can make use of the SQL backends supported by `dplyr`.
 
 ```{r, eval=TRUE, message=FALSE}
 system("mysql -e 'CREATE DATABASE IF NOT EXISTS airlines;'")
-db <- src_mysql(default.file = "~/.my.cnf", 
-                host = "localhost", user = NULL, 
-                password = NULL, dbname = "airlines")
+db <- src_mysql_cnf(dbname = "airlines")
 ```
 
 Once we have a database connection, we create an `etl` object, initialize the database, and then populate it with data. Please note that to update the database with all 30 years worth of flights may take a few hours. 
@@ -60,7 +60,7 @@ There are over 300 months worth of files to download, and they will occupy more 
 summary(ontime)
 ```
 
-The full flights table should contain about 169 million flights from October 1987 to May 2016. 
+The full flights table should contain about 169 million flights from October 1987 to June 2016. 
 
 ```{r, eval=TRUE}
 ontime %>%
