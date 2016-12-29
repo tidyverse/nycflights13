@@ -1,4 +1,4 @@
-# nycflights13 0.2.0.9000
+# nycflights13 0.2.1
 
 * nycflights imports tibble so you get nice printing even when no other
   tidyverse package is loaded.
