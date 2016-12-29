@@ -19,8 +19,8 @@
 #' \item{flight}{Flight number}
 #' \item{origin,dest}{Origin and destination. See \code{\link{airports}} for
 #'   additional metadata.}
-#' \item{air_time}{Amount of time spent in the air}
-#' \item{distance}{Distance flown}
+#' \item{air_time}{Amount of time spent in the air, in minutes}
+#' \item{distance}{Distance between airports, in miles}
 #' \item{time_hour}{Scheduled date and hour of the flight as a \code{POSIXct} date.
 #'   Along with \code{origin}, can be used to join flights data to weather data.}
 #' }
