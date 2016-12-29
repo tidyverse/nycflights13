@@ -28,7 +28,20 @@ lapply(missing, get_asos)
 # Load ------------------------------------------------------------------------
 
 paths <- dir("data-raw/weather", full.names = TRUE)
-all <- lapply(paths, read_csv, skip = 4, na = "M", col_names = FALSE)
+all <- lapply(paths, read_csv, skip = 4, na = "M", col_names = FALSE, col_types =
+  cols(
+    .default = col_double(),
+    X1 = col_character(),
+    X2 = col_datetime(format = ""),
+    X12 = col_character(),
+    X13 = col_character(),
+    X14 = col_character(),
+    X15 = col_character(),
+    X16 = col_character(),
+    X21 = col_character(),
+    X22 = col_character()
+  )
+)
 
 raw <- bind_rows(all)
 names(raw) <- c("station", "time", "tmpf", "dwpf", "relh", "drct", "sknt",
