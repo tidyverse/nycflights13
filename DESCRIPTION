@@ -11,6 +11,8 @@ License: CC0
 LazyData: true
 Depends:
     R (>= 2.10)
+Imports:
+    tibble
 Suggests:
     dplyr
 URL: http://github.com/hadley/nycflights13

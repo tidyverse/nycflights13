@@ -1,5 +1,8 @@
 # nycflights13 0.2.0.9000
 
+* nycflights imports tibble so you get nice printing even when no other
+  tidyverse package is loaded.
+
 * `airports` now has a `tzone` column that contains the IANA time zone
   for the airport (#15).
 
