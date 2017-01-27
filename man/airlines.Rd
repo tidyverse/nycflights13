@@ -22,4 +22,3 @@ Look up airline names from their carrier codes.
   airlines
 }
 \keyword{datasets}
-

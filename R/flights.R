@@ -25,3 +25,7 @@
 #'   Along with \code{origin}, can be used to join flights data to weather data.}
 #' }
 "flights"
+
+
+#' @importFrom tibble tibble
+NULL

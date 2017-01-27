@@ -1,6 +1,6 @@
 Package: nycflights13
 Title: Flights that Departed NYC in 2013
-Version: 0.2.1.9000
+Version: 0.2.2
 Authors@R: c(
     person("Hadley", "Wickham", , "hadley@rstudio.com", c("aut", "cre")),
     person("RStudio", role = "cph")
@@ -17,4 +17,4 @@ Suggests:
     dplyr
 URL: http://github.com/hadley/nycflights13
 BugReports: https://github.com/hadley/nycflights13/issues
-RoxygenNote: 5.0.1
+RoxygenNote: 5.0.1.9000

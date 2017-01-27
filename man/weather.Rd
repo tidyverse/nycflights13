@@ -29,4 +29,3 @@ weather
 Hourly meterological data for LGA, JFK and EWR.
 }
 \keyword{datasets}
-

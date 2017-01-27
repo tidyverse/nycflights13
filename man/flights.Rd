@@ -35,4 +35,3 @@ On-time data for all flights that departed NYC (i.e. JFK, LGA or EWR) in
 2013.
 }
 \keyword{datasets}
-
