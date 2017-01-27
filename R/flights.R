@@ -24,6 +24,7 @@
 #' \item{time_hour}{Scheduled date and hour of the flight as a \code{POSIXct} date.
 #'   Along with \code{origin}, can be used to join flights data to weather data.}
 #' }
+#' @importFrom tibble tibble
 "flights"
 
 
