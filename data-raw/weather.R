@@ -62,7 +62,7 @@ weather <- raw %>%
   ungroup() %>%
   filter(!is.na(month)) %>%
   mutate(
-    time_hour = ISOdatetime(year, month, day, hour, 0, 0)
+    time_hour = ISOdatetime(year, month, day, hour, 0, 0, tz='GMT')
   )
 
 write_csv(weather, "data-raw/weather.csv")
