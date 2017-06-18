@@ -50,7 +50,7 @@ names(raw) <- c("station", "time", "tmpf", "dwpf", "relh", "drct", "sknt",
 
 weather <- raw %>%
   select(
-      station, time, temp = tmpf, dewp = dwpf, humid = relh,
+    station, time, temp = tmpf, dewp = dwpf, humid = relh,
     wind_dir = drct, wind_speed = sknt, wind_gust = gust,
     precip = p01i, pressure = mslp, visib = vsby
   ) %>%
