@@ -49,21 +49,21 @@ names(raw) <- c("station", "time", "tmpf", "dwpf", "relh", "drct", "sknt",
   "skyl1", "skyl2", "skyl3", "skyl4", "metar")
 
 weather <- raw %>%
-    select(
-        station, time, temp = tmpf, dewp = dwpf, humid = relh,
-        wind_dir = drct, wind_speed = sknt, wind_gust = gust,
-        precip = p01i, pressure = mslp, visib = vsby
-    ) %>%
-    mutate(
-        time = as.POSIXct(strptime(time, "%Y-%m-%d %H:%M")),
-        wind_speed = as.numeric(wind_speed) * 1.15078, # convert to mpg
-        wind_gust = as.numeric(wind_speed) * 1.15078
-    ) %>%
-    mutate(year = 2013, month = month(time), day = mday(time),
-           hour = hour(time), minute = minute(time)) %>%
-    group_by(station, month, day, hour) %>%
-    filter(minute = 51) %>%
-    mutate(precip = max(precip)) %>%
+  select(
+      station, time, temp = tmpf, dewp = dwpf, humid = relh,
+    wind_dir = drct, wind_speed = sknt, wind_gust = gust,
+    precip = p01i, pressure = mslp, visib = vsby
+  ) %>%
+  mutate(
+    time = as.POSIXct(strptime(time, "%Y-%m-%d %H:%M")),
+    wind_speed = as.numeric(wind_speed) * 1.15078, # convert to mpg
+    wind_gust = as.numeric(wind_speed) * 1.15078
+  ) %>%
+  mutate(year = 2013, month = month(time), day = mday(time),
+         hour = hour(time), minute = minute(time)) %>%
+  group_by(station, month, day, hour) %>%
+  filter(minute <= 51) %>%
+  mutate(precip = max(precip)) %>%
   filter(row_number() == 1) %>%
   select(origin = station, year:hour, temp:visib) %>%
   ungroup() %>%
