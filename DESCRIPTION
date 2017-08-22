@@ -1,9 +1,9 @@
 Package: airlines
-Title: Data About Flights
+Title: Historical On-time Flight Data
 Version: 0.2.2.9011
-Date: 2016-06-29
+Date: 2017-08-31
 Authors@R: c(
-    person("Ben", "Baumer", email = "ben.baumer@gmail.com",
+    person("Benjamin S.", "Baumer", email = "ben.baumer@gmail.com",
       role = c("aut", "cre")),
     person("Hadley", "Wickham", email = "h.wickham@gmail.com", role = "ctb"))
 Description: Airline on-time data from the Bureau of Transportation Statistics for all flights.
@@ -33,4 +33,4 @@ Suggests:
 URL: http://github.com/beanumber/airlines
 BugReports: https://github.com/beanumber/airlines/issues
 VignetteBuilder: knitr
-RoxygenNote: 5.0.1
+RoxygenNote: 6.0.1
