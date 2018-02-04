@@ -48,4 +48,3 @@ airports <- collect(tbl_list$airports)
 save(airports, file = "data/airports.rda")
 }
 }
-

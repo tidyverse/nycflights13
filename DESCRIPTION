@@ -1,7 +1,7 @@
 Package: airlines
 Title: Historical On-time Flight Data
-Version: 0.2.2.9011
-Date: 2017-08-31
+Version: 0.2.2.9012
+Date: 2018-02-04
 Authors@R: c(
     person("Benjamin S.", "Baumer", email = "ben.baumer@gmail.com",
       role = c("aut", "cre")),

@@ -9,11 +9,10 @@
 etl_extract.etl_airlines <- function(obj, years = 2015, months = 1:12, ...) {
   
   valid_months <- valid_year_month(years, months, begin = "1987-10-01") %>%
-    mutate_(url = ~paste0("http://tsdata.bts.gov/PREZIP/On_Time_On_Time_Performance_", 
+    mutate_(url = ~paste0("http://transtats.bts.gov/PREZIP/On_Time_On_Time_Performance_", 
                      year, "_", month, ".zip"))
   
   message("Downloading flight data...")
   smart_download(obj, valid_months$url)
   invisible(obj)
 }
-

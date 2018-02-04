@@ -67,7 +67,7 @@
 #' }
 
 
-etl_load.etl_airlines <- function(obj, script = FALSE, years = 2015, months = 1:12, ...) {
+etl_load.etl_airlines <- function(obj, years = 2015, months = 1:12, ...) {
   csvs <- match_files_by_year_months(list.files(attr(obj, "load_dir")), 
                                      pattern = "flights_%Y_%m.csv", years, months)
   sapply(paste0(attr(obj, "load_dir"), "/", csvs), push_month, obj = obj, ...)

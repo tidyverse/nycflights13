@@ -2,15 +2,14 @@
 % Please edit documentation in R/etl_extract.R, R/etl_load.R, R/etl_transform.R
 \name{etl_extract.etl_airlines}
 \alias{etl_extract.etl_airlines}
-\alias{etl_init.etl_airlines}
 \alias{etl_load.etl_airlines}
+\alias{etl_init.etl_airlines}
 \alias{etl_transform.etl_airlines}
 \title{ETL functionality for airlines data}
 \usage{
 \method{etl_extract}{etl_airlines}(obj, years = 2015, months = 1:12, ...)
 
-\method{etl_load}{etl_airlines}(obj, script = FALSE, years = 2015,
-  months = 1:12, ...)
+\method{etl_load}{etl_airlines}(obj, years = 2015, months = 1:12, ...)
 
 \method{etl_init}{etl_airlines}(obj, script = NULL, schema_name = "init",
   pkg = attr(obj, "pkg"), ext = NULL, ...)
@@ -109,4 +108,3 @@ airlines \%>\%
 \seealso{
 \code{\link[etl]{etl}}, \code{\link[etl]{etl_load}}
 }
-
