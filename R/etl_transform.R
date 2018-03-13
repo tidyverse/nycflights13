@@ -40,19 +40,28 @@ clean_flights <- function(path_zip) {
   # )
   # can't get col_types argument to work!
   # readr::read_csv(path_zip, col_types = col_types) %>%
-  readr::read_csv(path_zip) %>%
+  x <- readr::read_csv(path_zip) 
+  x %>%
+    mutate_(dep_time = ~as.numeric(DepTime), 
+            sched_dep_time = ~as.numeric(CRSDepTime), 
+            dep_delay = ~DepDelay, 
+            arr_time = ~as.numeric(ArrTime), 
+            sched_arr_time = ~as.numeric(CRSArrTime), 
+            arr_delay = ~ArrDelay, 
+            hour = ~as.numeric(sched_dep_time) %/% 100,
+            minute = ~as.numeric(sched_dep_time) %% 100,
+            time_hour = ~lubridate::make_datetime(Year, Month, DayofMonth, hour, minute, 0)
+    ) %>%
     select_(
       year = ~Year, month = ~Month, day = ~DayofMonth, 
-      dep_time = ~as.numeric(DepTime), sched_dep_time = ~as.numeric(CRSDepTime), dep_delay = ~DepDelay, 
-      arr_time = ~as.numeric(ArrTime), sched_arr_time = ~as.numeric(CRSArrTime), arr_delay = ~ArrDelay, 
+      dep_time = ~dep_time, sched_dep_time = ~sched_dep_time, dep_delay = ~dep_delay, 
+      arr_time = ~arr_time, sched_arr_time = ~sched_arr_time, arr_delay = ~arr_delay, 
       carrier = ~Carrier,  tailnum = ~TailNum, flight = ~FlightNum,
       origin = ~Origin, dest = ~Dest, air_time = ~AirTime, distance = ~Distance,
       cancelled = ~Cancelled, diverted = ~Diverted
     ) %>%
 #    filter(origin %in% c("JFK", "LGA", "EWR")) %>%
-    mutate_(hour = ~as.numeric(sched_dep_time) %/% 100,
-           minute = ~as.numeric(sched_dep_time) %% 100,
-           time_hour = ~lubridate::make_datetime(year, month, day, hour, minute, 0)) %>%
+
 #    mutate_(tailnum = ~ifelse(tailnum == "", NA, tailnum)) %>%
     arrange_(~year, ~month, ~day, ~dep_time) %>%
     readr::write_csv(path = path_csv)

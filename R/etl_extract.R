@@ -13,6 +13,6 @@ etl_extract.etl_airlines <- function(obj, years = 2015, months = 1:12, ...) {
                      year, "_", month, ".zip"))
   
   message("Downloading flight data...")
-  smart_download(obj, valid_months$url)
+  etl::smart_download(obj, valid_months$url)
   invisible(obj)
 }

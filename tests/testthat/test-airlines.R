@@ -18,7 +18,7 @@ test_that("mysql works", {
     db <- src_mysql_cnf("test")
     test_dir <- "~/dumps/airlines"
     if (dir.exists(test_dir)) {
-      expect_s3_class(ontime_mysql <- etl("airlines", db = db, dir = test_dir), "src_mysql")
+      expect_s3_class(ontime_mysql <- etl("airlines", db = db, dir = test_dir), "src_dbi")
       ontime_mysql %>%
         etl_init()
       expect_message(ontime_mysql %>% etl_update(years = 1987, months = 10), "success")
