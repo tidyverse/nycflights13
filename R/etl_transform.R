@@ -47,8 +47,8 @@ clean_flights <- function(path_zip) {
             arr_time = ~as.numeric(ArrTime), 
             sched_arr_time = ~as.numeric(CRSArrTime), 
             arr_delay = ~ArrDelay, 
-            hour = ~as.numeric(sched_dep_time) %/% 100,
-            minute = ~as.numeric(sched_dep_time) %% 100,
+            hour = ~sched_dep_time %/% 100,
+            minute = ~sched_dep_time %% 100,
             time_hour = ~lubridate::make_datetime(Year, Month, DayofMonth, hour, minute, 0)
     ) %>%
     select_(
@@ -57,7 +57,8 @@ clean_flights <- function(path_zip) {
       arr_time = ~arr_time, sched_arr_time = ~sched_arr_time, arr_delay = ~arr_delay, 
       carrier = ~Carrier,  tailnum = ~TailNum, flight = ~FlightNum,
       origin = ~Origin, dest = ~Dest, air_time = ~AirTime, distance = ~Distance,
-      cancelled = ~Cancelled, diverted = ~Diverted
+      cancelled = ~Cancelled, diverted = ~Diverted, 
+      hour = ~hour, minute = ~minute, time_hour = ~time_hour
     ) %>%
 #    filter(origin %in% c("JFK", "LGA", "EWR")) %>%
 
