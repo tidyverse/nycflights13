@@ -40,8 +40,7 @@ clean_flights <- function(path_zip) {
   # )
   # can't get col_types argument to work!
   # readr::read_csv(path_zip, col_types = col_types) %>%
-  x <- readr::read_csv(path_zip) 
-  x %>%
+  readr::read_csv(path_zip) %>%
     mutate_(dep_time = ~as.numeric(DepTime), 
             sched_dep_time = ~as.numeric(CRSDepTime), 
             dep_delay = ~DepDelay, 
