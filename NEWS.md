@@ -1,3 +1,5 @@
+* Record precipitation totals from the weather observations at 51 minutes past the hour (#27) 
+
 # nycflights13 0.2.2
 
 * Import function from tibble to suppress R CMD check NOTE.
