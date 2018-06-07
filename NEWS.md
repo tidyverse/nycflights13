@@ -1,3 +1,6 @@
+* Add 'GMT' timezone to weather$time_hour and update code to match current file
+  format from Iowa State mesonet (@rmcd1024, #24) 
+
 # nycflights13 0.2.2
 
 * Import function from tibble to suppress R CMD check NOTE.
