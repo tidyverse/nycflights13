@@ -17,4 +17,4 @@ Suggests:
     dplyr
 URL: http://github.com/hadley/nycflights13
 BugReports: https://github.com/hadley/nycflights13/issues
-RoxygenNote: 5.0.1.9000
+RoxygenNote: 6.0.1
