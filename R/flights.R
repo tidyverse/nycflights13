@@ -8,8 +8,8 @@
 #' @format Data frame with columns
 #' \describe{
 #' \item{year,month,day}{Date of departure}
-#' \item{dep_time,arr_time}{Actual departure and arrival times, local tz.}
-#' \item{sched_dep_time,sched_arr_time}{Scheduled departure and arrival times, local tz.}
+#' \item{dep_time,arr_time}{Actual departure and arrival times (format HHMM or HMM), local tz.}
+#' \item{sched_dep_time,sched_arr_time}{Scheduled departure and arrival times (format HHMM or HMM), local tz.}
 #' \item{dep_delay,arr_delay}{Departure and arrival delays, in minutes.
 #'   Negative times represent early departures/arrivals.}
 #' \item{hour,minute}{Time of scheduled departure broken into hour and minutes.}
