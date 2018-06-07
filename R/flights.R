@@ -21,7 +21,8 @@
 #'   additional metadata.}
 #' \item{air_time}{Amount of time spent in the air, in minutes}
 #' \item{distance}{Distance between airports, in miles}
-#' \item{time_hour}{Scheduled date and hour of the flight as a \code{POSIXct} date.
+#' \item{time_hour}{Scheduled date and hour of the flight as a \code{POSIXct} date 
+#' with timezone set to Eastern Standard Time (EST).
 #'   Along with \code{origin}, can be used to join flights data to weather data.}
 #' }
 "flights"
