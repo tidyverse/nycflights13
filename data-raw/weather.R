@@ -62,7 +62,12 @@ weather <- raw %>%
   mutate(year = 2013, month = month(time), day = mday(time),
          hour = hour(time), minute = minute(time)) %>%
   group_by(station, month, day, hour) %>%
+  ## precipitation is cumulated hourly until minute 51, after which
+  ## it resets to zero. For more details and additional links see
+  ## https://github.com/rmcd1024/daily_precipitation_totals
   filter(minute <= 51) %>%
+  ## there may be no minute 51 record, so find the preceding record
+  ## with greatest cumulation
   mutate(precip = max(precip)) %>%
   filter(row_number() == 1) %>%
   select(origin = station, year:hour, temp:visib) %>%
