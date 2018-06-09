@@ -37,7 +37,7 @@ all <- lapply(paths, read_csv, skip = 5, na = "M", col_names = TRUE, col_types =
     skyc2 = col_character(),
     skyc3 = col_character(),
     skyc4 = col_character(),
-    presentwx = col_character(),
+    wxcodes = col_character(),
     metar = col_character()
   )
 )
