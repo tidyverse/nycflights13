@@ -1,3 +1,5 @@
+# nycflights13 0.2.2.9000
+
 * `weather$time_hour` and `flights$time_hour` are now set in the America/New_York 
   timezone (#19).
 
