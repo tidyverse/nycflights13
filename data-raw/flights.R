@@ -43,7 +43,7 @@ get_nyc <- function(path) {
       year = Year, month = Month, day = DayofMonth,
       dep_time = DepTime, sched_dep_time = CRSDepTime, dep_delay = DepDelay,
       arr_time = ArrTime, sched_arr_time = CRSArrTime, arr_delay = ArrDelay,
-      carrier = Carrier,  flight = FlightNum, tailnum = TailNum,
+      carrier = Carrier, flight = FlightNum, tailnum = TailNum,
       origin = Origin, dest = Dest,
       air_time = AirTime, distance = Distance
     ) %>%

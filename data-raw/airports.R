@@ -16,7 +16,9 @@ raw <- read_csv("data-raw/airports.dat",
 airports <- raw %>%
   filter(country == "United States", faa != "") %>%
   select(faa, name, lat, lon, alt, tz, dst, tzone) %>%
-  group_by(faa) %>% slice(1) %>% ungroup() # take first if duplicated
+  group_by(faa) %>%
+  slice(1) %>%
+  ungroup() # take first if duplicated
 
 
 # Verify the results
