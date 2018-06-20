@@ -3,12 +3,14 @@
 * `weather$time_hour` and `flights$time_hour` are now set in the America/New_York 
   timezone (#19).
 
-* `wind_gust` now correctly extract instead of being copy of `wind_speed`
+* `weather$wind_gust` now correctly captured from the underlying data, rather
+  than being a copy of `wind_speed`.
 
-* Record precipitation totals from the weather observations at 51 minutes past the hour (#27) 
+* `weather$precip` is better captures the hourly preciptation (which tends to be
+  recorded at 51 minutes past the hour) (#27) 
 
-* Add 'GMT' timezone to weather$time_hour and update code to match current file
-  format from Iowa State mesonet (@rmcd1024, #24) 
+* Historical weather data updated from latest Iowa State mesonet 
+  (@rmcd1024, #24).
 
 # nycflights13 0.2.2
 
