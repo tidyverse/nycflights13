@@ -5,8 +5,10 @@
 
 This package contains information about all flights that departed from NYC
 (e.g. EWR, JFK and LGA) in 2013: 336,776 flights in total. To help understand 
-what causes delays, it also includes a number of other useful datasets:
+what causes delays, it also includes a number of other useful datasets.
+This package provides the following data tables.
 
+* `flights`: all flights that departed from NYC in 2013
 * `weather`: hourly meterological data for each airport
 * `planes`: construction information about each plane
 * `airports`: airport names and locations

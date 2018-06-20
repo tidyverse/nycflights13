@@ -16,7 +16,7 @@ get_asos <- function(station) {
     format = "comma", latlon = "no", direct = "yes")
 
   dir.create("data-raw/weather", showWarnings = FALSE, recursive = TRUE)
-  r <- GET(url, query = query, write_disk(paste0("./data-raw/weather", station, ".csv")))
+  r <- GET(url, query = query, write_disk(paste0("./data-raw/weather/", station, ".csv")))
   stop_for_status(r)
 }
 
@@ -28,29 +28,25 @@ lapply(missing, get_asos)
 # Load ------------------------------------------------------------------------
 
 paths <- dir("data-raw/weather", full.names = TRUE)
-all <- lapply(paths, read_csv, skip = 4, na = "M", col_names = FALSE, col_types =
+all <- lapply(paths, read_csv, skip = 5, na = "M", col_names = TRUE, col_types =
   cols(
     .default = col_double(),
-    X1 = col_character(),
-    X2 = col_datetime(format = ""),
-    X12 = col_character(),
-    X13 = col_character(),
-    X14 = col_character(),
-    X15 = col_character(),
-    X16 = col_character(),
-    X21 = col_character(),
-    X22 = col_character()
+    station = col_character(),
+    valid = col_datetime(format = ""),
+    skyc1 = col_character(),
+    skyc2 = col_character(),
+    skyc3 = col_character(),
+    skyc4 = col_character(),
+    wxcodes = col_character(),
+    metar = col_character()
   )
 )
 
 raw <- bind_rows(all)
-names(raw) <- c("station", "time", "tmpf", "dwpf", "relh", "drct", "sknt",
-  "p01i", "alti", "mslp", "vsby", "gust", "skyc1", "skyc2", "skyc3", "skyc4",
-  "skyl1", "skyl2", "skyl3", "skyl4", "metar")
 
 weather <- raw %>%
   select(
-    station, time, temp = tmpf, dewp = dwpf, humid = relh,
+    station, time = valid, temp = tmpf, dewp = dwpf, humid = relh,
     wind_dir = drct, wind_speed = sknt, wind_gust = gust,
     precip = p01i, pressure = mslp, visib = vsby
   ) %>%
@@ -74,7 +70,7 @@ weather <- raw %>%
   ungroup() %>%
   filter(!is.na(month)) %>%
   mutate(
-    time_hour = ISOdatetime(year, month, day, hour, 0, 0)
+    time_hour = ISOdatetime(year, month, day, hour, 0, 0, tz='GMT')
   )
 
 write_csv(weather, "data-raw/weather.csv")
