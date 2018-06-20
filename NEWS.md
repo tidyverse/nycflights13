@@ -1,3 +1,5 @@
+* `wind_gust` now correctly extract instead of being copy of `wind_speed`
+
 * Record precipitation totals from the weather observations at 51 minutes past the hour (#27) 
 
 * Add 'GMT' timezone to weather$time_hour and update code to match current file
