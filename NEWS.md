@@ -1,3 +1,6 @@
+* `weather$time_hour` and `flights$time_hour` are now set in the America/New_York 
+  timezone (#19).
+
 * `wind_gust` now correctly extract instead of being copy of `wind_speed`
 
 * Record precipitation totals from the weather observations at 51 minutes past the hour (#27) 

@@ -51,7 +51,7 @@ get_nyc <- function(path) {
     mutate(
       hour = sched_dep_time %/% 100,
       minute = sched_dep_time %% 100,
-      time_hour = lubridate::make_datetime(year, month, day, hour, 0, 0)
+      time_hour = lubridate::make_datetime(year, month, day, hour, 0, 0, tz = "America/New_York")
     ) %>%
     arrange(year, month, day, dep_time)
 }

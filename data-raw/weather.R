@@ -83,11 +83,13 @@ raw3 <- raw2 %>%
 # Match structure to flights
 weather <- raw3 %>%
   mutate(
+    time = with_tz(time, "America/New_York"),
     year = year(time),
     month = month(time),
     day = mday(time),
     hour = hour(time)
   ) %>%
+  filter(year == 2013) %>%
   select(origin, year:hour, temp:visib, time_hour = time)
 
 write_csv(weather, "data-raw/weather.csv")
