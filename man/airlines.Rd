@@ -10,7 +10,7 @@
 \item{name}{Full name}
 }}
 \source{
-http://www.transtats.bts.gov/DL_SelectFields.asp?Table_ID=236
+https://www.transtats.bts.gov/DL_SelectFields.asp?Table_ID=236
 }
 \usage{
 airlines

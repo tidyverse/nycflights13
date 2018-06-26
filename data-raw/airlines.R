@@ -1,7 +1,7 @@
 library(dplyr)
 library(readr)
 
-raw <- read_csv("http://www.transtats.bts.gov/Download_Lookup.asp?Lookup=L_UNIQUE_CARRIERS")
+raw <- read_csv("https://www.transtats.bts.gov/Download_Lookup.asp?Lookup=L_UNIQUE_CARRIERS")
 
 load("data/flights.rda")
 

@@ -25,7 +25,7 @@ Along with \code{origin}, can be used to join flights data to weather data.}
 }}
 \source{
 RITA, Bureau of transportation statistics,
-\url{http://www.transtats.bts.gov/DL_SelectFields.asp?Table_ID=236}
+\url{https://www.transtats.bts.gov/DL_SelectFields.asp?Table_ID=236}
 }
 \usage{
 flights
