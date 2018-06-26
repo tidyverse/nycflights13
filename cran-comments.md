@@ -1,11 +1,7 @@
-This is a minor update to fix the NOTE I accidentally introduced in the last release.
-
----
-
 ## Test environments
-* local OS X install, R 3.3.2
-* ubuntu 12.04 (on travis-ci), R 3.3.2
-* win-builder (devel and release)
+* OS X install: R 3.4
+* win-builder: R-devel
+* travis-ci: R 3.1, R 3.2, R 3.3, R 3.4, R-devel
 
 ## R CMD check results
 
@@ -18,9 +14,10 @@ This is a minor update to fix the NOTE I accidentally introduced in the last rel
 
   This is a data package that will be rarely updated.
 
-## Reverse dependencies
+## revdepcheck results
 
-* I have run R CMD check on the 5 downstream dependencies.
-  (Summary at https://github.com/hadley/nycflights13/tree/master/revdep). 
-  
-* All passed with no errors or warnings.
+We checked 24 reverse dependencies (21 from CRAN + 3 from BioConductor), comparing R CMD check results across CRAN and dev versions of this package.
+
+ * We saw 0 new problems
+ * We failed to check 0 packages
+
