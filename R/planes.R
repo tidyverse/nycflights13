@@ -2,8 +2,7 @@
 #'
 #' Plane metadata for all plane tailnumbers found in the FAA aircraft
 #' registry. American Airways (AA) and Envoy Air (MQ) report fleet numbers
-#' rather than tail numbers (e.g. <http://www.flyerguide.com/Tail_Numbers_(AA)>)
-#' so can't be matched.
+#' rather than tail numbers so can't be matched.
 #'
 #' @source FAA Aircraft registry,
 #'  <http://www.faa.gov/licenses_certificates/aircraft_certification/aircraft_registry/releasable_aircraft_download/>

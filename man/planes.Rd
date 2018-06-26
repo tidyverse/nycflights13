@@ -24,8 +24,7 @@ planes
 \description{
 Plane metadata for all plane tailnumbers found in the FAA aircraft
 registry. American Airways (AA) and Envoy Air (MQ) report fleet numbers
-rather than tail numbers (e.g. \url{http://www.flyerguide.com/Tail_Numbers_(AA)})
-so can't be matched.
+rather than tail numbers so can't be matched.
 }
 \examples{
 if (require("dplyr")) {
