@@ -84,12 +84,12 @@ raw3 <- raw2 %>%
 weather <- raw3 %>%
   mutate(
     time = with_tz(time, "America/New_York"),
-    year = year(time),
-    month = month(time),
+    year = as.integer(year(time)),
+    month = as.integer(month(time)),
     day = mday(time),
     hour = hour(time)
   ) %>%
-  filter(year == 2013) %>%
+  filter(year == 2013L) %>%
   select(origin, year:hour, temp:visib, time_hour = time)
 
 write_csv(weather, "data-raw/weather.csv")
