@@ -1,3 +1,5 @@
+globalVariables(c("year", "month", "filename"))
+
 #' @rdname etl_load.etl_airlines
 #' @inheritParams etl::etl_extract
 #' @param years a vector of integers representing the years
