@@ -1,6 +1,6 @@
 Package: airlines
 Title: Historical On-time Flight Data
-Version: 0.2.2.9014
+Version: 0.2.2.9015
 Date: 2018-02-04
 Authors@R: c(
     person("Benjamin S.", "Baumer", email = "ben.baumer@gmail.com",
@@ -33,4 +33,4 @@ Suggests:
 URL: http://github.com/beanumber/airlines
 BugReports: https://github.com/beanumber/airlines/issues
 VignetteBuilder: knitr
-RoxygenNote: 6.0.1
+RoxygenNote: 6.1.1

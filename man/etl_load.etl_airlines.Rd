@@ -7,14 +7,16 @@
 \alias{etl_transform.etl_airlines}
 \title{ETL functionality for airlines data}
 \usage{
-\method{etl_extract}{etl_airlines}(obj, years = 2015, months = 1:12, ...)
+\method{etl_extract}{etl_airlines}(obj, years = 2015, months = 1:12,
+  ...)
 
 \method{etl_load}{etl_airlines}(obj, years = 2015, months = 1:12, ...)
 
-\method{etl_init}{etl_airlines}(obj, script = NULL, schema_name = "init",
-  pkg = attr(obj, "pkg"), ext = NULL, ...)
+\method{etl_init}{etl_airlines}(obj, script = NULL,
+  schema_name = "init", pkg = attr(obj, "pkg"), ext = NULL, ...)
 
-\method{etl_transform}{etl_airlines}(obj, years = 2015, months = 1:12, ...)
+\method{etl_transform}{etl_airlines}(obj, years = 2015, months = 1:12,
+  ...)
 }
 \arguments{
 \item{obj}{an \code{\link{etl}} object}
