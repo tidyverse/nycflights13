@@ -12,16 +12,16 @@
 \item{dep_delay,arr_delay}{Departure and arrival delays, in minutes.
 Negative times represent early departures/arrivals.}
 \item{hour,minute}{Time of scheduled departure broken into hour and minutes.}
-\item{carrier}{Two letter carrier abbreviation. See \code{\link[=airlines]{airlines()}}
+\item{carrier}{Two letter carrier abbreviation. See \code{\link{airlines}}
 to get name}
-\item{tailnum}{Plane tail number}
+\item{tailnum}{Plane tail number, see \code{\link{planes}}}
 \item{flight}{Flight number}
-\item{origin,dest}{Origin and destination. See \code{\link[=airports]{airports()}} for
+\item{origin,dest}{Origin and destination. See \code{\link{airports}} for
 additional metadata.}
 \item{air_time}{Amount of time spent in the air, in minutes}
 \item{distance}{Distance between airports, in miles}
 \item{time_hour}{Scheduled date and hour of the flight as a \code{POSIXct} date.
-Along with \code{origin}, can be used to join flights data to weather data.}
+Along with \code{origin}, can be used to join flights data to \code{\link{weather}} data.}
 }}
 \source{
 RITA, Bureau of transportation statistics,

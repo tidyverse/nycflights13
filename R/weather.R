@@ -6,8 +6,8 @@
 #'   https://mesonet.agron.iastate.edu/request/download.phtml.
 #' @format A data frame with columns
 #' \describe{
-#' \item{origin}{Weather station. Named origin to faciliate merging with
-#'   [flights()] data}
+#' \item{origin}{Weather station. Named `origin` to faciliate merging with
+#'   [`flights`] data}
 #' \item{year,month,day,hour}{Time of recording}
 #' \item{temp,dewp}{Temperature and dewpoint in F}
 #' \item{humid}{Relative humidity}
