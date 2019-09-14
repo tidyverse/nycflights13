@@ -15,7 +15,7 @@
 #' \item{hour,minute}{Time of scheduled departure broken into hour and minutes.}
 #' \item{carrier}{Two letter carrier abbreviation. See [`airlines`]
 #'   to get name}
-#' \item{tailnum}{Plane tail number, see [`planes`]}
+#' \item{tailnum}{Plane tail number. See [`planes`] for additional metadata.}
 #' \item{flight}{Flight number}
 #' \item{origin,dest}{Origin and destination. See [`airports`] for
 #'   additional metadata.}

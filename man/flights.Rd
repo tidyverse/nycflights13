@@ -14,7 +14,7 @@ Negative times represent early departures/arrivals.}
 \item{hour,minute}{Time of scheduled departure broken into hour and minutes.}
 \item{carrier}{Two letter carrier abbreviation. See \code{\link{airlines}}
 to get name}
-\item{tailnum}{Plane tail number, see \code{\link{planes}}}
+\item{tailnum}{Plane tail number. See \code{\link{planes}} for additional metadata.}
 \item{flight}{Flight number}
 \item{origin,dest}{Origin and destination. See \code{\link{airports}} for
 additional metadata.}
