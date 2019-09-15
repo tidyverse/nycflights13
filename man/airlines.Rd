@@ -6,11 +6,11 @@
 \title{Airline names.}
 \format{Data frame with columns
 \describe{
-\item{carrier}{Two letter abbreviation}
-\item{name}{Full name}
+\item{carrier}{Two letter abbreviation.}
+\item{name}{Full name.}
 }}
 \source{
-https://www.transtats.bts.gov/DL_SelectFields.asp?Table_ID=236
+\url{https://www.transtats.bts.gov/DL_SelectFields.asp?Table_ID=236}
 }
 \usage{
 airlines
