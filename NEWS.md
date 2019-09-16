@@ -1,5 +1,7 @@
 # nycflights13 1.0.0.9000
 
+* `airports$tz` with values `\N` replaced with `NA` (#36).
+
 * `weather$year` and `weather$month` are now integers to match `flights$year`
   and `flights$month` (@jozefhajnala, #34)
 
