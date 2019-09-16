@@ -1,5 +1,8 @@
 # nycflights13 1.0.0.9000
 
+* `weather$year` and `weather$month` are now integers to match `flights$year`
+  and `flights$month` (@jozefhajnala, #34)
+
 # nycflights13 1.0.0
 
 * `weather$time_hour` and `flights$time_hour` are now stored in the 
