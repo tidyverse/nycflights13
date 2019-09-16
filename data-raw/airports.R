@@ -33,4 +33,4 @@ airports %>%
 ggsave("data-raw/airports.svg", width = 8, height = 6)
 
 write_csv(airports, "data-raw/airports.csv")
-save(airports, file = "data/airports.rda")
+save(airports, file = "data/airports.rda", version = 2)
