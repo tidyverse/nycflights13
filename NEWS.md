@@ -1,4 +1,4 @@
-# nycflights13 1.0.0.9000
+# nycflights13 1.0.1
 
 * `airports$tz` with values `\N` replaced with `NA` (#36).
 
