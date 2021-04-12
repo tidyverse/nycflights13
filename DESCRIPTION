@@ -22,5 +22,6 @@ Suggests:
     dplyr
 Encoding: UTF-8
 LazyData: true
+LazyDataCompression: bzip2
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 6.1.1
