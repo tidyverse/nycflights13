@@ -4,7 +4,7 @@
 #'
 #' @source ASOS download from Iowa Environmental Mesonet,
 #'   <https://mesonet.agron.iastate.edu/request/download.phtml>.
-#' @format A data frame with columns
+#' @format A data frame with columns:
 #' \describe{
 #' \item{origin}{Weather station. Named `origin` to facilitate merging with
 #'   [`flights`] data.}

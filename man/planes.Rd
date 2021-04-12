@@ -4,7 +4,8 @@
 \name{planes}
 \alias{planes}
 \title{Plane metadata.}
-\format{A data frame with columns:
+\format{
+A data frame with columns:
 \describe{
 \item{tailnum}{Tail number.}
 \item{year}{Year manufactured.}
@@ -13,7 +14,8 @@
 \item{engines, seats}{Number of engines and seats.}
 \item{speed}{Average cruising speed in mph.}
 \item{engine}{Type of engine.}
-}}
+}
+}
 \source{
 FAA Aircraft registry,
 \url{http://www.faa.gov/licenses_certificates/aircraft_certification/aircraft_registry/releasable_aircraft_download/}

@@ -4,7 +4,8 @@
 \name{flights}
 \alias{flights}
 \title{Flights data}
-\format{Data frame with columns
+\format{
+Data frame with columns
 \describe{
 \item{year, month, day}{Date of departure.}
 \item{dep_time, arr_time}{Actual departure and arrival times (format HHMM or HMM), local tz.}
@@ -22,7 +23,8 @@ additional metadata.}
 \item{hour, minute}{Time of scheduled departure broken into hour and minutes.}
 \item{time_hour}{Scheduled date and hour of the flight as a \code{POSIXct} date.
 Along with \code{origin}, can be used to join flights data to \code{\link{weather}} data.}
-}}
+}
+}
 \source{
 RITA, Bureau of transportation statistics,
 \url{https://www.transtats.bts.gov/DL_SelectFields.asp?Table_ID=236}

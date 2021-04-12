@@ -4,7 +4,8 @@
 \name{weather}
 \alias{weather}
 \title{Hourly weather data}
-\format{A data frame with columns
+\format{
+A data frame with columns:
 \describe{
 \item{origin}{Weather station. Named \code{origin} to facilitate merging with
 \code{\link{flights}} data.}
@@ -17,7 +18,8 @@ and gust speed (in mph).}
 \item{pressure}{Sea level pressure in millibars.}
 \item{visib}{Visibility in miles.}
 \item{time_hour}{Date and hour of the recording as a \code{POSIXct} date.}
-}}
+}
+}
 \source{
 ASOS download from Iowa Environmental Mesonet,
 \url{https://mesonet.agron.iastate.edu/request/download.phtml}.
