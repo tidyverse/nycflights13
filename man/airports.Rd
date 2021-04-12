@@ -19,7 +19,7 @@ U = unknown. N = no dst.}
 }
 }
 \source{
-\url{http://openflights.org/data.html}, downloaded 2014-06-27
+\url{https://openflights.org/data.html}, downloaded 2014-06-27
 }
 \usage{
 airports
