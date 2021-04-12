@@ -8,9 +8,9 @@ Authors@R:
              email = "hadley@rstudio.com"),
       person(given = "RStudio",
              role = "cph"))
-Description: Airline on-time data for all flights departing NYC
-    in 2013.  Also includes useful 'metadata' on airlines, airports,
-    weather, and planes.
+Description: Airline on-time data for all flights departing NYC in 2013.
+    Also includes useful 'metadata' on airlines, airports, weather, and
+    planes.
 License: CC0
 URL: https://github.com/hadley/nycflights13
 BugReports: https://github.com/hadley/nycflights13/issues
