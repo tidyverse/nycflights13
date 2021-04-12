@@ -1,4 +1,4 @@
-# nycflights13 (development version)
+# nycflights13 1.0.2
 
 * Fixes for R CMD check changes.
 
