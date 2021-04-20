@@ -1,4 +1,4 @@
-#' Airline names.
+#' Airline names
 #'
 #' Look up airline names from their carrier codes.
 #'

@@ -3,7 +3,7 @@
 \docType{data}
 \name{planes}
 \alias{planes}
-\title{Plane metadata.}
+\title{Plane metadata}
 \format{
 A data frame with columns:
 \describe{

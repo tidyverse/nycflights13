@@ -3,7 +3,7 @@
 \docType{data}
 \name{airlines}
 \alias{airlines}
-\title{Airline names.}
+\title{Airline names}
 \format{
 Data frame with columns
 \describe{
