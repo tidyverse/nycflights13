@@ -104,7 +104,7 @@
   <a href="../news/index.html">Changelog</a>
 </li>
         <li>
-  <a href="https://github.com/hadley/nycflights13/">
+  <a href="https://github.com/tidyverse/nycflights13/">
     <span class="fab fa-github fa-lg"></span>
      
   </a>
@@ -123,7 +123,7 @@
   <div class="col-md-9 contents">
     <div class="page-header">
       <h1 data-toc-skip>Changelog <small></small></h1>
-      <small>Source: <a href='https://github.com/hadley/nycflights13/blob/master/NEWS.md'><code>NEWS.md</code></a></small>
+      <small>Source: <a href='https://github.com/tidyverse/nycflights13/blob/master/NEWS.md'><code>NEWS.md</code></a></small>
     </div>
 
     <div id="nycflights13-development-version" class="section level1">
@@ -144,8 +144,8 @@
 <a href="#nycflights13-101" class="anchor"></a>nycflights13 1.0.1<small> 2019-09-16 </small>
 </h1>
 <ul>
-<li><p><code>airports$tz</code> with values <code>\N</code> replaced with <code>NA</code> (<a href='https://github.com/hadley/nycflights13/issues/36'>#36</a>).</p></li>
-<li><p><code>weather$year</code> and <code>weather$month</code> are now integers to match <code>flights$year</code> and <code>flights$month</code> (<a href='https://github.com/jozefhajnala'>@jozefhajnala</a>, <a href='https://github.com/hadley/nycflights13/issues/34'>#34</a>)</p></li>
+<li><p><code>airports$tz</code> with values <code>\N</code> replaced with <code>NA</code> (<a href='https://github.com/tidyverse/nycflights13/issues/36'>#36</a>).</p></li>
+<li><p><code>weather$year</code> and <code>weather$month</code> are now integers to match <code>flights$year</code> and <code>flights$month</code> (<a href='https://github.com/jozefhajnala'>@jozefhajnala</a>, <a href='https://github.com/tidyverse/nycflights13/issues/34'>#34</a>)</p></li>
 </ul>
 </div>
     <div id="nycflights13-100" class="section level1">
@@ -153,8 +153,8 @@
 <a href="#nycflights13-100" class="anchor"></a>nycflights13 1.0.0<small> 2018-06-26 </small>
 </h1>
 <ul>
-<li><p><code>weather$time_hour</code> and <code>flights$time_hour</code> are now stored in the America/New_York timezone (<a href='https://github.com/hadley/nycflights13/issues/19'>#19</a>).</p></li>
-<li><p><code>weather</code> data updated from latest Iowa State mesonet (<a href='https://github.com/rmcd1024'>@rmcd1024</a>, <a href='https://github.com/hadley/nycflights13/issues/24'>#24</a>). <code>wind_gust</code> is now correctly captured from the underlying data, rather than being a copy of <code>wind_speed</code>. <code>precip</code> is better captures the hourly preciptation (which tends to be recorded at 51 minutes past the hour) (<a href='https://github.com/hadley/nycflights13/issues/27'>#27</a>)</p></li>
+<li><p><code>weather$time_hour</code> and <code>flights$time_hour</code> are now stored in the America/New_York timezone (<a href='https://github.com/tidyverse/nycflights13/issues/19'>#19</a>).</p></li>
+<li><p><code>weather</code> data updated from latest Iowa State mesonet (<a href='https://github.com/rmcd1024'>@rmcd1024</a>, <a href='https://github.com/tidyverse/nycflights13/issues/24'>#24</a>). <code>wind_gust</code> is now correctly captured from the underlying data, rather than being a copy of <code>wind_speed</code>. <code>precip</code> is better captures the hourly preciptation (which tends to be recorded at 51 minutes past the hour) (<a href='https://github.com/tidyverse/nycflights13/issues/27'>#27</a>)</p></li>
 </ul>
 </div>
     <div id="nycflights13-022" class="section level1">
@@ -171,7 +171,7 @@
 </h1>
 <ul>
 <li><p>nycflights imports tibble so you get nice printing even when no other tidyverse package is loaded.</p></li>
-<li><p><code>airports</code> now has a <code>tzone</code> column that contains the IANA time zone for the airport (<a href='https://github.com/hadley/nycflights13/issues/15'>#15</a>).</p></li>
+<li><p><code>airports</code> now has a <code>tzone</code> column that contains the IANA time zone for the airport (<a href='https://github.com/tidyverse/nycflights13/issues/15'>#15</a>).</p></li>
 </ul>
 </div>
     <div id="nycflights13-020" class="section level1">
@@ -179,14 +179,14 @@
 <a href="#nycflights13-020" class="anchor"></a>nycflights13 0.2.0<small> 2016-04-30 </small>
 </h1>
 <ul>
-<li><p><code>airlines</code>: <code>carrier</code> columns are characters instead of factors (<a href='https://github.com/hadley/nycflights13/issues/2'>#2</a>).</p></li>
-<li><p><code>airports</code>: duplicate entry for BFT removed (<a href='https://github.com/hadley/nycflights13/issues/7'>#7</a>).</p></li>
+<li><p><code>airlines</code>: <code>carrier</code> columns are characters instead of factors (<a href='https://github.com/tidyverse/nycflights13/issues/2'>#2</a>).</p></li>
+<li><p><code>airports</code>: duplicate entry for BFT removed (<a href='https://github.com/tidyverse/nycflights13/issues/7'>#7</a>).</p></li>
 <li>
 <p><code>flights</code>:</p>
 <ul>
-<li><p>new <code>time_hour</code> variable combines <code>year</code>, <code>month</code>, <code>day</code>, and <code>hour</code> into a single variable (<a href='https://github.com/hadley/nycflights13/issues/11'>#11</a>).</p></li>
+<li><p>new <code>time_hour</code> variable combines <code>year</code>, <code>month</code>, <code>day</code>, and <code>hour</code> into a single variable (<a href='https://github.com/tidyverse/nycflights13/issues/11'>#11</a>).</p></li>
 <li><p>new <code>sched_dep_time</code> and <code>sched_arr_time</code> variables give scheduled departure and arrival times - these are more appropriate for connecting to weather data. <code>hour</code> and <code>minute</code> are now computed from the scheduled departure time, not the actual departure time.</p></li>
-<li><p>missing <code>tailnum</code> now recorded as <code>NA</code>, not <code>""</code> (<a href='https://github.com/hadley/nycflights13/issues/10'>#10</a>).</p></li>
+<li><p>missing <code>tailnum</code> now recorded as <code>NA</code>, not <code>""</code> (<a href='https://github.com/tidyverse/nycflights13/issues/10'>#10</a>).</p></li>
 </ul>
 </li>
 <li>
