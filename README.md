@@ -5,6 +5,8 @@
 [![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/nycflights13)](https://cran.r-project.org/package=nycflights13)
 <!-- badges: end -->
 
+## Overview
+
 This package contains information about all flights that departed from NYC
 (e.g. EWR, JFK and LGA) to destinations in the United States, Puerto Rico,
 and the American Virgin Islands) in 2013: 

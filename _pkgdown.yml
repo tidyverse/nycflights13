@@ -1,0 +1,7 @@
+url: https://nycflights13.tidyverse.org
+
+template:
+  package: tidytemplate
+
+home:
+  strip_header: true
