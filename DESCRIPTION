@@ -19,6 +19,7 @@ Depends:
 Imports: 
     tibble
 Suggests: 
+    covr,
     dplyr
 Encoding: UTF-8
 LazyData: true

@@ -1,7 +1,9 @@
 # nycflights13
 
-[![Travis-CI Build Status](https://travis-ci.org/hadley/nycflights13.svg?branch=master)](https://travis-ci.org/hadley/nycflights13)
+<!-- badges: start -->
+[![R-CMD-check](https://github.com/tidyverse/nycflights13/workflows/R-CMD-check/badge.svg)](https://github.com/tidyverse/nycflights13/actions)
 [![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/nycflights13)](https://cran.r-project.org/package=nycflights13)
+<!-- badges: end -->
 
 This package contains information about all flights that departed from NYC
 (e.g. EWR, JFK and LGA) to destinations in the United States, Puerto Rico,
