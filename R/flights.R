@@ -4,7 +4,7 @@
 #' 2013.
 #'
 #' @source RITA, Bureau of transportation statistics,
-#'  <https://www.transtats.bts.gov/DL_SelectFields.asp?Table_ID=236>
+#'  <https://www.transtats.bts.gov/>
 #' @format Data frame with columns
 #' \describe{
 #' \item{year, month, day}{Date of departure.}
