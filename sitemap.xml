@@ -1,7 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://nycflights13.tidyverse.org/404.html</loc>
+  </url>
+  <url>
+    <loc>https://nycflights13.tidyverse.org/authors.html</loc>
+  </url>
+  <url>
     <loc>https://nycflights13.tidyverse.org/index.html</loc>
+  </url>
+  <url>
+    <loc>https://nycflights13.tidyverse.org/news/index.html</loc>
   </url>
   <url>
     <loc>https://nycflights13.tidyverse.org/reference/airlines.html</loc>
@@ -11,6 +20,9 @@
   </url>
   <url>
     <loc>https://nycflights13.tidyverse.org/reference/flights.html</loc>
+  </url>
+  <url>
+    <loc>https://nycflights13.tidyverse.org/reference/index.html</loc>
   </url>
   <url>
     <loc>https://nycflights13.tidyverse.org/reference/planes.html</loc>
