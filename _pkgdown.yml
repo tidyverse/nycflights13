@@ -2,6 +2,11 @@ url: https://nycflights13.tidyverse.org
 
 template:
   package: tidytemplate
+  bootstrap: 5
 
-home:
-  strip_header: true
+  includes:
+    in_header: |
+      <script defer data-domain="nycflights13.tidyverse.org,all.tidyverse.org" src="https://plausible.io/js/plausible.js"></script>
+
+dev:
+  mode: auto
