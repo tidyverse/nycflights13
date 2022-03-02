@@ -8,5 +8,5 @@ template:
     in_header: |
       <script defer data-domain="nycflights13.tidyverse.org,all.tidyverse.org" src="https://plausible.io/js/plausible.js"></script>
 
-dev:
+development:
   mode: auto
