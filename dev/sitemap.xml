@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://nycflights13.tidyverse.org/dev/authors.html</loc>
+  </url>
+  <url>
+    <loc>https://nycflights13.tidyverse.org/dev/index.html</loc>
+  </url>
+  <url>
+    <loc>https://nycflights13.tidyverse.org/dev/news/index.html</loc>
+  </url>
+  <url>
+    <loc>https://nycflights13.tidyverse.org/dev/reference/airlines.html</loc>
+  </url>
+  <url>
+    <loc>https://nycflights13.tidyverse.org/dev/reference/airports.html</loc>
+  </url>
+  <url>
+    <loc>https://nycflights13.tidyverse.org/dev/reference/flights.html</loc>
+  </url>
+  <url>
+    <loc>https://nycflights13.tidyverse.org/dev/reference/index.html</loc>
+  </url>
+  <url>
+    <loc>https://nycflights13.tidyverse.org/dev/reference/planes.html</loc>
+  </url>
+  <url>
+    <loc>https://nycflights13.tidyverse.org/dev/reference/weather.html</loc>
+  </url>
+</urlset>
