@@ -3,7 +3,7 @@ library(readr)
 
 # Update URL from
 # http://www.faa.gov/licenses_certificates/aircraft_certification/aircraft_registry/releasable_aircraft_download/
-src <- "http://registry.faa.gov/database/AR062014.zip"
+src <- "https://registry.faa.gov/database/ReleasableAircraft.zip"
 lcl <- "data-raw/planes"
 
 if (!file.exists(lcl)) {
