@@ -28,7 +28,7 @@ ref <- read.csv("data-raw/planes//ACFTREF.txt",
 names(ref) <- tolower(names(ref))
 
 ref <- ref %>%
-  tbl_df() %>%
+  as_tibble() %>%
   select(code, mfr, model, type.acft, type.eng, no.eng, no.seats, speed)
 
 # Combine together
