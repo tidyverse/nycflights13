@@ -18,7 +18,7 @@ master <- read.csv("data-raw/planes/MASTER.txt", stringsAsFactors = FALSE, strip
 names(master) <- tolower(names(master))
 
 keep <- master %>%
-  tbl_df() %>%
+  as_tibble() %>%
   select(nnum = n.number, code = mfr.mdl.code, year = year.mfr)
 
 ref <- read.csv("data-raw/planes//ACFTREF.txt",
