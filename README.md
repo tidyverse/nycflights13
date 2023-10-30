@@ -1,8 +1,9 @@
 # nycflights13
 
 <!-- badges: start -->
-[![R-CMD-check](https://github.com/tidyverse/nycflights13/workflows/R-CMD-check/badge.svg)](https://github.com/tidyverse/nycflights13/actions)
 [![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/nycflights13)](https://cran.r-project.org/package=nycflights13)
+[![R-CMD-check](https://github.com/tidyverse/nycflights13/workflows/R-CMD-check/badge.svg)](https://github.com/tidyverse/nycflights13/actions)
+[![Codecov test coverage](https://codecov.io/gh/tidyverse/nycflights13/branch/main/graph/badge.svg)](https://app.codecov.io/gh/tidyverse/nycflights13?branch=main)
 <!-- badges: end -->
 
 ## Overview
