@@ -13,7 +13,7 @@ URL: https://nycflights13.tidyverse.org,
     https://github.com/tidyverse/nycflights13
 BugReports: https://github.com/tidyverse/nycflights13/issues
 Depends: 
-    R (>= 3.2)
+    R (>= 3.6)
 Imports: 
     tibble
 Suggests: 
