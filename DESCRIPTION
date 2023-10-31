@@ -2,8 +2,8 @@ Package: nycflights13
 Title: Flights that Departed NYC in 2013
 Version: 1.0.2.9000
 Authors@R: c(
-    person("Hadley", "Wickham", , "hadley@rstudio.com", role = c("aut", "cre")),
-    person("RStudio", role = c("cph", "fnd"))
+    person("Hadley", "Wickham", , "hadley@posit.com", role = c("aut", "cre")),
+    person("Posit Software, PBC", role = c("cph", "fnd"))
   )
 Description: Airline on-time data for all flights departing NYC in 2013.
     Also includes useful 'metadata' on airlines, airports, weather, and
@@ -13,7 +13,7 @@ URL: https://nycflights13.tidyverse.org,
     https://github.com/tidyverse/nycflights13
 BugReports: https://github.com/tidyverse/nycflights13/issues
 Depends: 
-    R (>= 3.2)
+    R (>= 3.6)
 Imports: 
     tibble
 Suggests: 
@@ -24,4 +24,4 @@ Encoding: UTF-8
 LazyData: true
 LazyDataCompression: bzip2
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.1.1
+RoxygenNote: 7.2.3
