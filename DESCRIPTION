@@ -2,7 +2,7 @@ Package: nycflights13
 Title: Flights that Departed NYC in 2013
 Version: 1.0.2.9000
 Authors@R: c(
-    person("Hadley", "Wickham", , "hadley@posit.com", role = c("aut", "cre")),
+    person("Hadley", "Wickham", , "hadley@posit.co", role = c("aut", "cre")),
     person("Posit Software, PBC", role = c("cph", "fnd"))
   )
 Description: Airline on-time data for all flights departing NYC in 2013.
