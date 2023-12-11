@@ -25,7 +25,7 @@ This package provides the following data tables.
 If you're interested in other subsets of flight data, see:
 
 * [nycflights](https://github.com/jayleetx/nycflights) for flights departing 
-  from NYC in the _last_ year.
+  from NYC in 2017.
   
 * [anyflights](https://github.com/simonpcouch/anyflights) for flights departing
   from any airport in any year.
