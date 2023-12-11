@@ -213,6 +213,7 @@ N14977,1999,Fixed wing multi engine,EMBRAER,EMB-145LR,2,55,NA,Turbo-fan
 N14991,2000,Fixed wing multi engine,EMBRAER,EMB-145LR,2,55,NA,Turbo-fan
 N14993,2000,Fixed wing multi engine,EMBRAER,EMB-145LR,2,55,NA,Turbo-fan
 N14998,2000,Fixed wing multi engine,EMBRAER,EMB-145LR,2,55,NA,Turbo-fan
+N149AT,2004,Fixed wing multi engine,BOEING,737-76N,2,149,NA,Turbo-fan
 N1501P,1990,Fixed wing multi engine,BOEING,767-3P6,2,290,NA,Turbo-fan
 N150UW,2013,Fixed wing multi engine,AIRBUS,A321-211,2,199,NA,Turbo-fan
 N151UW,2013,Fixed wing multi engine,AIRBUS,A321-211,2,199,NA,Turbo-fan
@@ -555,6 +556,7 @@ N26210,1998,Fixed wing multi engine,BOEING,737-824,2,149,NA,Turbo-fan
 N26215,1998,Fixed wing multi engine,BOEING,737-824,2,149,NA,Turbo-fan
 N26226,1998,Fixed wing multi engine,BOEING,737-824,2,149,NA,Turbo-fan
 N262WN,2006,Fixed wing multi engine,BOEING,737-7H4,2,140,NA,Turbo-fan
+N263AV,2002,Fixed wing multi engine,AIRBUS,A320-214,2,182,NA,Turbo-fan
 N263WN,2007,Fixed wing multi engine,BOEING,737-7H4,2,140,NA,Turbo-fan
 N264LV,2007,Fixed wing multi engine,BOEING,737-7H4,2,140,NA,Turbo-fan
 N26545,2002,Fixed wing multi engine,EMBRAER,EMB-145LR,2,55,NA,Turbo-fan
@@ -576,7 +578,6 @@ N27200,2006,Fixed wing multi engine,EMBRAER,EMB-145XR,2,55,NA,Turbo-fan
 N27205,2000,Fixed wing multi engine,BOEING,737-824,2,149,NA,Turbo-fan
 N27213,1998,Fixed wing multi engine,BOEING,737-824,2,149,NA,Turbo-fan
 N27239,1999,Fixed wing multi engine,BOEING,737-824,2,149,NA,Turbo-fan
-N272AT,NA,Fixed wing multi engine,BOEING,777-200,2,400,NA,Turbo-jet
 N272PQ,2013,Fixed wing multi engine,BOMBARDIER INC,CL-600-2D24,2,95,NA,Turbo-fan
 N272WN,2007,Fixed wing multi engine,BOEING,737-7H4,2,140,NA,Turbo-fan
 N273AT,2005,Fixed wing multi engine,BOEING,737-76N,2,149,NA,Turbo-fan
@@ -602,10 +603,11 @@ N279JB,2007,Fixed wing multi engine,EMBRAER,ERJ 190-100 IGW,2,20,NA,Turbo-fan
 N279PQ,2013,Fixed wing multi engine,BOMBARDIER INC,CL-600-2D24,2,95,NA,Turbo-fan
 N279WN,2007,Fixed wing multi engine,BOEING,737-7H4,2,140,NA,Turbo-fan
 N280WN,2007,Fixed wing multi engine,BOEING,737-7H4,2,140,NA,Turbo-fan
-N281AT,NA,Fixed wing multi engine,AIRBUS INDUSTRIE,A340-313,4,375,NA,Turbo-jet
+N281AT,2006,Fixed wing multi engine,BOEING,737-7BD,2,149,NA,Turbo-fan
 N281JB,2007,Fixed wing multi engine,EMBRAER,ERJ 190-100 IGW,2,20,NA,Turbo-fan
 N281WN,2007,Fixed wing multi engine,BOEING,737-7H4,2,140,NA,Turbo-fan
 N282WN,2007,Fixed wing multi engine,BOEING,737-7H4,2,140,NA,Turbo-fan
+N283AT,2006,Fixed wing multi engine,BOEING,737-7BD,2,149,NA,Turbo-fan
 N283JB,2007,Fixed wing multi engine,EMBRAER,ERJ 190-100 IGW,2,20,NA,Turbo-fan
 N283WN,2007,Fixed wing multi engine,BOEING,737-7H4,2,140,NA,Turbo-fan
 N28457,2012,Fixed wing multi engine,BOEING,737-924ER,2,191,NA,Turbo-fan
@@ -621,6 +623,7 @@ N287WN,2007,Fixed wing multi engine,BOEING,737-7H4,2,140,NA,Turbo-fan
 N288WN,2007,Fixed wing multi engine,BOEING,737-7H4,2,140,NA,Turbo-fan
 N289AT,2006,Fixed wing multi engine,BOEING,737-76N,2,149,NA,Turbo-fan
 N289CT,2007,Fixed wing multi engine,BOEING,737-7H4,2,140,NA,Turbo-fan
+N290AT,2006,Fixed wing multi engine,BOEING,737-7BD,2,149,NA,Turbo-fan
 N290WN,2007,Fixed wing multi engine,BOEING,737-7H4,2,140,NA,Turbo-fan
 N29124,1998,Fixed wing multi engine,BOEING,757-224,2,178,NA,Turbo-jet
 N29129,1998,Fixed wing multi engine,BOEING,757-224,2,178,NA,Turbo-jet
@@ -641,15 +644,15 @@ N296JB,2008,Fixed wing multi engine,EMBRAER,ERJ 190-100 IGW,2,20,NA,Turbo-fan
 N296PQ,2013,Fixed wing multi engine,BOMBARDIER INC,CL-600-2D24,2,95,NA,Turbo-fan
 N296WN,2007,Fixed wing multi engine,BOEING,737-7H4,2,140,NA,Turbo-fan
 N29717,1999,Fixed wing multi engine,BOEING,737-724,2,149,NA,Turbo-jet
-N297PQ,2013,Fixed wing multi engine,BOMBARDIER INC,CL-600-2D24,2,95,NA,Turbo-fan
+N297PQ,NA,Fixed wing multi engine,BOMBARDIER INC,CL-600-2D24,2,95,NA,Turbo-fan
 N297WN,2007,Fixed wing multi engine,BOEING,737-7H4,2,140,NA,Turbo-fan
 N298JB,2009,Fixed wing multi engine,EMBRAER,ERJ 190-100 IGW,2,20,NA,Turbo-fan
-N298PQ,2013,Fixed wing multi engine,BOMBARDIER INC,CL-600-2D24,2,95,NA,Turbo-fan
+N298PQ,NA,Fixed wing multi engine,BOMBARDIER INC,CL-600-2D24,2,95,NA,Turbo-fan
 N298WN,NA,Fixed wing multi engine,BOEING,737-7H4,2,140,NA,Turbo-fan
 N29906,2001,Fixed wing multi engine,EMBRAER,EMB-145LR,2,55,NA,Turbo-fan
 N29917,2001,Fixed wing multi engine,EMBRAER,EMB-145LR,2,55,NA,Turbo-fan
 N299AT,2006,Fixed wing multi engine,BOEING,737-76N,2,149,NA,Turbo-fan
-N299PQ,2013,Fixed wing multi engine,BOMBARDIER INC,CL-600-2D24,2,95,NA,Turbo-fan
+N299PQ,NA,Fixed wing multi engine,BOMBARDIER INC,CL-600-2D24,2,95,NA,Turbo-fan
 N299WN,NA,Fixed wing multi engine,BOEING,737-7H4,2,140,NA,Turbo-fan
 N301DQ,NA,Fixed wing multi engine,BOEING,737-732,2,149,NA,Turbo-fan
 N301NB,1999,Fixed wing multi engine,AIRBUS INDUSTRIE,A319-114,2,145,NA,Turbo-fan
@@ -669,6 +672,7 @@ N306JB,2009,Fixed wing multi engine,EMBRAER,ERJ 190-100 IGW,2,20,NA,Turbo-fan
 N307AS,2001,Fixed wing multi engine,BOEING,737-990,2,149,NA,Turbo-jet
 N307DQ,2009,Fixed wing multi engine,BOEING,737-732,2,149,NA,Turbo-fan
 N307JB,2009,Fixed wing multi engine,EMBRAER,ERJ 190-100 IGW,2,20,NA,Turbo-fan
+N308AT,2006,Fixed wing multi engine,BOEING,737-7BD,2,149,NA,Turbo-fan
 N308DE,NA,Fixed wing multi engine,BOEING,737-732,2,149,NA,Turbo-fan
 N309AS,2001,Fixed wing multi engine,BOEING,737-990,2,149,NA,Turbo-jet
 N309AT,2006,Fixed wing multi engine,BOEING,737-7BD,2,149,NA,Turbo-fan
@@ -685,9 +689,9 @@ N31412,2002,Fixed wing multi engine,BOEING,737-924,2,191,NA,Turbo-fan
 N314NB,2000,Fixed wing multi engine,AIRBUS INDUSTRIE,A319-114,2,145,NA,Turbo-fan
 N314US,1991,Fixed wing multi engine,AIRBUS INDUSTRIE,A320-211,2,182,NA,Turbo-jet
 N315AS,2002,Fixed wing multi engine,BOEING,737-990,2,149,NA,Turbo-jet
-N315AT,NA,Fixed wing single engine,JOHN G HESS,AT-5,1,2,NA,4 Cycle
 N315NB,2000,Fixed wing multi engine,AIRBUS INDUSTRIE,A319-114,2,145,NA,Turbo-fan
 N315US,1991,Fixed wing multi engine,AIRBUS INDUSTRIE,A320-211,2,182,NA,Turbo-jet
+N316AT,2007,Fixed wing multi engine,BOEING,737-7BD,2,149,NA,Turbo-fan
 N316JB,2009,Fixed wing multi engine,EMBRAER,ERJ 190-100 IGW,2,20,NA,Turbo-fan
 N316NB,2000,Fixed wing multi engine,AIRBUS INDUSTRIE,A319-114,2,145,NA,Turbo-fan
 N316US,1991,Fixed wing multi engine,AIRBUS INDUSTRIE,A320-211,2,182,NA,Turbo-jet
@@ -709,6 +713,7 @@ N320NB,2000,Fixed wing multi engine,AIRBUS INDUSTRIE,A319-114,2,145,NA,Turbo-fan
 N320US,1991,Fixed wing multi engine,AIRBUS INDUSTRIE,A320-211,2,182,NA,Turbo-jet
 N321NB,2001,Fixed wing multi engine,AIRBUS INDUSTRIE,A319-114,2,145,NA,Turbo-fan
 N321US,1992,Fixed wing multi engine,AIRBUS INDUSTRIE,A320-211,2,182,NA,Turbo-jet
+N322AA,1986,Fixed wing multi engine,BOEING,767-223,2,255,NA,Turbo-fan
 N322NB,2001,Fixed wing multi engine,AIRBUS INDUSTRIE,A319-114,2,145,NA,Turbo-fan
 N322US,1992,Fixed wing multi engine,AIRBUS INDUSTRIE,A320-211,2,182,NA,Turbo-jet
 N323AA,1986,Fixed wing multi engine,BOEING,767-223,2,255,NA,Turbo-fan
@@ -724,6 +729,7 @@ N324US,1992,Fixed wing multi engine,AIRBUS INDUSTRIE,A320-211,2,182,NA,Turbo-jet
 N325AA,1986,Fixed wing multi engine,BOEING,767-223,2,255,NA,Turbo-fan
 N325NB,2001,Fixed wing multi engine,AIRBUS INDUSTRIE,A319-114,2,145,NA,Turbo-fan
 N325US,1992,Fixed wing multi engine,AIRBUS INDUSTRIE,A320-211,2,182,NA,Turbo-jet
+N32626,1995,Fixed wing multi engine,BOEING,737-524,2,149,NA,Turbo-fan
 N326AT,2007,Fixed wing multi engine,BOEING,737-7BD,2,149,NA,Turbo-fan
 N326NB,2001,Fixed wing multi engine,AIRBUS INDUSTRIE,A319-114,2,145,NA,Turbo-fan
 N326US,1992,Fixed wing multi engine,AIRBUS INDUSTRIE,A320-211,2,182,NA,Turbo-jet
@@ -735,6 +741,7 @@ N328JB,2011,Fixed wing multi engine,EMBRAER,ERJ 190-100 IGW,2,20,NA,Turbo-fan
 N328NB,2001,Fixed wing multi engine,AIRBUS INDUSTRIE,A319-114,2,145,NA,Turbo-fan
 N328NW,1992,Fixed wing multi engine,AIRBUS INDUSTRIE,A320-211,2,182,NA,Turbo-jet
 N329AA,1987,Fixed wing multi engine,BOEING,767-223,2,255,NA,Turbo-fan
+N329AT,2007,Fixed wing multi engine,BOEING,737-7BD,2,149,NA,Turbo-fan
 N329JB,2011,Fixed wing multi engine,EMBRAER,ERJ 190-100 IGW,2,20,NA,Turbo-fan
 N329NB,2001,Fixed wing multi engine,AIRBUS INDUSTRIE,A319-114,2,145,NA,Turbo-fan
 N329NW,1992,Fixed wing multi engine,AIRBUS INDUSTRIE,A320-211,2,182,NA,Turbo-jet
@@ -772,6 +779,7 @@ N336AT,2008,Fixed wing multi engine,BOEING,737-7BD,2,149,NA,Turbo-fan
 N336NB,2002,Fixed wing multi engine,AIRBUS INDUSTRIE,A319-114,2,145,NA,Turbo-fan
 N336NW,1992,Fixed wing multi engine,AIRBUS INDUSTRIE,A320-212,2,182,NA,Turbo-fan
 N33714,1998,Fixed wing multi engine,BOEING,737-724,2,149,NA,Turbo-jet
+N337AT,2008,Fixed wing multi engine,BOEING,737-7BD,2,149,NA,Turbo-fan
 N337JB,2011,Fixed wing multi engine,EMBRAER,ERJ 190-100 IGW,2,20,NA,Turbo-fan
 N337NB,2002,Fixed wing multi engine,AIRBUS INDUSTRIE,A319-114,2,145,NA,Turbo-fan
 N337NW,1992,Fixed wing multi engine,AIRBUS INDUSTRIE,A320-212,2,182,NA,Turbo-fan
@@ -796,11 +804,13 @@ N34222,1998,Fixed wing multi engine,BOEING,737-824,2,149,NA,Turbo-fan
 N34282,2004,Fixed wing multi engine,BOEING,737-824,2,149,NA,Turbo-fan
 N342NB,2002,Fixed wing multi engine,AIRBUS,A319-114,2,145,NA,Turbo-fan
 N342NW,1993,Fixed wing multi engine,AIRBUS INDUSTRIE,A320-212,2,182,NA,Turbo-fan
+N343AA,1984,Rotorcraft,SIKORSKY,S-76B,2,14,NA,Turbo-shaft
 N343NB,2002,Fixed wing multi engine,AIRBUS,A319-114,2,145,NA,Turbo-fan
 N343NW,1993,Fixed wing multi engine,AIRBUS INDUSTRIE,A320-212,2,182,NA,Turbo-fan
 N34455,2012,Fixed wing multi engine,BOEING,737-924ER,2,191,NA,Turbo-fan
 N34460,2012,Fixed wing multi engine,BOEING,737-924ER,2,191,NA,Turbo-fan
 N344AA,1992,Fixed wing multi engine,GULFSTREAM AEROSPACE,G-IV,2,22,NA,Turbo-fan
+N344AT,2008,Fixed wing multi engine,BOEING,737-7BD,2,149,NA,Turbo-fan
 N344NB,2002,Fixed wing multi engine,AIRBUS,A319-114,2,145,NA,Turbo-fan
 N344NW,1993,Fixed wing multi engine,AIRBUS INDUSTRIE,A320-212,2,182,NA,Turbo-fan
 N344SW,1989,Fixed wing multi engine,BOEING,737-3H4,2,149,NA,Turbo-fan
@@ -817,6 +827,7 @@ N347SW,1989,Fixed wing multi engine,BOEING,737-3H4,2,149,NA,Turbo-fan
 N348JB,2012,Fixed wing multi engine,EMBRAER,ERJ 190-100 IGW,2,20,NA,Turbo-fan
 N348NB,2002,Fixed wing multi engine,AIRBUS,A319-114,2,145,NA,Turbo-fan
 N348NW,1993,Fixed wing multi engine,AIRBUS INDUSTRIE,A320-212,2,182,NA,Turbo-fan
+N349AA,NA,Rotorcraft,AEROSPATIALE,AS 355F1,2,7,NA,Turbo-shaft
 N349NB,2002,Fixed wing multi engine,AIRBUS,A319-114,2,145,NA,Turbo-fan
 N349NW,1996,Fixed wing multi engine,AIRBUS INDUSTRIE,A320-212,2,182,NA,Turbo-fan
 N349SW,1989,Fixed wing multi engine,BOEING,737-3H4,2,149,NA,Turbo-fan
@@ -896,7 +907,6 @@ N364AA,1973,Fixed wing multi engine,CESSNA,310Q,2,6,167,Reciprocating
 N364NB,2003,Fixed wing multi engine,AIRBUS,A319-114,2,145,NA,Turbo-fan
 N364NW,1999,Fixed wing multi engine,AIRBUS INDUSTRIE,A320-212,2,182,NA,Turbo-fan
 N364SW,1993,Fixed wing multi engine,BOEING,737-3H4,2,149,NA,Turbo-fan
-N365AA,2001,Rotorcraft,AGUSTA SPA,A109E,2,8,NA,Turbo-shaft
 N365NB,2003,Fixed wing multi engine,AIRBUS,A319-114,2,145,NA,Turbo-fan
 N365NW,1999,Fixed wing multi engine,AIRBUS INDUSTRIE,A320-212,2,182,NA,Turbo-fan
 N365SW,1993,Fixed wing multi engine,BOEING,737-3H4,2,149,NA,Turbo-fan
@@ -1002,7 +1012,7 @@ N3757D,2001,Fixed wing multi engine,BOEING,737-832,2,189,NA,Turbo-jet
 N3758Y,2001,Fixed wing multi engine,BOEING,737-832,2,189,NA,Turbo-jet
 N3759,2001,Fixed wing multi engine,BOEING,737-832,2,189,NA,Turbo-jet
 N375DA,1998,Fixed wing multi engine,BOEING,737-832,2,189,NA,Turbo-jet
-N375JB,2013,Fixed wing multi engine,EMBRAER,ERJ 190-100 IGW,2,20,NA,Turbo-fan
+N375JB,NA,Fixed wing multi engine,EMBRAER,ERJ 190-100 IGW,2,20,NA,Turbo-fan
 N375NC,2002,Fixed wing multi engine,AIRBUS,A320-212,2,182,NA,Turbo-fan
 N375SW,1993,Fixed wing multi engine,BOEING,737-3H4,2,149,NA,Turbo-fan
 N3760C,2001,Fixed wing multi engine,BOEING,737-832,2,189,NA,Turbo-jet
@@ -1109,7 +1119,7 @@ N394DA,2000,Fixed wing multi engine,BOEING,737-832,2,189,NA,Turbo-jet
 N394DL,1995,Fixed wing multi engine,BOEING,767-324,2,269,NA,Turbo-fan
 N394SW,1994,Fixed wing multi engine,BOEING,737-3H4,2,149,NA,Turbo-fan
 N395DN,2000,Fixed wing multi engine,BOEING,737-832,2,189,NA,Turbo-jet
-N395HA,2013,Fixed wing multi engine,AIRBUS,A330-243,2,377,NA,Turbo-fan
+N395HA,NA,Fixed wing multi engine,AIRBUS,A330-243,2,377,NA,Turbo-fan
 N395SW,1994,Fixed wing multi engine,BOEING,737-3H4,2,149,NA,Turbo-fan
 N396DA,2000,Fixed wing multi engine,BOEING,737-832,2,189,NA,Turbo-jet
 N396SW,1994,Fixed wing multi engine,BOEING,737-3H4,2,149,NA,Turbo-fan
@@ -1118,7 +1128,6 @@ N39728,1999,Fixed wing multi engine,BOEING,737-724,2,149,NA,Turbo-jet
 N397AA,1985,Fixed wing single engine,STEWART MACO,FALCON XP,1,2,NA,Reciprocating
 N397DA,2000,Fixed wing multi engine,BOEING,737-832,2,189,NA,Turbo-jet
 N397SW,1995,Fixed wing multi engine,BOEING,737-3H4,2,149,NA,Turbo-fan
-N398AA,NA,Fixed wing multi engine,LEARJET INC,60,2,11,NA,Turbo-fan
 N398CA,2003,Fixed wing multi engine,BOMBARDIER INC,CL-600-2C10,2,80,NA,Turbo-fan
 N398DA,2000,Fixed wing multi engine,BOEING,737-832,2,189,NA,Turbo-jet
 N398SW,1995,Fixed wing multi engine,BOEING,737-3H4,2,149,NA,Turbo-fan
@@ -1247,7 +1256,7 @@ N440US,1990,Fixed wing multi engine,BOEING,737-4B7,2,149,NA,Turbo-fan
 N441UA,1997,Fixed wing multi engine,AIRBUS INDUSTRIE,A320-232,2,200,NA,Turbo-fan
 N441US,1990,Fixed wing multi engine,BOEING,737-4B7,2,149,NA,Turbo-fan
 N441WN,2003,Fixed wing multi engine,BOEING,737-7H4,2,140,NA,Turbo-fan
-N442AS,2013,Fixed wing multi engine,BOEING,737-990ER,2,222,NA,Turbo-fan
+N442AS,NA,Fixed wing multi engine,BOEING,737-990ER,2,222,NA,Turbo-fan
 N442UA,1998,Fixed wing multi engine,AIRBUS INDUSTRIE,A320-232,2,200,NA,Turbo-fan
 N442WN,2003,Fixed wing multi engine,BOEING,737-7H4,2,140,NA,Turbo-fan
 N443UA,1998,Fixed wing multi engine,AIRBUS INDUSTRIE,A320-232,2,200,NA,Turbo-fan
@@ -1287,13 +1296,16 @@ N455UW,1991,Fixed wing multi engine,BOEING,737-4B7,2,149,NA,Turbo-fan
 N455WN,2004,Fixed wing multi engine,BOEING,737-7H4,2,140,NA,Turbo-fan
 N456AA,1988,Fixed wing multi engine,MCDONNELL DOUGLAS,DC-9-82(MD-82),2,172,NA,Turbo-fan
 N456UA,1999,Fixed wing multi engine,AIRBUS INDUSTRIE,A320-232,2,200,NA,Turbo-fan
+N456UW,1991,Fixed wing multi engine,BOEING,737-4B7,2,149,NA,Turbo-fan
 N456WN,2004,Fixed wing multi engine,BOEING,737-7H4,2,140,NA,Turbo-fan
 N457UA,1999,Fixed wing multi engine,AIRBUS INDUSTRIE,A320-232,2,200,NA,Turbo-fan
+N457UW,1991,Fixed wing multi engine,BOEING,737-4B7,2,149,NA,Turbo-fan
 N457WN,2004,Fixed wing multi engine,BOEING,737-7H4,2,140,NA,Turbo-fan
 N458UA,2000,Fixed wing multi engine,AIRBUS INDUSTRIE,A320-232,2,200,NA,Turbo-fan
 N458WN,2004,Fixed wing multi engine,BOEING,737-7H4,2,140,NA,Turbo-fan
 N45905,2012,Fixed wing multi engine,BOEING,787-8,2,260,NA,Turbo-fan
 N459UA,2000,Fixed wing multi engine,AIRBUS INDUSTRIE,A320-232,2,200,NA,Turbo-fan
+N459UW,1991,Fixed wing multi engine,BOEING,737-4B7,2,149,NA,Turbo-fan
 N459WN,2004,Fixed wing multi engine,BOEING,737-7H4,2,140,NA,Turbo-fan
 N460UA,2000,Fixed wing multi engine,AIRBUS INDUSTRIE,A320-232,2,200,NA,Turbo-fan
 N460UW,1991,Fixed wing multi engine,BOEING,737-4B7,2,149,NA,Turbo-fan
@@ -1410,6 +1422,7 @@ N501AA,1989,Fixed wing multi engine,MCDONNELL DOUGLAS,DC-9-82(MD-82),2,172,NA,Tu
 N501MJ,2002,Fixed wing multi engine,BOMBARDIER INC,CL-600-2C10,2,80,NA,Turbo-fan
 N501US,1985,Fixed wing multi engine,BOEING,757-251,2,178,NA,Turbo-jet
 N502MJ,2002,Fixed wing multi engine,BOMBARDIER INC,CL-600-2C10,2,80,NA,Turbo-fan
+N502SW,1990,Fixed wing multi engine,BOEING,737-5H4,2,149,NA,Turbo-jet
 N502UA,1989,Fixed wing multi engine,BOEING,757-222,2,178,NA,Turbo-jet
 N503JB,1999,Fixed wing multi engine,AIRBUS INDUSTRIE,A320-232,2,200,NA,Turbo-fan
 N503MJ,2002,Fixed wing multi engine,BOMBARDIER INC,CL-600-2C10,2,80,NA,Turbo-fan
@@ -1428,6 +1441,7 @@ N506JB,2000,Fixed wing multi engine,AIRBUS INDUSTRIE,A320-232,2,200,NA,Turbo-fan
 N506MJ,2002,Fixed wing multi engine,BOMBARDIER INC,CL-600-2C10,2,80,NA,Turbo-fan
 N507AY,2008,Fixed wing multi engine,AIRBUS,A321-231,2,379,NA,Turbo-fan
 N507MJ,2003,Fixed wing multi engine,BOMBARDIER INC,CL-600-2C10,2,80,NA,Turbo-fan
+N507UA,1990,Fixed wing multi engine,BOEING,757-222,2,178,NA,Turbo-jet
 N507US,1985,Fixed wing multi engine,BOEING,757-251,2,178,NA,Turbo-jet
 N508AA,1975,Rotorcraft,BELL,206B,1,5,112,Turbo-shaft
 N508AS,2008,Fixed wing multi engine,BOEING,737-890,2,149,NA,Turbo-fan
@@ -1517,6 +1531,7 @@ N524VA,2007,Fixed wing multi engine,AIRBUS,A319-112,2,100,NA,Turbo-fan
 N525AA,1980,Fixed wing multi engine,PIPER,PA-31-350,2,8,162,Reciprocating
 N525AS,2009,Fixed wing multi engine,BOEING,737-890,2,149,NA,Turbo-fan
 N525SW,1992,Fixed wing multi engine,BOEING,737-5H4,2,149,NA,Turbo-jet
+N525UA,1991,Fixed wing multi engine,BOEING,757-222,2,178,NA,Turbo-jet
 N525US,1987,Fixed wing multi engine,BOEING,757-251,2,178,NA,Turbo-jet
 N525VA,2007,Fixed wing multi engine,AIRBUS,A319-112,2,100,NA,Turbo-fan
 N526AS,2009,Fixed wing multi engine,BOEING,737-890,2,149,NA,Turbo-fan
@@ -1525,15 +1540,16 @@ N526UA,1991,Fixed wing multi engine,BOEING,757-222,2,178,NA,Turbo-jet
 N526VA,2008,Fixed wing multi engine,AIRBUS,A319-112,2,100,NA,Turbo-fan
 N527AS,NA,Fixed wing multi engine,BOEING,737-890,2,149,NA,Turbo-fan
 N527SW,1992,Fixed wing multi engine,BOEING,737-5H4,2,149,NA,Turbo-jet
-N527VA,2008,Fixed wing multi engine,AIRBUS,A319-112,2,100,NA,Turbo-fan
+N527UA,1991,Fixed wing multi engine,BOEING,757-222,2,178,NA,Turbo-jet
+N527VA,2008,Fixed wing multi engine,AIRBUS,A319-115,2,147,NA,Turbo-fan
 N528AA,NA,Fixed wing single engine,LAMBERT RICHARD,FALCON XP,1,2,NA,Reciprocating
 N528AS,2009,Fixed wing multi engine,BOEING,737-890,2,149,NA,Turbo-fan
 N528UA,1991,Fixed wing multi engine,BOEING,757-222,2,178,NA,Turbo-jet
-N528VA,2008,Fixed wing multi engine,AIRBUS,A319-112,2,100,NA,Turbo-fan
+N528VA,2008,Fixed wing multi engine,AIRBUS,A319-115,2,147,NA,Turbo-fan
 N529AS,2010,Fixed wing multi engine,BOEING,737-890,2,149,NA,Turbo-fan
 N529JB,2001,Fixed wing multi engine,AIRBUS INDUSTRIE,A320-232,2,200,NA,Turbo-fan
 N529UA,1991,Fixed wing multi engine,BOEING,757-222,2,178,NA,Turbo-jet
-N529VA,2008,Fixed wing multi engine,AIRBUS,A319-112,2,100,NA,Turbo-fan
+N529VA,2008,Fixed wing multi engine,AIRBUS,A319-115,2,147,NA,Turbo-fan
 N530AS,2010,Fixed wing multi engine,BOEING,737-890,2,149,NA,Turbo-fan
 N530UA,1991,Fixed wing multi engine,BOEING,757-222,2,178,NA,Turbo-jet
 N530US,1988,Fixed wing multi engine,BOEING,757-251,2,178,NA,Turbo-jet
@@ -1563,7 +1579,7 @@ N536JB,2002,Fixed wing multi engine,AIRBUS,A320-232,2,200,NA,Turbo-fan
 N536UA,1991,Fixed wing multi engine,BOEING,757-222,2,178,NA,Turbo-jet
 N536UW,2009,Fixed wing multi engine,AIRBUS,A321-231,2,379,NA,Turbo-fan
 N537AS,2012,Fixed wing multi engine,BOEING,737-890,2,149,NA,Turbo-fan
-N537JB,2012,Rotorcraft,ROBINSON HELICOPTER CO,R66,1,5,NA,Turbo-shaft
+N537JB,2012,Rotorcraft,ROBINSON HELICOPTER CO,R66,1,6,NA,Turbo-shaft
 N537UA,1991,Fixed wing multi engine,BOEING,757-222,2,178,NA,Turbo-jet
 N537UW,2009,Fixed wing multi engine,AIRBUS,A321-231,2,379,NA,Turbo-fan
 N538AS,2012,Fixed wing multi engine,BOEING,737-890,2,149,NA,Turbo-fan
@@ -1574,6 +1590,7 @@ N539UA,1991,Fixed wing multi engine,BOEING,757-222,2,178,NA,Turbo-jet
 N539US,1996,Fixed wing multi engine,BOEING,757-251,2,178,NA,Turbo-jet
 N539UW,2009,Fixed wing multi engine,AIRBUS,A321-231,2,379,NA,Turbo-fan
 N540AA,NA,Fixed wing single engine,AMERICAN AIRCRAFT INC,FALCON XP,1,2,NA,Reciprocating
+N540UA,1991,Fixed wing multi engine,BOEING,757-222,2,178,NA,Turbo-jet
 N540US,1996,Fixed wing multi engine,BOEING,757-251,2,178,NA,Turbo-jet
 N540UW,2009,Fixed wing multi engine,AIRBUS,A321-231,2,379,NA,Turbo-fan
 N541UA,1991,Fixed wing multi engine,BOEING,757-222,2,178,NA,Turbo-jet
@@ -1712,13 +1729,14 @@ N570AA,1987,Fixed wing multi engine,MCDONNELL DOUGLAS,DC-9-83(MD-83),2,172,NA,Tu
 N570AS,2007,Fixed wing multi engine,BOEING,737-890,2,149,NA,Turbo-fan
 N570JB,2003,Fixed wing multi engine,AIRBUS,A320-232,2,200,NA,Turbo-fan
 N570UA,1992,Fixed wing multi engine,BOEING,757-222,2,178,NA,Turbo-jet
-N570UW,2013,Fixed wing multi engine,AIRBUS,A321-231,2,379,NA,Turbo-fan
+N570UW,NA,Fixed wing multi engine,AIRBUS INDUSTRIE,A321-231,2,379,NA,Turbo-jet
 N57111,1994,Fixed wing multi engine,BOEING,757-224,2,178,NA,Turbo-jet
 N571AA,1987,Fixed wing multi engine,MCDONNELL DOUGLAS,DC-9-83(MD-83),2,172,NA,Turbo-fan
 N571JB,2003,Fixed wing multi engine,AIRBUS,A320-232,2,200,NA,Turbo-fan
 N571UA,1992,Fixed wing multi engine,BOEING,757-222,2,178,NA,Turbo-jet
-N571UW,2013,Fixed wing multi engine,AIRBUS,A321-231,2,379,NA,Turbo-fan
-N572UW,2013,Fixed wing multi engine,AIRBUS INDUSTRIE,A321-231,2,379,NA,Turbo-fan
+N571UW,NA,Fixed wing multi engine,AIRBUS INDUSTRIE,A321-231,2,379,NA,Turbo-jet
+N572UA,1992,Fixed wing multi engine,BOEING,757-222,2,178,NA,Turbo-jet
+N572UW,NA,Fixed wing multi engine,AIRBUS INDUSTRIE,A321-231,2,379,NA,Turbo-jet
 N573AA,1991,Fixed wing multi engine,MCDONNELL DOUGLAS,DC-9-82(MD-82),2,172,NA,Turbo-fan
 N573UA,1992,Fixed wing multi engine,BOEING,757-222,2,178,NA,Turbo-jet
 N57439,2009,Fixed wing multi engine,BOEING,737-924ER,2,191,NA,Turbo-fan
@@ -1728,6 +1746,7 @@ N575AA,1963,Fixed wing single engine,CESSNA,210-5(205),1,6,NA,Reciprocating
 N575UA,1993,Fixed wing multi engine,BOEING,757-222,2,178,NA,Turbo-jet
 N576AA,1991,Fixed wing multi engine,MCDONNELL DOUGLAS,DC-9-82(MD-82),2,172,NA,Turbo-fan
 N576UA,1993,Fixed wing multi engine,BOEING,757-222,2,178,NA,Turbo-jet
+N577AA,1991,Fixed wing multi engine,MCDONNELL DOUGLAS,DC-9-82(MD-82),2,172,NA,Turbo-fan
 N577AS,2007,Fixed wing multi engine,BOEING,737-890,2,149,NA,Turbo-fan
 N577UA,1993,Fixed wing multi engine,BOEING,757-222,2,178,NA,Turbo-jet
 N57852,2001,Fixed wing multi engine,BOEING,757-324,2,275,NA,Turbo-fan
@@ -1741,9 +1760,11 @@ N57869,2002,Fixed wing multi engine,BOEING,757-33N,2,275,NA,Turbo-jet
 N57870,2003,Fixed wing multi engine,BOEING,757-33N,2,275,NA,Turbo-jet
 N578AA,1991,Fixed wing multi engine,MCDONNELL DOUGLAS,DC-9-82(MD-82),2,172,NA,Turbo-fan
 N578UA,1993,Fixed wing multi engine,BOEING,757-222,2,178,NA,Turbo-jet
+N579AA,1991,Fixed wing multi engine,MCDONNELL DOUGLAS,DC-9-82(MD-82),2,172,NA,Turbo-fan
 N579AS,2007,Fixed wing multi engine,BOEING,737-890,2,149,NA,Turbo-fan
 N579JB,2003,Fixed wing multi engine,AIRBUS,A320-232,2,200,NA,Turbo-fan
 N579UA,1993,Fixed wing multi engine,BOEING,757-222,2,178,NA,Turbo-jet
+N580AA,1991,Fixed wing multi engine,MCDONNELL DOUGLAS,DC-9-82(MD-82),2,172,NA,Turbo-fan
 N580JB,2003,Fixed wing multi engine,AIRBUS,A320-232,2,200,NA,Turbo-fan
 N580UA,1993,Fixed wing multi engine,BOEING,757-222,2,178,NA,Turbo-jet
 N58101,1994,Fixed wing multi engine,BOEING,757-224,2,178,NA,Turbo-jet
@@ -1757,6 +1778,7 @@ N583JB,2004,Fixed wing multi engine,AIRBUS,A320-232,2,200,NA,Turbo-fan
 N584AA,1991,Fixed wing multi engine,MCDONNELL DOUGLAS,DC-9-82(MD-82),2,172,NA,Turbo-fan
 N584AS,2007,Fixed wing multi engine,BOEING,737-890,2,149,NA,Turbo-fan
 N584JB,2004,Fixed wing multi engine,AIRBUS,A320-232,2,200,NA,Turbo-fan
+N584UA,1993,Fixed wing multi engine,BOEING,757-222,2,178,NA,Turbo-jet
 N585AA,1991,Fixed wing multi engine,MCDONNELL DOUGLAS,DC-9-82(MD-82),2,172,NA,Turbo-fan
 N585AS,2007,Fixed wing multi engine,BOEING,737-890,2,149,NA,Turbo-fan
 N585JB,2004,Fixed wing multi engine,AIRBUS,A320-232,2,200,NA,Turbo-fan
@@ -1764,6 +1786,7 @@ N585UA,1993,Fixed wing multi engine,BOEING,757-222,2,178,NA,Turbo-jet
 N586AA,1991,Fixed wing multi engine,MCDONNELL DOUGLAS,DC-9-82(MD-82),2,172,NA,Turbo-fan
 N586AS,2007,Fixed wing multi engine,BOEING,737-890,2,149,NA,Turbo-fan
 N586JB,2004,Fixed wing multi engine,AIRBUS,A320-232,2,200,NA,Turbo-fan
+N586UA,1993,Fixed wing multi engine,BOEING,757-222,2,178,NA,Turbo-jet
 N587AA,1991,Fixed wing multi engine,MCDONNELL DOUGLAS,DC-9-82(MD-82),2,172,NA,Turbo-fan
 N587AS,2007,Fixed wing multi engine,BOEING,737-890,2,149,NA,Turbo-fan
 N587JB,2004,Fixed wing multi engine,AIRBUS,A320-232,2,200,NA,Turbo-fan
@@ -1786,9 +1809,11 @@ N591JB,2004,Fixed wing multi engine,AIRBUS,A320-232,2,200,NA,Turbo-fan
 N592AA,1991,Fixed wing multi engine,MCDONNELL DOUGLAS,DC-9-83(MD-83),2,172,NA,Turbo-fan
 N592AS,2008,Fixed wing multi engine,BOEING,737-890,2,149,NA,Turbo-fan
 N592JB,2004,Fixed wing multi engine,AIRBUS,A320-232,2,200,NA,Turbo-fan
+N592UA,1996,Fixed wing multi engine,BOEING,757-222,2,178,NA,Turbo-jet
 N593AA,1991,Fixed wing multi engine,MCDONNELL DOUGLAS,DC-9-83(MD-83),2,172,NA,Turbo-fan
 N593AS,2008,Fixed wing multi engine,BOEING,737-890,2,149,NA,Turbo-fan
 N593JB,2004,Fixed wing multi engine,AIRBUS,A320-232,2,200,NA,Turbo-fan
+N593UA,1996,Fixed wing multi engine,BOEING,757-222,2,178,NA,Turbo-fan
 N594AA,1992,Fixed wing multi engine,MCDONNELL DOUGLAS,DC-9-83(MD-83),2,172,NA,Turbo-fan
 N594AS,2008,Fixed wing multi engine,BOEING,737-890,2,149,NA,Turbo-fan
 N594JB,2004,Fixed wing multi engine,AIRBUS,A320-232,2,200,NA,Turbo-fan
@@ -1915,6 +1940,7 @@ N627JB,2005,Fixed wing multi engine,AIRBUS,A320-232,2,200,NA,Turbo-fan
 N627SW,1996,Fixed wing multi engine,BOEING,737-3H4,2,149,NA,Turbo-fan
 N627VA,2006,Fixed wing multi engine,AIRBUS,A320-214,2,182,NA,Turbo-fan
 N628AA,1990,Fixed wing multi engine,BOEING,757-223,2,178,NA,Turbo-fan
+N628AW,1989,Fixed wing multi engine,AIRBUS INDUSTRIE,A320-231,2,182,NA,Turbo-jet
 N628SW,1996,Fixed wing multi engine,BOEING,737-3H4,2,149,NA,Turbo-fan
 N628VA,2007,Fixed wing multi engine,AIRBUS,A320-214,2,182,NA,Turbo-fan
 N629JB,2005,Fixed wing multi engine,AIRBUS,A320-232,2,200,NA,Turbo-fan
@@ -1954,6 +1980,7 @@ N637DL,1988,Fixed wing multi engine,BOEING,757-232,2,178,NA,Turbo-fan
 N637JB,2006,Fixed wing multi engine,AIRBUS,A320-232,2,200,NA,Turbo-fan
 N637SW,1996,Fixed wing multi engine,BOEING,737-3H4,2,149,NA,Turbo-fan
 N637VA,2008,Fixed wing multi engine,AIRBUS,A320-214,2,182,NA,Turbo-fan
+N638AA,1991,Fixed wing multi engine,BOEING,757-223,2,178,NA,Turbo-fan
 N638DL,1988,Fixed wing multi engine,BOEING,757-232,2,178,NA,Turbo-fan
 N638JB,2006,Fixed wing multi engine,AIRBUS,A320-232,2,200,NA,Turbo-fan
 N638SW,1996,Fixed wing multi engine,BOEING,737-3H4,2,149,NA,Turbo-fan
@@ -1996,7 +2023,7 @@ N647AW,1997,Fixed wing multi engine,AIRBUS INDUSTRIE,A320-232,2,200,NA,Turbo-fan
 N647DL,1989,Fixed wing multi engine,BOEING,757-232,2,178,NA,Turbo-fan
 N647SW,1997,Fixed wing multi engine,BOEING,737-3H4,2,149,NA,Turbo-fan
 N647UA,1992,Fixed wing multi engine,BOEING,767-322,2,330,NA,Turbo-fan
-N64809,2013,Fixed wing multi engine,BOEING,737-924ER,2,191,NA,Turbo-fan
+N64809,NA,Fixed wing multi engine,BOEING,737-924ER,2,191,NA,Turbo-fan
 N648AW,1997,Fixed wing multi engine,AIRBUS INDUSTRIE,A320-232,2,200,NA,Turbo-fan
 N648DL,1989,Fixed wing multi engine,BOEING,757-232,2,178,NA,Turbo-fan
 N648JB,2006,Fixed wing multi engine,AIRBUS,A320-232,2,200,NA,Turbo-fan
@@ -2085,7 +2112,7 @@ N667AW,2002,Fixed wing multi engine,AIRBUS INDUSTRIE,A320-232,2,200,NA,Turbo-fan
 N667DN,1991,Fixed wing multi engine,BOEING,757-232,2,178,NA,Turbo-fan
 N667UA,1998,Fixed wing multi engine,BOEING,767-322,2,330,NA,Turbo-fan
 N66803,2013,Fixed wing multi engine,BOEING,737-924ER,2,191,NA,Turbo-fan
-N66808,2013,Fixed wing multi engine,BOEING,737-924ER,2,191,NA,Turbo-fan
+N66808,NA,Fixed wing multi engine,BOEING,737-924ER,2,191,NA,Turbo-fan
 N668AW,2002,Fixed wing multi engine,AIRBUS,A320-232,2,200,NA,Turbo-fan
 N668DN,1991,Fixed wing multi engine,BOEING,757-232,2,178,NA,Turbo-fan
 N668UA,1999,Fixed wing multi engine,BOEING,767-322,2,330,NA,Turbo-fan
@@ -2170,6 +2197,7 @@ N689DL,1998,Fixed wing multi engine,BOEING,757-232,2,178,NA,Turbo-fan
 N69059,2002,Fixed wing multi engine,BOEING,767-424ER,2,292,NA,Turbo-jet
 N69063,2002,Fixed wing multi engine,BOEING,767-424ER,2,292,NA,Turbo-jet
 N690DL,1998,Fixed wing multi engine,BOEING,757-232,2,178,NA,Turbo-fan
+N69154,2001,Fixed wing multi engine,BOEING,767-224,2,255,NA,Turbo-jet
 N691CA,2007,Fixed wing multi engine,BOMBARDIER INC,CL-600-2D24,2,95,NA,Turbo-fan
 N691WN,1988,Fixed wing multi engine,BOEING,737-3G7,2,149,NA,Turbo-jet
 N692DL,1998,Fixed wing multi engine,BOEING,757-232,2,178,NA,Turbo-fan
@@ -2395,6 +2423,7 @@ N760JB,2008,Fixed wing multi engine,AIRBUS,A320-232,2,200,NA,Turbo-fan
 N760SK,2005,Fixed wing multi engine,BOMBARDIER INC,CL-600-2C10,2,80,NA,Turbo-fan
 N760SW,2000,Fixed wing multi engine,BOEING,737-7H4,2,140,NA,Turbo-fan
 N760US,2000,Fixed wing multi engine,AIRBUS INDUSTRIE,A319-112,2,179,NA,Turbo-fan
+N76153,2000,Fixed wing multi engine,BOEING,767-224,2,255,NA,Turbo-jet
 N761ND,2005,Fixed wing multi engine,BOMBARDIER INC,CL-600-2C10,2,80,NA,Turbo-fan
 N761RR,2000,Fixed wing multi engine,BOEING,737-7H4,2,140,NA,Turbo-fan
 N76254,2000,Fixed wing multi engine,BOEING,737-824,2,149,NA,Turbo-fan
@@ -2408,6 +2437,7 @@ N762US,2000,Fixed wing multi engine,AIRBUS INDUSTRIE,A319-112,2,179,NA,Turbo-fan
 N763JB,2008,Fixed wing multi engine,AIRBUS,A320-232,2,200,NA,Turbo-fan
 N763SW,2000,Fixed wing multi engine,BOEING,737-7H4,2,140,NA,Turbo-fan
 N763US,2000,Fixed wing multi engine,AIRBUS INDUSTRIE,A319-112,2,179,NA,Turbo-fan
+N764NC,1976,Fixed wing multi engine,MCDONNELL DOUGLAS,DC-9-51,2,139,432,Turbo-jet
 N764SW,2000,Fixed wing multi engine,BOEING,737-7H4,2,140,NA,Turbo-fan
 N764US,2000,Fixed wing multi engine,AIRBUS INDUSTRIE,A319-112,2,179,NA,Turbo-fan
 N76502,2006,Fixed wing multi engine,BOEING,737-824,2,149,NA,Turbo-fan
@@ -2428,6 +2458,7 @@ N76529,2010,Fixed wing multi engine,BOEING,737-824,2,149,NA,Turbo-fan
 N765SW,2000,Fixed wing multi engine,BOEING,737-7H4,2,140,NA,Turbo-fan
 N765US,2000,Fixed wing multi engine,AIRBUS INDUSTRIE,A319-112,2,179,NA,Turbo-fan
 N766JB,2008,Fixed wing multi engine,AIRBUS,A320-232,2,200,NA,Turbo-fan
+N766NC,1977,Fixed wing multi engine,MCDONNELL DOUGLAS,DC-9-51,2,139,432,Turbo-jet
 N766SK,2005,Fixed wing multi engine,BOMBARDIER INC,CL-600-2C10,2,80,NA,Turbo-fan
 N766SW,2000,Fixed wing multi engine,BOEING,737-7H4,2,140,NA,Turbo-fan
 N766US,2000,Fixed wing multi engine,AIRBUS INDUSTRIE,A319-112,2,179,NA,Turbo-fan
@@ -2444,6 +2475,7 @@ N77012,1999,Fixed wing multi engine,BOEING,777-224,2,400,NA,Turbo-fan
 N7702A,2004,Fixed wing multi engine,BOEING,737-7BD,2,149,NA,Turbo-fan
 N7704B,2004,Fixed wing multi engine,BOEING,737-7BD,2,149,NA,Turbo-fan
 N77066,2002,Fixed wing multi engine,BOEING,767-424ER,2,292,NA,Turbo-jet
+N770NC,1978,Fixed wing multi engine,MCDONNELL DOUGLAS,DC-9-51,2,139,432,Turbo-jet
 N770SA,2000,Fixed wing multi engine,BOEING,737-7H4,2,140,NA,Turbo-fan
 N770UW,2000,Fixed wing multi engine,AIRBUS INDUSTRIE,A319-112,2,179,NA,Turbo-fan
 N7713A,2005,Fixed wing multi engine,BOEING,737-7BD,2,149,NA,Turbo-fan
@@ -2464,6 +2496,7 @@ N7734H,2006,Fixed wing multi engine,BOEING,737-7BD,2,149,NA,Turbo-fan
 N7735A,2006,Fixed wing multi engine,BOEING,737-7BD,2,149,NA,Turbo-fan
 N7738A,2006,Fixed wing multi engine,BOEING,737-7BD,2,149,NA,Turbo-fan
 N7739A,2006,Fixed wing multi engine,BOEING,737-7BD,2,149,NA,Turbo-fan
+N773NC,1978,Fixed wing multi engine,MCDONNELL DOUGLAS,DC-9-51,2,139,432,Turbo-jet
 N773SA,2000,Fixed wing multi engine,BOEING,737-7H4,2,140,NA,Turbo-fan
 N7740A,2007,Fixed wing multi engine,BOEING,737-7BD,2,149,NA,Turbo-fan
 N7741C,2007,Fixed wing multi engine,BOEING,737-7BD,2,149,NA,Turbo-fan
@@ -2479,6 +2512,7 @@ N77520,2010,Fixed wing multi engine,BOEING,737-824,2,149,NA,Turbo-fan
 N77525,2010,Fixed wing multi engine,BOEING,737-824,2,149,NA,Turbo-fan
 N77530,2011,Fixed wing multi engine,BOEING,737-824,2,149,NA,Turbo-fan
 N775JB,2009,Fixed wing multi engine,AIRBUS,A320-232,2,200,NA,Turbo-fan
+N775NC,1979,Fixed wing multi engine,MCDONNELL DOUGLAS,DC-9-51,2,139,432,Turbo-jet
 N775SW,2000,Fixed wing multi engine,BOEING,737-7H4,2,140,NA,Turbo-fan
 N776SK,2006,Fixed wing multi engine,BOMBARDIER INC,CL-600-2C10,2,80,NA,Turbo-fan
 N776WN,2000,Fixed wing multi engine,BOEING,737-7H4,2,140,NA,Turbo-fan
@@ -2496,6 +2530,7 @@ N779SW,2000,Fixed wing multi engine,BOEING,737-7H4,2,140,NA,Turbo-fan
 N78003,1998,Fixed wing multi engine,BOEING,777-224,2,400,NA,Turbo-fan
 N78013,1999,Fixed wing multi engine,BOEING,777-224,2,400,NA,Turbo-fan
 N78060,2002,Fixed wing multi engine,BOEING,767-424ER,2,292,NA,Turbo-jet
+N780NC,1979,Fixed wing multi engine,MCDONNELL DOUGLAS,DC-9-51,2,139,432,Turbo-jet
 N780SK,2009,Fixed wing multi engine,BOMBARDIER INC,CL-600-2C10,2,80,NA,Turbo-fan
 N780SW,2000,Fixed wing multi engine,BOEING,737-7H4,2,140,NA,Turbo-fan
 N7811F,2001,Fixed wing multi engine,BOEING,737-76N,2,149,NA,Turbo-fan
@@ -2508,6 +2543,7 @@ N783SW,2000,Fixed wing multi engine,BOEING,737-7H4,2,140,NA,Turbo-fan
 N78438,2009,Fixed wing multi engine,BOEING,737-924ER,2,191,NA,Turbo-fan
 N78448,2012,Fixed wing multi engine,BOEING,737-924ER,2,191,NA,Turbo-fan
 N784JB,2011,Fixed wing multi engine,AIRBUS,A320-232,2,200,NA,Turbo-fan
+N784NC,1980,Fixed wing multi engine,MCDONNELL DOUGLAS,DC-9-51,2,139,432,Turbo-jet
 N784SW,2000,Fixed wing multi engine,BOEING,737-7H4,2,140,NA,Turbo-fan
 N78501,2006,Fixed wing multi engine,BOEING,737-824,2,149,NA,Turbo-fan
 N78506,2006,Fixed wing multi engine,BOEING,737-824,2,149,NA,Turbo-fan
@@ -2516,7 +2552,9 @@ N78511,2008,Fixed wing multi engine,BOEING,737-824,2,149,NA,Turbo-fan
 N78524,2010,Fixed wing multi engine,BOEING,737-824,2,149,NA,Turbo-fan
 N785SK,2009,Fixed wing multi engine,BOMBARDIER INC,CL-600-2C10,2,80,NA,Turbo-fan
 N785SW,2000,Fixed wing multi engine,BOEING,737-7H4,2,140,NA,Turbo-fan
+N786NC,1980,Fixed wing multi engine,MCDONNELL DOUGLAS,DC-9-51,2,139,432,Turbo-jet
 N786SW,2000,Fixed wing multi engine,BOEING,737-7H4,2,140,NA,Turbo-fan
+N787NC,1980,Fixed wing multi engine,MCDONNELL DOUGLAS,DC-9-51,2,139,432,Turbo-jet
 N787SA,2000,Fixed wing multi engine,BOEING,737-7H4,2,140,NA,Turbo-fan
 N787UA,1997,Fixed wing multi engine,BOEING,777-222,2,400,NA,Turbo-fan
 N78866,2002,Fixed wing multi engine,BOEING,757-33N,2,275,NA,Turbo-jet
@@ -2801,7 +2839,7 @@ N8617E,2013,Fixed wing multi engine,BOEING,737-8H4,2,140,NA,Turbo-fan
 N8618N,2013,Fixed wing multi engine,BOEING,737-8H4,2,140,NA,Turbo-fan
 N8619F,2013,Fixed wing multi engine,BOEING,737-8H4,2,140,NA,Turbo-fan
 N8620H,2013,Fixed wing multi engine,BOEING,737-8H4,2,140,NA,Turbo-fan
-N8621A,2013,Fixed wing multi engine,BOEING,737-8H4,2,140,NA,Turbo-fan
+N8621A,NA,Fixed wing multi engine,BOEING,737-8H4,2,140,NA,Turbo-fan
 N8623A,2002,Fixed wing multi engine,BOMBARDIER INC,CL-600-2B19,2,55,NA,Turbo-fan
 N862DA,1999,Fixed wing multi engine,BOEING,777-232,2,400,NA,Turbo-jet
 N8631E,2002,Fixed wing multi engine,BOMBARDIER INC,CL-600-2B19,2,55,NA,Turbo-fan
@@ -2944,7 +2982,7 @@ N907DA,1995,Fixed wing multi engine,MCDONNELL DOUGLAS,MD-90-30,2,142,NA,Turbo-je
 N907DE,1992,Fixed wing multi engine,MCDONNELL DOUGLAS CORPORATION,MD-88,2,142,NA,Turbo-jet
 N907DL,1987,Fixed wing multi engine,MCDONNELL DOUGLAS AIRCRAFT CO,MD-88,2,142,NA,Turbo-fan
 N907FJ,2003,Fixed wing multi engine,BOMBARDIER INC,CL-600-2D24,2,95,NA,Turbo-fan
-N907JB,2013,Fixed wing multi engine,AIRBUS INDUSTRIE,A321-231,2,379,NA,Turbo-fan
+N907JB,NA,Fixed wing multi engine,AIRBUS INDUSTRIE,A321-231,2,379,NA,Turbo-jet
 N907WN,2008,Fixed wing multi engine,BOEING,737-7H4,2,140,NA,Turbo-fan
 N907XJ,2007,Fixed wing multi engine,BOMBARDIER INC,CL-600-2D24,2,95,NA,Turbo-fan
 N908DE,1992,Fixed wing multi engine,MCDONNELL DOUGLAS CORPORATION,MD-88,2,142,NA,Turbo-jet
@@ -2981,7 +3019,7 @@ N913DL,1988,Fixed wing multi engine,MCDONNELL DOUGLAS AIRCRAFT CO,MD-88,2,142,NA
 N913DN,1996,Fixed wing multi engine,MCDONNELL DOUGLAS,MD-90-30,2,142,NA,Turbo-jet
 N913EV,2002,Fixed wing multi engine,BOMBARDIER INC,CL-600-2B19,2,55,NA,Turbo-fan
 N913FJ,2004,Fixed wing multi engine,BOMBARDIER INC,CL-600-2D24,2,95,NA,Turbo-fan
-N913JB,2013,Fixed wing multi engine,AIRBUS,A321-231,2,379,NA,Turbo-fan
+N913JB,NA,Fixed wing multi engine,AIRBUS INDUSTRIE,A321-231,2,379,NA,Turbo-jet
 N913WN,2008,Fixed wing multi engine,BOEING,737-7H4,2,140,NA,Turbo-fan
 N913XJ,2007,Fixed wing multi engine,BOMBARDIER INC,CL-600-2D24,2,95,NA,Turbo-fan
 N914DE,1993,Fixed wing multi engine,MCDONNELL DOUGLAS AIRCRAFT CO,MD-88,2,142,NA,Turbo-fan

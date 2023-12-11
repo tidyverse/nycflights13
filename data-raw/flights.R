@@ -3,7 +3,7 @@ library(readr)
 
 flight_url <- function(year = 2013, month) {
   base_url <- "https://www.transtats.bts.gov/PREZIP/"
-  sprintf(paste0(base_url, "On_Time_On_Time_Performance_%d_%d.zip"), year, month)
+  sprintf(paste0(base_url, "On_Time_Reporting_Carrier_On_Time_Performance_1987_present_%d_%d.zip"), year, month)
 }
 
 download_month <- function(year = 2013, month) {
@@ -35,16 +35,16 @@ get_nyc <- function(path) {
     ArrTime = col_integer(),
     CRSDepTime = col_integer(),
     CRSArrTime = col_integer(),
-    Carrier = col_character(),
-    UniqueCarrier = col_character()
+    Reporting_Airline = col_character()#,
+    # UniqueCarrier = col_character()
   )
   read_csv(path, col_types = col_types) %>%
     select(
       year = Year, month = Month, day = DayofMonth,
       dep_time = DepTime, sched_dep_time = CRSDepTime, dep_delay = DepDelay,
       arr_time = ArrTime, sched_arr_time = CRSArrTime, arr_delay = ArrDelay,
-      carrier = Carrier, flight = FlightNum, tailnum = TailNum,
-      origin = Origin, dest = Dest,
+      carrier = Reporting_Airline, flight = Flight_Number_Reporting_Airline,
+      tailnum = Tail_Number, origin = Origin, dest = Dest,
       air_time = AirTime, distance = Distance
     ) %>%
     filter(origin %in% c("JFK", "LGA", "EWR")) %>%

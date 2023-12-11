@@ -15,7 +15,7 @@ faa,name,lat,lon,alt,tz,dst,tzone
 19A,Jackson County Airport,34.1758638,-83.5615972,951,-5,U,America/New_York
 1A3,Martin Campbell Field Airport,35.0158056,-84.3468333,1789,-5,A,America/New_York
 1B9,Mansfield Municipal,42.0001331,-71.1967714,122,-5,A,America/New_York
-1C9,Frazier Lake Airpark,54.013333333333335,-124.76833333333333,152,-8,A,America/Vancouver
+1C9,Frazier Lake Airpark,54.013333333333335,-124.76833333333332,152,-8,A,America/Vancouver
 1CS,Clow International Airport,41.6959744,-88.1292306,670,-6,U,America/Chicago
 1G3,Kent State Airport,41.1513889,-81.4151111,1134,-5,A,America/New_York
 1G4,Grand Canyon West Airport,35.899904,-113.815674,4813,-7,A,America/Phoenix

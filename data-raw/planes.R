@@ -3,7 +3,7 @@ library(readr)
 
 # Update URL from
 # http://www.faa.gov/licenses_certificates/aircraft_certification/aircraft_registry/releasable_aircraft_download/
-src <- "http://registry.faa.gov/database/AR062014.zip"
+src <- "https://registry.faa.gov/database/yearly/ReleasableAircraft.2013.zip"
 lcl <- "data-raw/planes"
 
 if (!file.exists(lcl)) {
@@ -15,20 +15,22 @@ if (!file.exists(lcl)) {
 }
 
 master <- read.csv("data-raw/planes/MASTER.txt", stringsAsFactors = FALSE, strip.white = TRUE)
-names(master) <- tolower(names(master))
 
 keep <- master %>%
-  tbl_df() %>%
-  select(nnum = n.number, code = mfr.mdl.code, year = year.mfr)
+  as_tibble() %>%
+  select("nnum" = 1, "code" = 3, "year" = 5)
 
-ref <- read.csv("data-raw/planes//ACFTREF.txt",
+ref <- read.csv("data-raw/planes/AcftRef.txt",
   stringsAsFactors = FALSE,
   strip.white = TRUE
 )
-names(ref) <- tolower(names(ref))
+names(ref) <-
+  c("mfr", "model", "type.acft", "type.eng", "ac.category",
+    "amat.tc.built", "no.eng", "no.seats", "ac.weight", "speed", "code",
+    "kit.code", "extra")
 
 ref <- ref %>%
-  tbl_df() %>%
+  as_tibble() %>%
   select(code, mfr, model, type.acft, type.eng, no.eng, no.seats, speed)
 
 # Combine together
